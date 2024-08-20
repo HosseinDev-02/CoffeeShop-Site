@@ -33,7 +33,7 @@ async function loginUser() {
     console.log(isRegistered)
     console.log(mainUser)
     if (isRegistered) {
-        location.href = `http://localhost:3000/index.html?id=${mainUser[0]}`
+        location.href = `index.html?id=${mainUser[0]}`
         alert("شما با موفقیت وارد شدید")
     } else {
         alert("کاربری با این شماره وجود ندارد !")

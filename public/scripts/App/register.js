@@ -30,7 +30,7 @@ async function userRegisterHandler() {
         console.log(fetchNewUser)
         clearUserRegisterInputs()
         alert('ثبت نام شما با موفقیت انجام شد')
-        location.href = 'http://localhost:3000/login.html'
+        location.href = 'login.html'
     }
 
 }

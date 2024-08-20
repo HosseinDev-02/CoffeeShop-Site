@@ -19,14 +19,14 @@ const indexContactUsLink = document.getElementById("index-contactUs-link")
 
 // Users variable
 
-function separate(number) {
-    let y = number
-    let rgx = /(\d+)(\d{3})/;
-    while (rgx.test(y)){
-        y = y.replace(rgx, '$1' + ',' + '$2');
-    }
-    return y
-}
+// function separate(number) {
+//     let y = number
+//     let rgx = /(\d+)(\d{3})/;
+//     while (rgx.test(y)){
+//         y = y.replace(rgx, '$1' + ',' + '$2');
+//     }
+//     return y
+// }
 
 // Basket Functions
 
@@ -50,9 +50,48 @@ async function addHeaderBasketToDom() {
             return basket[1].userId === userId && basket[1].checkOut === false
         })
         filteredUserBasket.forEach(basket => {
+            console.log(basket[1])
             let newBasketCard = document.createElement("div")
             newBasketCard.className = 'flex flex-row-reverse py-3.5 justify-between items-center gap-x-3.5'
-            newBasketCard.innerHTML = `<div class="w-[120px] h-[120px] shrink-0"><img class="w-full h-full object-cover" src="${basket[1].img}" alt="product 1"></div><div class="flex flex-col items-end justify-between gap-y-2.5"><a href="#" class="line-clamp-2 hover:text-indigo-400 h-12">${basket[1].detail}</a><div class="flex items-end justify-between w-full"><div class="flex justify-between gap-x-1 bg-transparent border border-white/30 text-white rounded-md px-1 py-2"><button onclick="basketMinusCountAction('${basket[0]}', addHeaderBasketToDom, headerBasketPriceHandler)" type="button" class="px-1"><svg class="shrink-0 w-5 h-5"><use href="#minus"></use></svg></button><div class="w-8 border-x border-x-white/50 text-center text-indigo-400 font-Moshfegh-Bold text-xl">${basket[1].count}</div> <button onclick="basketPlusCountAction('${basket[0]}', addHeaderBasketToDom, headerBasketPriceHandler)" type="button" class="px-1"><svg class="shrink-0 w-5 h-5"><use href="#plus"></use></svg></button></div><div class="mt-3 flex flex-col items-start gap-y-1 dir-rtl"><div class="flex items-center gap-x-1.5 font-Moshfegh-Bold text-xl">${separate((basket[1].costPrice).toString())}<span class="text-base tracking-tighter font-Shabnam-Regular">تومان</span></div><div class="offer flex items-center gap-x-1.5 font-Moshfegh-Bold text-white/50">${separate(basket[1].price)}<span class="text-sm tracking-tighter font-Shabnam-Regular">تومان</span></div></div></div</div>`
+            newBasketCard.innerHTML =`<div class="flex flex-row-reverse py-3.5 justify-between items-center gap-x-3.5">
+                                <div class="w-28 h-28 shrink-0 rounded-md overflow-hidden">
+                                    <img class="w-full h-full object-cover" src="${basket[1].img}"
+                                         alt="product 1">
+                                </div>
+                                <div class="flex flex-col items-end justify-between gap-y-4">
+                                    <a href="#" class="line-clamp-1 hover:text-indigo-400 dir-rtl">
+                                        ${basket[1].detail}
+                                    </a>
+                                    <div class="flex items-end justify-between w-full">
+                                        <div class="flex justify-between gap-x-1 bg-transparent border border-white/30 text-white rounded-md p-1">
+                                            <button onclick="basketMinusCountAction('${basket[0]}', addHeaderBasketToDom, headerBasketPriceHandler)" type="button" class="px-1">
+                                                <svg class="shrink-0 w-5 h-5">
+                                                    <use href="#minus"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="w-8 border-x border-x-white/50 text-center text-indigo-400 font-IRANSans-Medium text-lg">
+                                                ${basket[1].count}
+                                            </div>
+                                            <button onclick="basketPlusCountAction('${basket[0]}', addHeaderBasketToDom, headerBasketPriceHandler)" type="button" class="px-1">
+                                                <svg class="shrink-0 w-5 h-5">
+                                                    <use href="#plus"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex flex-col items-start gap-y-1 dir-rtl">
+                                            <div class="flex items-center gap-x-1.5 font-IRANSans-Bold text-lg">
+                                                ${basket[1].costPrice.toLocaleString()}
+                                                <span class="text-base tracking-tighter">تومان</span>
+                                            </div>
+                                            <div class="offer flex items-center gap-x-1.5 font-IRANSans-Bold text-white/50 text-sm">
+                                                ${basket[1].price.toLocaleString()}
+                                                <span class="text-xs tracking-tighter">تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+
 
             basketsFragment.append(newBasketCard)
         })
@@ -128,7 +167,7 @@ async function headerBasketPriceHandler() {
     let userBasketArray = await userBasket()
     let sumBasketPrice = 0
     userBasketArray.forEach(basket => sumBasketPrice += (basket[1].costPrice * basket[1].count))
-    totalBasketPrice.innerHTML = `${separate(sumBasketPrice.toString())}  تومان  `
+    totalBasketPrice.innerHTML = sumBasketPrice.toLocaleString()
 }
 
 
@@ -138,13 +177,13 @@ async function headerBasketPriceHandler() {
 adminPanelLink.addEventListener("click",  e => {
     e.preventDefault()
     if(userId) {
-        location.href = `http://localhost:3000/admin-panel.html?id=${userId}`
+        location.href = `admin-panel.html?id=${userId}`
     }
 })
 basketBtn.addEventListener("click", (e) => {
     e.preventDefault()
     if(userId){
-        location.href = `http://localhost:3000/basket.html?id=${userId}`
+        location.href = `basket.html?id=${userId}`
     }else{
         alert('ابتدا وارد شوید')
     }
@@ -152,16 +191,16 @@ basketBtn.addEventListener("click", (e) => {
 indexRegisterBtn.addEventListener("click", e => {
     e.preventDefault()
     if (userId) {
-        location.href = 'http://localhost:3000/index.html'
+        location.href = 'index.html'
     }else{
-        location.href = 'http://localhost:3000/register.html'
+        location.href = 'register.html'
     }
 })
 basketHomeLink.addEventListener("click", function (e){
     if(userId){
-        location.href = `http://localhost:3000/index.html?id=${userId}`
+        location.href = `index.html?id=${userId}`
     }else{
-        location.href = `http://localhost:3000/index.html`
+        location.href = `index.html`
     }
 })
 // menuItems.forEach(item => {
@@ -194,7 +233,7 @@ mobileMenuBtn.addEventListener("click", () => {
     }
 })
 window.addEventListener("load", async () => {
-    // await addHeaderBasketToDom()
+    await addHeaderBasketToDom()
     // await headerBasketPriceHandler()
     let locationHref = location.href
     if (userId) {
