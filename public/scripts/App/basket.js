@@ -64,7 +64,7 @@ async function basketPriceHandler() {
     let sumBasketPrice = 0
     let userBasketArray = await userBasket()
     userBasketArray.forEach(basket => sumBasketPrice += (basket[1].costPrice * basket[1].count))
-    basketTotalPrice.innerHTML = `${sumBasketPrice.toLocaleString()}تومان  `
+    basketTotalPrice.innerHTML = `${sumBasketPrice.toLocaleString()} تومان`
 }                              
 
 //=========================================================================================================================

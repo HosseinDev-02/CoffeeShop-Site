@@ -466,18 +466,6 @@
                 <span class="text-sm md:text-2xl font-IRANSans-Light mt-2 inline-block max-w-[800px] text-gray-300">
                     یک فنجان قهوه، در هر حال، می‌چسبد ولی همیشه فرصت رفتن به کافه نیست. شما می‌توانید نوشیدنی یا دسر دلخواه‌تان را سفارش دهید.
                 </span>
-                <!--                <form class="max-w-[500px] mx-auto flex items-center bg-transparent border border-white/30 h-12 md:h-14 rounded-md mt-10 md:mt-20 overflow-hidden group"-->
-                <!--                      action="#">-->
-                <!--                    <button class="w-14 h-10 md:h-12 flex items-center justify-center outline-none border-l border-l-white/30"-->
-                <!--                            type="submit">-->
-                <!--                        <svg class="w-6 h-6">-->
-                <!--                            <use href="#search"></use>-->
-                <!--                        </svg>-->
-                <!--                    </button>-->
-                <!--                    <input class="text-sm md:text-base w-full h-full outline-none bg-transparent px-4 text-white"-->
-                <!--                           type="text"-->
-                <!--                           placeholder="محصول مورد نظر خود را جستجو کنید">-->
-                <!--                </form>-->
             </div>
         </div>
     </section>
@@ -487,7 +475,7 @@
                 <h3 class="font-Shabnam-Bold text-2xl md:text-4xl mb-10 md:mb-20 text-white text-center">
                     سبد خرید شما
                 </h3>
-                <div class="max-h-[508px] overflow-y-auto overscroll-x-auto">
+                <div class="hidden xl:block max-h-[508px] overflow-y-auto overscroll-x-auto">
                     <table class="w-full">
                         <thead>
                         <tr class="border-b border-b-white">
@@ -498,58 +486,52 @@
                         </tr>
                         </thead>
                         <tbody id="basket-list">
-                        <tr class="border-b border-white/50">
-                            <td>
-                            <span class="cursor-pointer mx-auto flex items-center justify-center bg-transparent border border-white/30 w-6 md:w-8 h-6 md:h-8 hover:text-black hover:bg-white transition-colors">
-                                <svg class="w-5 md:w-6 h-5 md:h-6">
-                                    <use href="#x-mark"></use>
-                                </svg>
-                            </span>
-                            </td>
-                            <td class="p-2.5 md:p-6">
-                                <div class="w-16 md:w-24 h-16 md:h-24 mx-auto">
-                                    <img class="w-full h-full object-cover" src="images/Products/Product%202.jpg" alt="">
-                                </div>
-                            </td>
-                            <td class="p-2.5 md:p-6 text-center w-[450px] align-middle">
-                                <p class="w-[300px] md:w-[400px] mt-2 font-Shabnam-Light md:text-lg line-clamp-2">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                                </p>
-                            </td>
-                            <td class="p-2.5 md:p-6 text-center align-middle">
-                                <div class="justify-center flex items-center gap-x-1.5 font-Shabnam-Bold text-xl">
-                                    54,000
-                                    <span class="text-base tracking-tighter font-Shabnam-Regular">تومان</span>
-                                </div>
-                                <div class="offer inline-flex items-center gap-x-1.5 font-Shabnam-Bold text-white/50">
-                                    67,000
-                                    <span class="text-sm tracking-tighter font-Shabnam-Regular">تومان</span>
-                                </div>
-                            </td>
-                            <td class="p-2.5 md:p-6 align-middle">
-                                <div class="flex justify-between gap-x-1 bg-transparent border border-white/30 w-28 mx-auto text-white rounded-md px-1 py-2">
+                            <!-- Data Loaded From Js -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:hidden">
+                    <div class="rounded-md sm:rounded-xl bg-zinc-900 overflow-hidden">
+                        <a href="#"
+                           class="flex items-center justify-center w-full h-[120px] sm:h-[160px] md:h-36 rounded-md overflow-hidden">
+                            <img class="w-full h-full object-cover" src="images/Products/product-3.png" alt=""
+                                 loading="lazy">
+                        </a>
+                        <div class="p-2">
+                            <h4 class="text-sm font-IRANSans-Medium line-clamp-2 mb-2 sm:mb-4 h-10 sm:h-12">
+                                چای سیاه یا چای قرمز یکی از محبوب‌‌ترین طعم‌های چای است.طعم‌های چای است.
+                            </h4>
+                            <div class="flex flex-col-reverse sm:flex-row justify-between">
+                                <div class="flex justify-between items-center gap-x-1 bg-transparent text-white rounded-md p-1">
                                     <button type="button" class="px-1">
-                                        <svg class="shrink-0 w-5 h-5">
+                                        <svg class="shrink-0 w-5 h-5 text-red-500">
                                             <use href="#minus"></use>
                                         </svg>
                                     </button>
-                                    <div class="w-8 border-x border-x-white/50 text-center text-indigo-400 font-Shabnam-Bold text-xl">1</div>
+                                    <span class="w-8 text-center">4</span>
                                     <button type="button" class="px-1">
-                                        <svg class="shrink-0 w-5 h-5">
+                                        <svg class="shrink-0 w-5 h-5 text-indigo-500">
                                             <use href="#plus"></use>
                                         </svg>
                                     </button>
                                 </div>
-                            </td>
-                            <td class="p-2.5 md:p-6">
-                                <div class="justify-center flex items-center gap-x-1.5 font-Shabnam-Bold text-xl">
-                                    54,000
-                                    <span class="text-base tracking-tighter font-Shabnam-Regular">تومان</span>
+                                <div class="flex flex-row-reverse sm:flex-col justify-between items-start sm:items-end flex-wrap gap-x-4">
+                                    <div class="product__price flex items-center gap-x-1 font-IRANSans-Bold tracking-wider">
+                                        150,000
+                                        <!--                                    <span class="text-xs md:text-sm font-IRANSans tracking-tighter text-white">تومان</span>-->
+                                    </div>
+                                    <div class="offer flex items-center gap-x-1 font-IRANSans-Bold tracking-wider text-gray-400">
+                                        175,000
+                                        <!--                                    <span class="hidden md:inline text-xs tracking-tighter font-IRANSans">تومان</span>-->
+                                    </div>
                                 </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                            </div>
+                        </div>
+                        <button onclick='addProductToBasket("${product[0]}")'
+                                class="flex text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-red-600 font-IRANSans-Medium rounded-md text-sm md:text-base tracking-tighter">
+                            حذف محصول
+                        </button>
+                    </div>
                 </div>
                 <div class="flex flex-col md:flex-row items-center justify-between w-full mt-20 p-6 gap-y-5 gap-x-4">
                     <div class="flex items-center justify-between md:justify-start w-full gap-x-5 md:text-xl font-Shabnam-Medium">
@@ -558,7 +540,7 @@
                             545,000 تومان
                         </span>
                     </div>
-                    <button id="basket-checkout-btn" type="button" class="w-full md:w-44 h-14 rounded-md bg-transparent border-2 border-indigo-600 flex items-center justify-center text-xl hover:bg-indigo-600 hover:text-white transition-colors">
+                    <button id="basket-checkout-btn" type="button" class="flex items-center justify-center w-40 md:w-48 h-11 md:h-12 bg-transparent border border-indigo-500 text-indigo-500 font-IRANSans-Bold md:hover:bg-indigo-500 md:hover:text-gray-300 transition-colors tracking-tighter mt-5 md:mt-10 rounded mx-auto text-sm md:text-base">
                         پرداخت نهایی
                     </button>
                 </div>

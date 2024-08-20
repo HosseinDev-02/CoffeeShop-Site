@@ -61,6 +61,3 @@ bookSubmitBtn.addEventListener("click", async () => {
 
 // Blogs Events
 
-window.addEventListener("load", () => {
-    // console.log(location.href)
-})

@@ -50,9 +50,8 @@ async function addHeaderBasketToDom() {
             return basket[1].userId === userId && basket[1].checkOut === false
         })
         filteredUserBasket.forEach(basket => {
-            console.log(basket[1])
             let newBasketCard = document.createElement("div")
-            newBasketCard.className = 'flex flex-row-reverse py-3.5 justify-between items-center gap-x-3.5'
+            newBasketCard.className = 'flex flex-row-reverse py-2 justify-between items-center gap-x-3.5'
             newBasketCard.innerHTML =`<div class="flex flex-row-reverse py-3.5 justify-between items-center gap-x-3.5">
                                 <div class="w-28 h-28 shrink-0 rounded-md overflow-hidden">
                                     <img class="w-full h-full object-cover" src="${basket[1].img}"
@@ -167,7 +166,7 @@ async function headerBasketPriceHandler() {
     let userBasketArray = await userBasket()
     let sumBasketPrice = 0
     userBasketArray.forEach(basket => sumBasketPrice += (basket[1].costPrice * basket[1].count))
-    totalBasketPrice.innerHTML = sumBasketPrice.toLocaleString()
+    totalBasketPrice.innerHTML = `${sumBasketPrice.toLocaleString()} تومان `
 }
 
 
@@ -203,14 +202,7 @@ basketHomeLink.addEventListener("click", function (e){
         location.href = `index.html`
     }
 })
-// menuItems.forEach(item => {
-//     item.addEventListener("click", () => {
-//         if (!item.className.includes("group")) {
-//             document.querySelector(".menu__item--active").classList.remove("menu__item--active")
-//             item.classList.add("menu__item--active")
-//         }
-//     })
-// })
+
 mobilMenuItems.forEach(item => {
     item.addEventListener("click", () => {
         if (!item.className.includes("flex-col")) {
@@ -234,8 +226,7 @@ mobileMenuBtn.addEventListener("click", () => {
 })
 window.addEventListener("load", async () => {
     await addHeaderBasketToDom()
-    // await headerBasketPriceHandler()
-    let locationHref = location.href
+    await headerBasketPriceHandler()
     if (userId) {
         let allUsersArray = await getAllUsers()
         let isAdminLogin = allUsersArray.some(user => user[0] === userId && user[1].isAdmin === true)

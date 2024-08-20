@@ -81,15 +81,16 @@
         inset: 0;
         margin: auto;
     }
-    .cart-body::-webkit-scrollbar{
+    .card-body::-webkit-scrollbar{
         width: 8px;
     }
-    .cart-body::-webkit-scrollbar-thumb{
-        background-color: #9ca3af;
-        border-radius: 50px;
+    .card-body::-webkit-scrollbar-thumb{
+        background: #1f2937;
+        border-radius: 4px;
     }
-    .cart-body::-webkit-scrollbar-track{
-        background-color: transparent;
+    .card-body::-webkit-scrollbar-track{
+        background: #111827;
+        border-radius: 4px;
     }
     .home{
         height: calc(100vh - 84px);
