@@ -12,14 +12,6 @@ const bookSubmitBtn = document.getElementById("reserve-submit-btn")
 
 
 
-// blogs variable
-
-// comment variable
-const commentsContainer = document.getElementById("comments-container")
-
-
-
-
 jalaliDatepicker.startWatch();
 
 
@@ -49,38 +41,6 @@ function clearReserveInputs() {
     bookDate.value = ""
     bookTime.innerHTML = ""
 }
-
-
-
-
-
-
-
-
-// Comments Functions
-
-function addCommentsToDom(allComments) {
-    // <div class="swiper-slide"><div class="border-2 border-gray-500 p-5 md:p-8 flex flex-col justify-between gap-y-8 rounded relative"><div class="flex items-center justify-between pb-6 border-b border-dashed"><svg class="w-6 h-6"><use href="#quote-down"></use></svg><h5 class="comments__title font-Shabnam-Bold text-lg md:text-xl text-white text-center">${comment.firstname + " " + comment.lastname}</h5><svg class="w-6 h-6"><use href="#quote-up"></use></svg></div><p class="comments__text text-sm md:text-base relative text-justify line-clamp-5">${comment.text}</p><div class="absolute left-2 right-2 -top-3 -bottom-3 text-center border-2 border-gray-500 rounded"></div></div></div>
-}
-
-
-
-// Basket Events
-
-
-
-// Products Events
-
-// productLikeIcon.forEach(item => {
-//     item.addEventListener("click", () => {
-//         item.classList.toggle("fill-white")
-//     })
-// })
-
-// Categories Events
-
-
-// Book Events
 
 bookTimes.forEach(time => {
     time.addEventListener("click", () => {
