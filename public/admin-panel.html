@@ -1,0 +1,1397 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/app.css">
+    <link rel="stylesheet" href="./styles/jalalidatepicker.min.css">
+    <title>Admin Panel</title>
+</head>
+<body class="text-gray-300 font-IRANSans bg-gray-950">
+<svg class="hidden">
+    <symbol id="arrow-left-circle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+    </symbol>
+    <symbol id="users" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/>
+    </symbol>
+    <symbol id="building-storefront" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z"/>
+    </symbol>
+    <symbol id="comments" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/>
+    </symbol>
+    <symbol id="archive-box" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/>
+    </symbol>
+    <symbol id="x-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path fill-rule="evenodd"
+              d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd"/>
+    </symbol>
+    <symbol id="pencil" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/>
+    </symbol>
+    <symbol id="upload" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"/>
+    </symbol>
+    <symbol id="newspaper" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"/>
+    </symbol>
+    <symbol id="open-reserve" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
+    </symbol>
+    <symbol id="arrow-down" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.9202 8.17999H11.6902H6.08024C5.12024 8.17999 4.64024 9.33999 5.32024 10.02L10.5002 15.2C11.3302 16.03 12.6802 16.03 13.5102 15.2L15.4802 13.23L18.6902 10.02C19.3602 9.33999 18.8802 8.17999 17.9202 8.17999Z"
+              fill="currentColor"/>
+    </symbol>
+    <symbol id="hand-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M15.73 5.5h1.035A7.465 7.465 0 0 1 18 9.625a7.465 7.465 0 0 1-1.235 4.125h-.148c-.806 0-1.534.446-2.031 1.08a9.04 9.04 0 0 1-2.861 2.4c-.723.384-1.35.956-1.653 1.715a4.499 4.499 0 0 0-.322 1.672v.633A.75.75 0 0 1 9 22a2.25 2.25 0 0 1-2.25-2.25c0-1.152.26-2.243.723-3.218.266-.558-.107-1.282-.725-1.282H3.622c-1.026 0-1.945-.694-2.054-1.715A12.137 12.137 0 0 1 1.5 12.25c0-2.848.992-5.464 2.649-7.521C4.537 4.247 5.136 4 5.754 4H9.77a4.5 4.5 0 0 1 1.423.23l3.114 1.04a4.5 4.5 0 0 0 1.423.23ZM21.669 14.023c.536-1.362.831-2.845.831-4.398 0-1.22-.182-2.398-.52-3.507-.26-.85-1.084-1.368-1.973-1.368H19.1c-.445 0-.72.498-.523.898.591 1.2.924 2.55.924 3.977a8.958 8.958 0 0 1-1.302 4.666c-.245.403.028.959.5.959h1.053c.832 0 1.612-.453 1.918-1.227Z"/>
+    </symbol>
+    <symbol id="hand-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.493 18.5c-.425 0-.82-.236-.975-.632A7.48 7.48 0 0 1 6 15.125c0-1.75.599-3.358 1.602-4.634.151-.192.373-.309.6-.397.473-.183.89-.514 1.212-.924a9.042 9.042 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75A.75.75 0 0 1 15 2a2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H14.23c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23h-.777ZM2.331 10.727a11.969 11.969 0 0 0-.831 4.398 12 12 0 0 0 .52 3.507C2.28 19.482 3.105 20 3.994 20H4.9c.445 0 .72-.498.523-.898a8.963 8.963 0 0 1-.924-3.977c0-1.708.476-3.305 1.302-4.666.245-.403-.028-.959-.5-.959H4.25c-.832 0-1.612.453-1.918 1.227Z"/>
+    </symbol>
+    <symbol id="logout" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.24 22.27H15.11C10.67 22.27 8.53002 20.52 8.16002 16.6C8.12002 16.19 8.42002 15.82 8.84002 15.78C9.24002 15.74 9.62002 16.05 9.66002 16.46C9.95002 19.6 11.43 20.77 15.12 20.77H15.25C19.32 20.77 20.76 19.33 20.76 15.26V8.73998C20.76 4.66998 19.32 3.22998 15.25 3.22998H15.12C11.41 3.22998 9.93002 4.41998 9.66002 7.61998C9.61002 8.02998 9.26002 8.33998 8.84002 8.29998C8.42002 8.26998 8.12001 7.89998 8.15001 7.48998C8.49001 3.50998 10.64 1.72998 15.11 1.72998H15.24C20.15 1.72998 22.25 3.82998 22.25 8.73998V15.26C22.25 20.17 20.15 22.27 15.24 22.27Z"
+              fill="currentColor"/>
+        <path d="M15.0001 12.75H3.62012C3.21012 12.75 2.87012 12.41 2.87012 12C2.87012 11.59 3.21012 11.25 3.62012 11.25H15.0001C15.4101 11.25 15.7501 11.59 15.7501 12C15.7501 12.41 15.4101 12.75 15.0001 12.75Z"
+              fill="currentColor"/>
+        <path d="M5.84994 16.0998C5.65994 16.0998 5.46994 16.0298 5.31994 15.8798L1.96994 12.5298C1.67994 12.2398 1.67994 11.7598 1.96994 11.4698L5.31994 8.11984C5.60994 7.82984 6.08994 7.82984 6.37994 8.11984C6.66994 8.40984 6.66994 8.88984 6.37994 9.17984L3.55994 11.9998L6.37994 14.8198C6.66994 15.1098 6.66994 15.5898 6.37994 15.8798C6.23994 16.0298 6.03994 16.0998 5.84994 16.0998Z"
+              fill="currentColor"/>
+    </symbol>
+    <symbol id="home" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 17.0001V11.4522V11.4514C20 10.9176 20 10.6505 19.9351 10.402C19.8775 10.1816 19.7827 9.97269 19.6548 9.78426C19.5104 9.57164 19.3096 9.39575 18.9074 9.04389L14.1074 4.84389C13.3608 4.1906 12.9875 3.864 12.5674 3.73976C12.1972 3.63028 11.8028 3.63028 11.4326 3.73976C11.0127 3.86393 10.6398 4.19025 9.894 4.84281L9.89278 4.84389L5.09277 9.04389L5.09182 9.04473C4.69032 9.39603 4.48944 9.57181 4.34521 9.78427C4.2173 9.97269 4.12255 10.1816 4.06497 10.402C4 10.6506 4 10.9178 4 11.4522V17.0001C4 17.932 4 18.3978 4.15224 18.7654C4.35523 19.2554 4.74481 19.6448 5.23486 19.8478C5.60241 20 6.06835 20 7.00023 20C7.93211 20 8.39782 20 8.76537 19.8478C9.25542 19.6448 9.64467 19.2554 9.84766 18.7654C9.9999 18.3978 10 17.9319 10 17V16C10 14.8954 10.8954 14 12 14C13.1046 14 14 14.8954 14 16V17C14 17.9319 14 18.3978 14.1522 18.7654C14.3552 19.2554 14.7448 19.6448 15.2349 19.8478C15.6024 20 16.0683 20 17.0002 20C17.9321 20 18.3978 20 18.7654 19.8478C19.2554 19.6448 19.6447 19.2554 19.8477 18.7654C19.9999 18.3978 20 17.932 20 17.0001Z"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="shopping-bag" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.12 18.25C10.93 18.25 10.74 18.18 10.59 18.03L9.09 16.53C8.8 16.24 8.8 15.76 9.09 15.47C9.38 15.18 9.86 15.18 10.15 15.47L11.14 16.46L13.86 13.95C14.16 13.67 14.64 13.69 14.92 13.99C15.2 14.29 15.18 14.77 14.88 15.05L11.63 18.05C11.49 18.18 11.31 18.25 11.12 18.25Z"
+              fill="currentColor"/>
+        <path d="M5.19001 6.37994C5.00001 6.37994 4.8 6.29994 4.66 6.15994C4.37 5.86994 4.37 5.38994 4.66 5.09994L8.29 1.46994C8.58001 1.17994 9.06001 1.17994 9.35001 1.46994C9.64001 1.75994 9.64001 2.23994 9.35001 2.52994L5.72 6.15994C5.57 6.29994 5.38001 6.37994 5.19001 6.37994Z"
+              fill="currentColor"/>
+        <path d="M18.81 6.37994C18.62 6.37994 18.43 6.30994 18.28 6.15994L14.65 2.52994C14.36 2.23994 14.36 1.75994 14.65 1.46994C14.94 1.17994 15.42 1.17994 15.71 1.46994L19.34 5.09994C19.63 5.38994 19.63 5.86994 19.34 6.15994C19.2 6.29994 19 6.37994 18.81 6.37994Z"
+              fill="currentColor"/>
+        <path d="M20.21 10.6001C20.14 10.6001 20.07 10.6001 20 10.6001H19.77H4C3.3 10.6101 2.5 10.6101 1.92 10.0301C1.46 9.5801 1.25 8.8801 1.25 7.8501C1.25 5.1001 3.26 5.1001 4.22 5.1001H19.78C20.74 5.1001 22.75 5.1001 22.75 7.8501C22.75 8.8901 22.54 9.5801 22.08 10.0301C21.56 10.5501 20.86 10.6001 20.21 10.6001ZM4.22 9.1001H20.01C20.46 9.1101 20.88 9.1101 21.02 8.9701C21.09 8.9001 21.24 8.6601 21.24 7.8501C21.24 6.7201 20.96 6.6001 19.77 6.6001H4.22C3.03 6.6001 2.75 6.7201 2.75 7.8501C2.75 8.6601 2.91 8.9001 2.97 8.9701C3.11 9.1001 3.54 9.1001 3.98 9.1001H4.22Z"
+              fill="currentColor"/>
+        <path d="M14.89 22.7502H8.86C5.28 22.7502 4.48 20.6202 4.17 18.7702L2.76 10.1202C2.69 9.71024 2.97 9.33024 3.38 9.26024C3.78 9.19024 4.17 9.47024 4.24 9.88024L5.65 18.5202C5.94 20.2902 6.54 21.2502 8.86 21.2502H14.89C17.46 21.2502 17.75 20.3502 18.08 18.6102L19.76 9.86024C19.84 9.45024 20.23 9.18024 20.64 9.27024C21.05 9.35024 21.31 9.74024 21.23 10.1502L19.55 18.9002C19.16 20.9302 18.51 22.7502 14.89 22.7502Z"
+              fill="currentColor"/>
+    </symbol>
+    <symbol id="folder-add" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 16V10M9 13H15M3 6V16.8C3 17.9201 3 18.4801 3.21799 18.908C3.40973 19.2843 3.71547 19.5902 4.0918 19.782C4.51962 20 5.08009 20 6.2002 20H17.8002C18.9203 20 19.48 20 19.9078 19.782C20.2841 19.5902 20.5905 19.2843 20.7822 18.908C21.0002 18.4801 21.0002 17.9201 21.0002 16.8L21.0002 9.20002C21.0002 8.07992 21.0002 7.51986 20.7822 7.09204C20.5905 6.71572 20.2841 6.40973 19.9078 6.21799C19.48 6 18.9201 6 17.8 6H3ZM3 6C3 4.89543 3.89543 4 5 4H8.67452C9.1637 4 9.40809 4 9.63826 4.05526C9.84234 4.10425 10.0379 4.18508 10.2168 4.29474C10.4186 4.41842 10.5916 4.59135 10.9375 4.93726L12.0002 6"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+</svg>
+<header class="bg-gray-900 shadow-[0_0_1rem_rgba(165,180,252,0.5)] p-5 hidden md:flex flex-col text-gray-100">
+    <a href="index.html" id="panel-home-link" class="flex justify-end gap-x-3 pb-4 cursor-pointer text-lg hover:text-indigo-500 transition-colors border-b border-b-white/20">
+        بازگشت به سایت
+        <svg class="w-7 h-7">
+            <use href="#arrow-left-circle"></use>
+        </svg>
+    </a>
+    <ul class="text-base xl:text-lg flex items-center justify-center gap-4 flex-wrap text-gray-100 pt-4">
+        <li data-id="home"
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
+            <svg class="w-6 xl:w-7 h-6 xl:h-7">
+                <use href="#users"></use>
+            </svg>
+            صفحه اصلی
+        </li>
+        <li data-id="users"
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item panel-menu__item--active">
+            <svg class="w-6 xl:w-7 h-6 xl:h-7">
+                <use href="#users"></use>
+            </svg>
+            کاربران
+        </li>
+        <li data-id="products"
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
+            <svg class="w-6 xl:w-7 h-6 xl:h-7">
+                <use href="#building-storefront"></use>
+            </svg>
+            محصولات
+        </li>
+        <li data-id="categories"
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
+            <svg class="w-6 xl:w-7 h-6 xl:h-7">
+                <use href="#archive-box"></use>
+            </svg>
+            دسته بندی
+        </li>
+        <li data-id="comments"
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
+            <svg class="w-6 xl:w-7 h-6 xl:h-7">
+                <use href="#comments"></use>
+            </svg>
+            نظرات
+        </li>
+        <li data-id="blogs"
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
+            <svg class="w-6 xl:w-7 h-6 xl:h-7">
+                <use href="#newspaper"></use>
+            </svg>
+            مقاله ها
+        </li>
+        <li data-id="reserves"
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
+            <svg class="w-6 xl:w-7 h-6 xl:h-7">
+                <use href="#open-reserve"></use>
+            </svg>
+            رزرو میز
+        </li>
+        <li data-id="basket"
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
+            <svg class="w-6 xl:w-7 h-6 xl:h-7">
+                <use href="#open-reserve"></use>
+            </svg>
+            سبد خرید
+        </li>
+    </ul>
+</header>
+<!--Mobile Panel Header-->
+<div class="md:hidden w-full p-4 shadow-[0_0_1rem_rgba(165,180,252,0.5)] bg-gray-900 text-gray-100">
+    <div class="flex items-center justify-between border-dashed border-b border-white/50 pb-4">
+        <span class="font-Moshfegh-Bold text-lg text-indigo-400">
+            کافه سناتور
+        </span>
+        <a class="text-sm font-IRANSans-Bold flex items-center justify-center" href="#">
+            <svg class="w-7 h-7">
+                <use href="#logout"></use>
+            </svg>
+        </a>
+    </div>
+    <div class="md:hidden grid grid-cols-4 grid-rows-2 gap-4 px-4 text-gray-100 h-16 w-full mt-4">
+        <span data-id="home" class="mobile-panel__item flex items-center justify-center">
+            <svg class="w-6 xl:w-7 h-6 xl:h-7">
+                <use href="#home"></use>
+            </svg>
+        </span>
+        <span data-id="users" class="mobile-panel__item flex items-center justify-center">
+        <svg class="w-6 xl:w-7 h-6 xl:h-7">
+            <use href="#users"></use>
+        </svg>
+    </span>
+        <span data-id="products" class="mobile-panel__item flex items-center justify-center">
+        <svg class="w-6 xl:w-7 h-6 xl:h-7">
+            <use href="#building-storefront"></use>
+        </svg>
+    </span>
+        <span data-id="categories" class="mobile-panel__item flex items-center justify-center">
+        <svg class="w-6 xl:w-7 h-6 xl:h-7">
+            <use href="#archive-box"></use>
+        </svg>
+    </span>
+        <span data-id="comments" class="mobile-panel__item flex items-center justify-center">
+        <svg class="w-6 xl:w-7 h-6 xl:h-7">
+            <use href="#comments"></use>
+        </svg>
+    </span>
+        <span data-id="blogs" class="mobile-panel__item flex items-center justify-center">
+        <svg class="w-6 xl:w-7 h-6 xl:h-7">
+            <use href="#newspaper"></use>
+        </svg>
+    </span>
+        <span data-id="reserves" class="mobile-panel__item flex items-center justify-center">
+        <svg class="w-6 xl:w-7 h-6 xl:h-7">
+            <use href="#open-reserve"></use>
+        </svg>
+    </span>
+        <span data-id="basket" class="mobile-panel__item flex items-center justify-center mobile-panel__item--active">
+        <svg class="w-6 xl:w-7 h-6 xl:h-7">
+            <use href="#shopping-bag"></use>
+        </svg>
+    </span>
+    </div>
+</div>
+<!--Mobile Panel Menu-->
+<!-- Admin Panel Menu -->
+<main>
+    <section id="home" class="users panel-section ">
+    </section>
+    <section id="users" class="users panel-section panel-section--active">
+        <div class="container">
+            <div class="relative mt-10 md:mt-20">
+                <h3 class="text-lg md:text-2xl font-IRANSans-Medium mb-10 md:mb-20">
+                    لیست کاربران
+                </h3>
+                <div>
+                    <table class="w-full users__table">
+                        <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Medium">
+                        <tr class="">
+                            <th>ویرایش</th>
+                            <th>حذف</th>
+                            <th class="hidden md:table-cell">ایدی</th>
+                            <th>نام کامل</th>
+                            <th>شماره تلفن</th>
+                            <th>رمز ورود</th>
+                            <th class="hidden md:table-cell">دسترسی ادمین</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="user-list">
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span class="users__edit flex items-center justify-center text-indigo-600 cursor-pointer" onclick='userModalHandler("${user[0]}")'>
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span class="text-red-700 flex items-center justify-center cursor-pointer" onclick='userDelete("${user[0]}")'>
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td class="hidden lg:table-cell font-sans font-medium">4500</td>
+                            <td>حسین رستمی</td>
+                            <td class="hidden lg:table-cell font-sans font-medium">09930094221</td>
+                            <td class="hidden lg:table-cell font-sans font-medium">8574</td>
+                            <td class="hidden md:table-cell">دارد</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span class="users__edit flex items-center justify-center text-indigo-600 cursor-pointer" onclick='userModalHandler("${user[0]}")'>
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span class="text-red-700 flex items-center justify-center cursor-pointer" onclick='userDelete("${user[0]}")'>
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td class="hidden lg:table-cell font-sans font-medium">4500</td>
+                            <td>حسین رستمی</td>
+                            <td class="hidden lg:table-cell font-sans font-medium">09930094221</td>
+                            <td class="hidden lg:table-cell font-sans font-medium">8574</td>
+                            <td class="hidden md:table-cell">دارد</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span class="users__edit flex items-center justify-center text-indigo-600 cursor-pointer" onclick='userModalHandler("${user[0]}")'>
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span class="text-red-700 flex items-center justify-center cursor-pointer" onclick='userDelete("${user[0]}")'>
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td class="hidden lg:table-cell font-sans font-medium">4500</td>
+                            <td>حسین رستمی</td>
+                            <td class="hidden lg:table-cell font-sans font-medium">09930094221</td>
+                            <td class="hidden lg:table-cell font-sans font-medium">8574</td>
+                            <td class="hidden md:table-cell">دارد</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span class="users__edit flex items-center justify-center text-indigo-600 cursor-pointer" onclick='userModalHandler("${user[0]}")'>
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span class="text-red-700 flex items-center justify-center cursor-pointer" onclick='userDelete("${user[0]}")'>
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td class="hidden lg:table-cell font-sans font-medium">4500</td>
+                            <td>حسین رستمی</td>
+                            <td class="hidden lg:table-cell font-sans font-medium">09930094221</td>
+                            <td class="hidden lg:table-cell font-sans font-medium">8574</td>
+                            <td class="hidden md:table-cell">دارد</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="products" class="products panel-section">
+        <div class="container">
+            <div class="mt-10 md:mt-20">
+                <div class="mb-10 md:mb-20 relative">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg md:text-2xl font-IRANSans-Medium">
+                            لیست محصولات
+                        </h3>
+                        <button id="add-product-btn"
+                                class="hidden md:flex text-base font-IRANSans-Medium rounded-md border-2 border-indigo-500 w-40 h-12 items-center justify-center tracking-tighter md:hover:bg-indigo-500 md:hover:text-white transition-colors"
+                                type="button">
+                            افزودن محصول جدید
+                        </button>
+                        <span id="add-product-mobile-btn"
+                              class="flex md:hidden items-center justify-center text-indigo-500">
+                            <svg class="w-7 h-7">
+                                <use href="#folder-add"></use>
+                            </svg>
+                        </span>
+                        <!--  Modal Add Product   -->
+                        <div class="z-50 add__product fixed left-0 right-0 top-0 bottom-0 md:rounded-xl w-full max-w-[1280px] m-auto bg-gray-900 md:h-[434px] overflow-hidden transition-all duration-300 add__product--hidden">
+                            <div class="p-2.5 md:p-5">
+                            <span id="add-products-modal-btn"
+                                  class="inline-flex justify-center items-center mb-5 md:mb-10 text-red-500 cursor-pointer">
+                            <svg class="w-6 md:w-8 h-6 md:h-8">
+                                <use href="#x-mark"></use>
+                            </svg>
+                        </span>
+                                <form class="block px-4 md:px-8" action="#" id="add-product-form">
+                                    <div class="flex flex-col md:flex-row gap-y-6 items-center gap-x-6 md:gap-x-10">
+                                        <div class="form-group flex flex-col w-full">
+                                            <label class="font-IRANSans-Medium text-sm md:text-base"
+                                                   for="add-product-price">قیمت :</label>
+                                            <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                                                   type="text" id="add-product-price">
+                                        </div>
+                                        <div class="form-group flex flex-col w-full">
+                                            <label class="font-IRANSans-Medium text-sm md:text-base"
+                                                   for="add-product-offer">تخفیف :</label>
+                                            <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                                                   type="text" id="add-product-offer">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col md:flex-row gap-6 md:gap-x-10 mt-6 md:mt-10">
+                                        <div class="form-group flex flex-col gap-y-2 w-full">
+                                            <label class="font-IRANSans-Medium text-sm md:text-base"
+                                                   for="add-product-description">
+                                                توضیحات :
+                                            </label>
+                                            <textarea
+                                                    class="resize-none p-2 md:p-4 bg-transparent rounded-md outline-none border border-white/20 text-sm md:text-base"
+                                                    rows="3" id="add-product-description"></textarea>
+                                        </div>
+                                        <div class="form-group inline-flex flex-col w-full">
+                                    <span class="font-IRANSans-Medium text-sm md:text-base">
+                                         انتخاب تصویر :
+                                    </span>
+                                            <div class="flex items-center h-full">
+                                                <label class="font-IRANSans-Medium inline-flex items-center gap-x-2 p-2 text-sm md:text-base" for="add-product-image-input">
+                                                    <svg class="w-8 h-8">
+                                                        <use href="#upload"></use>
+                                                    </svg>
+                                                    آپلود فایل
+                                                </label>
+                                                <img id="add-product-image" class="w-14 md:w-20 h-14 md:h-20 mx-auto">
+                                            </div>
+                                            <input class="hidden h-12 rounded-md outline-none px-2" type="file" id="add-product-image-input">
+                                        </div>
+                                    </div>
+                                    <button id="add-product-modal"
+                                            class="w-48 md:w-64 h-10 md:h-12 rounded-md flex items-center justify-center border-2 border-indigo-500 tracking-tighter text-xl hover:text-white hover:bg-indigo-500 text-white transition-colors mx-auto mt-5 md:mt-8 outline-none"
+                                            type="submit">
+                                        ثبت اطلاعات
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  Add Products Modal  -->
+                <div>
+                    <table class="w-full products__table">
+                        <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Medium">
+                        <tr class="">
+                            <th>ویرایش</th>
+                            <th>حذف</th>
+                            <th class="hidden lg:table-cell">#</th>
+                            <th class="">تصویر</th>
+                            <th class="w-1/5 lg:w-[30%] hidden lg:table-cell">نام</th>
+                            <th>قیمت</th>
+                            <th>تخفیف</th>
+                            <th>قیمت نهایی</th>
+                            <th class="hidden lg:table-cell">بازدید</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="product-list">
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-600 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>1356</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/Products/product-1.png" alt="">
+                            </td>
+                            <td class="hidden lg:table-cell">
+                                <p class="line-clamp-2">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                                </p>
+                            </td>
+                            <td>170,000</td>
+                            <td>25 %</td>
+                            <td>150,000</td>
+                            <td class="hidden lg:table-cell">355</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-600 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>1356</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/Products/product-1.png" alt="">
+                            </td>
+                            <td class="hidden lg:table-cell">
+                                <p class="line-clamp-2">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                                </p>
+                            </td>
+                            <td>170,000</td>
+                            <td>25 %</td>
+                            <td>150,000</td>
+                            <td class="hidden lg:table-cell">355</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-600 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>1356</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/Products/product-1.png" alt="">
+                            </td>
+                            <td class="hidden lg:table-cell">
+                                <p class="line-clamp-2">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                                </p>
+                            </td>
+                            <td>170,000</td>
+                            <td>25 %</td>
+                            <td>150,000</td>
+                            <td class="hidden lg:table-cell">355</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-600 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>1356</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/Products/product-1.png" alt="">
+                            </td>
+                            <td class="hidden lg:table-cell">
+                                <p class="line-clamp-2">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                                </p>
+                            </td>
+                            <td>170,000</td>
+                            <td>25 %</td>
+                            <td>150,000</td>
+                            <td class="hidden lg:table-cell">355</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-600 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>1356</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/Products/product-1.png" alt="">
+                            </td>
+                            <td class="hidden lg:table-cell">
+                                <p class="line-clamp-2">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                                </p>
+                            </td>
+                            <td>170,000</td>
+                            <td>25 %</td>
+                            <td>150,000</td>
+                            <td class="hidden lg:table-cell">355</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="categories" class="categories panel-section">
+        <div class="container">
+            <div class="mt-10 md:mt-20">
+                <div class="mb-10 md:mb-20 relative">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg md:text-2xl font-IRANSans-Bold">
+                            لیست دسته بندی ها
+                        </h3>
+                        <button id="add-category-btn"
+                                class="hidden md:flex text-base font-IRANSans-Medium rounded-md border-2 border-indigo-500 w-40 h-12 items-center justify-center tracking-tighter md:hover:bg-indigo-500 md:hover:text-white transition-colors"
+                                type="button">
+                            افزودن دسته بندی جدید
+                        </button>
+                    </div>
+                    <div class="z-50 add__category fixed left-0 right-0 top-0 bottom-0 md:rounded-xl w-full max-w-[1280px] m-auto bg-gray-900 md:h-[296px] overflow-hidden transition-all duration-300 add__category--hidden">
+                        <div class="p-5">
+                            <span id="add-category-modal-btn"
+                                  class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
+                            <svg class="w-8 h-8">
+                                <use href="#x-mark"></use>
+                            </svg>
+                        </span>
+                            <form class="block px-4 md:px-8" action="#" id="add-category-form">
+                                <div class="flex items-center gap-x-10">
+                                    <div class="form-group flex flex-col w-full">
+                                        <label class="font-IRANSans-Medium text-sm md:text-base"
+                                               for="add-category-title">عنوان :</label>
+                                        <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                                               type="text" id="add-category-title">
+                                    </div>
+                                    <div class="form-group inline-flex flex-col w-full">
+                                    <span class="font-IRANSans-Medium text-sm md:text-base">
+                                         انتخاب تصویر :
+                                    </span>
+                                        <div class="flex items-center h-full">
+                                            <label class="font-IRANSans-Medium text-sm md:text-base inline-flex items-center gap-x-2 p-2"
+                                                   for="add-category-image-input">
+                                                <svg class="w-8 h-8">
+                                                    <use href="#upload"></use>
+                                                </svg>
+                                                آپلود فایل
+                                            </label>
+                                            <img id="add-category-image" class="w-14 md:w-20 h-14 md:h-20 mx-auto"
+                                                 alt="">
+                                        </div>
+                                        <input class="hidden h-12 rounded-md outline-none px-2" type="file"
+                                               id="add-category-image-input">
+                                    </div>
+                                </div>
+                                <button id="add-category-modal"
+                                        class="w-48 md:w-64 h-10 md:h-12 rounded-md flex items-center justify-center border-2 border-indigo-500 tracking-tighter text-xl hover:text-white hover:bg-indigo-500 text-white transition-colors mx-auto mt-5 md:mt-8 outline-none"
+                                        type="submit">
+                                    ثبت اطلاعات
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table class="w-full categories__table">
+                        <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Bold">
+                        <tr>
+                            <th>ویرایش</th>
+                            <th>حذف</th>
+                            <th class="hidden lg:table-cell">ایدی</th>
+                            <th>عنوان</th>
+                            <th>تصویر</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="categories-list">
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>2458</td>
+                            <td>170,000</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover rounded-md w-11 lg:w-16 h-11 lg:h-16"
+                                     src="images/category/fcake-png.png" alt="">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="comments" class="comments panel-section">
+        <div class="container">
+            <div class="mt-10 md:mt-20">
+                <h3 class="text-lg md:text-2xl font-IRANSans-Bold mb-10 md:mb-20">
+                    لیست نظرات
+                </h3>
+                <div>
+                    <table class="w-full comments__table">
+                        <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Medium">
+                        <tr>
+                            <th>حذف</th>
+                            <th>ویرایش</th>
+                            <th class="hidden lg:table-cell">ایدی</th>
+                            <th>نام کامل</th>
+                            <th class="hidden lg:table-cell">ایمیل</th>
+                            <th>متن</th>
+                            <th>وضعیت</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="comments-list">
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>1400</td>
+                            <td>حسین رستمی</td>
+                            <td>RostamiDev@gmail.com</td>
+                            <td>سلام خدمت همه</td>
+                            <td>تایید شده</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="blogs" class="blogs panel-section">
+        <div class="container">
+            <div class="mt-10 md:mt-20">
+                <div class="mb-10 md:mb-20 relative">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg md:text-2xl font-IRANSans-Bold">
+                            لیست مطالب
+                        </h3>
+                        <button id="add-modal-blogs-show"
+                                class="hidden md:flex text-base font-IRANSans-Medium rounded-md border-2 border-indigo-500 w-40 h-12 items-center justify-center tracking-tighter md:hover:bg-indigo-500 md:hover:text-white transition-colors"
+                                type="button">
+                            افزودن مطلب جدید
+                        </button>
+                    </div>
+                    <div class="z-50 add__blogs fixed left-0 right-0 top-0 bottom-0 md:rounded-xl w-full max-w-[1280px] m-auto bg-gray-900 md:h-[466px] overflow-hidden transition-all duration-300 add__blogs--hidden">
+                        <div class="p-5">
+                            <span id="add-blogs-modal-btn"
+                                  class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
+                            <svg class="w-8 h-8">
+                                <use href="#x-mark"></use>
+                            </svg>
+                        </span>
+                            <form id="add-blogs-form" class="block px-8" action="#">
+                                <div class="flex gap-x-10 mt-10">
+                                    <div class="form-group flex flex-col w-full">
+                                        <label class="font-IRANSans-Medium text-sm md:text-base" for="add-blogs-title">عنوان :</label>
+                                        <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                                               type="text" id="add-blogs-title" placeholder="کیک و شکلات">
+                                    </div>
+                                    <div class="form-group flex flex-col w-full">
+                                        <label class="font-IRANSans-Medium text-sm md:text-base" for="add-blogs-date">تاریخ :</label>
+                                        <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                                               data-jdp type="text" id="add-blogs-date" placeholder="1403/02/08">
+                                    </div>
+                                </div>
+                                <div class="flex gap-x-10 mt-10">
+                                    <div class="form-group flex flex-col w-full">
+                                        <label class="font-IRANSans-Medium text-sm md:text-base" for="add-blogs-description">متن :</label>
+                                        <textarea
+                                                class="resize-none p-4 bg-transparent rounded-md outline-none border border-white/20"
+                                                placeholder="لطفا متن خود را وارد کنید ..." rows="3"
+                                                id="add-blogs-description"></textarea>
+                                    </div>
+                                    <div class="form-group inline-flex flex-col w-full">
+                                        <span class="font-IRANSans-Medium">
+                                            انتخاب تصویر :
+                                        </span>
+                                        <div class="flex items-center h-full">
+                                            <label class="font-IRANSans-Medium inline-flex items-center gap-x-2 p-2"
+                                                   for="add-blogs-image-input">
+                                                <svg class="w-8 h-8">
+                                                    <use href="#upload"></use>
+                                                </svg>
+                                                آپلود فایل
+                                            </label>
+                                            <img id="add-blogs-image" class="w-24 h-24 mx-auto" alt="">
+                                        </div>
+                                        <input class="hidden h-12 rounded-md outline-none px-2" type="file"
+                                               id="add-blogs-image-input">
+                                    </div>
+                                </div>
+                                <button id="add-blogs-btn"
+                                        class="w-48 md:w-64 h-10 md:h-12 rounded-md flex items-center justify-center border-2 border-indigo-500 tracking-tighter text-xl hover:text-white hover:bg-indigo-500 text-white transition-colors mx-auto mt-5 md:mt-8 outline-none"
+                                        type="submit">
+                                    ذخیره تغییرات
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table class="w-full blogs__table">
+                        <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Bold">
+                        <tr>
+                            <th>ویرایش</th>
+                            <th>حذف</th>
+                            <th class="hidden lg:table-cell">ایدی</th>
+                            <th>عنوان</th>
+                            <th class="w-1/4 lg:w-[35%] hidden lg:table-cell">متن</th>
+                            <th>تاریخ</th>
+                            <th>تصویر</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="blogs-list">
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>4323</td>
+                            <td>تمیزکاری</td>
+                            <td class="hidden lg:table-cell">
+                                <p class="line-clamp-2">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                                </p>
+                            </td>
+                            <td>1403/03/10</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/category/fcake-png.png" alt="">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="reserves" class="reserve panel-section">
+        <div class="container">
+            <div class="mt-10 md:mt-20">
+                <div class="mb-10 md:mb-20 relative">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg md:text-2xl font-IRANSans-Bold">
+                            لیست مطالب
+                        </h3>
+                        <button id="reserve-content-btn"
+                                class="hidden md:flex text-base font-IRANSans-Medium rounded-md border-2 border-indigo-500 w-40 h-12 items-center justify-center tracking-tighter md:hover:bg-indigo-500 md:hover:text-white transition-colors"
+                                type="button">
+                            رزرو میز
+                        </button>
+                    </div>
+                    <div class="z-50 add__reserve fixed left-0 right-0 top-0 bottom-0 md:rounded-xl w-full max-w-[1280px] m-auto bg-gray-900 md:h-[304px] overflow-hidden transition-all duration-300 add__reserve--hidden">
+                        <div class="p-5">
+                            <span id="reserve-content-close-btn"
+                                  class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
+                            <svg class="w-8 h-8">
+                                <use href="#x-mark"></use>
+                            </svg>
+                        </span>
+                            <form id="reserve-content-form" class="block px-8" action="#">
+                                <div class="flex gap-x-5 mt-10">
+                                    <div class="form-group flex justify-between flex-col w-full">
+                                        <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-content-firstname">نام
+                                            :</label>
+                                        <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                                               type="text" id="reserve-content-firstname" placeholder="">
+                                    </div>
+                                    <div class="form-group flex justify-between flex-col w-full">
+                                        <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-content-lastname">نام خانوادگی
+                                            :</label>
+                                        <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                                               type="text" id="reserve-content-lastname" placeholder="">
+                                    </div>
+                                    <div class="form-group flex justify-between flex-col w-full">
+                                        <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-content-phone">شماره تماس
+                                            :</label>
+                                        <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                                               type="text" id="reserve-content-phone" placeholder="">
+                                    </div>
+                                    <div class="form-group flex justify-between flex-col w-full">
+                                        <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-content-date">تاریخ :</label>
+                                        <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                                               data-jdp type="text" id="reserve-content-date" placeholder="1403/02/08">
+                                    </div>
+                                    <div class="form-group flex flex-col justify-between w-full">
+                                        <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-content-time">ساعت :</label>
+                                        <div class="border-b border-b-white/20 p-2 relative h-12">
+                                            <div id="reserve-content-time-btn"
+                                                 class="flex items-center justify-between gap-x-2 h-full">
+                                                <span>
+                                                    <svg id="reserve-content-time-icon"
+                                                         class="w-6 h-6 transition-all duration-300 rotate-180">
+                                                        <use href="#arrow-down"></use>
+                                                    </svg>
+                                                </span>
+                                                <span id="reserve-content-time"
+                                                      class="inline-block dir-ltr">11 : 30</span>
+                                            </div>
+                                            <ul class="time-input overflow-hidden transition-all duration-300 absolute left-0 right-0 top-full bg-gray-100 text-zinc-800 rounded-md flex flex-col gap-y-0.5 h-[208px] child-hover:bg-gray-400 child:cursor-pointer child:rounded-md child:leading-10 child:px-3 dir-ltr reserve-time--hidden">
+                                                <li class="reserve__times">10 : 00</li>
+                                                <li class="reserve__times">11 : 30</li>
+                                                <li class="reserve__times">12 : 00</li>
+                                                <li class="reserve__times">13 : 30</li>
+                                                <li class="reserve__times">20 : 00</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="reserve-content-submit-btn"
+                                        class="w-48 md:w-64 h-10 md:h-12 rounded-md flex items-center justify-center border-2 border-indigo-500 tracking-tighter text-xl hover:text-white hover:bg-indigo-500 text-white transition-colors mx-auto mt-5 md:mt-8 outline-none"
+                                        type="submit">
+                                    ذخیره تغییرات
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table class="w-full reserves__table">
+                        <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Bold">
+                        <tr>
+                            <th>ویرایش</th>
+                            <th>حذف</th>
+                            <th class="hidden lg:table-cell">ایدی</th>
+                            <th>نام کامل</th>
+                            <th>شماره تماس</th>
+                            <th>تاریخ</th>
+                            <th class="hidden lg:table-cell">ساعت</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="reserve-list">
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>2450</td>
+                            <td>حسین رستمی</td>
+                            <td>09930094221</td>
+                            <td>1403/03/10</td>
+                            <td class="hidden lg:table-cell">10 : 30</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="basket" class="baskets panel-section">
+        <div class="container">
+            <div class="mt-10 md:mt-20">
+                <h3 class="text-lg md:text-2xl font-IRANSans-Bold mb-10 md:mb-20 relative">
+                    لیست خرید ها
+                </h3>
+                <div>
+                    <table class="w-full basket__table">
+                        <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Bold">
+                        <tr>
+                            <th>ویرایش</th>
+                            <th>حذف</th>
+                            <th class="hidden lg:table-cell">ایدی کالا</th>
+                            <th>تعداد</th>
+                            <th class="hidden lg:table-cell">ایدی کاربر</th>
+                            <th>تصویر</th>
+                            <th>وضعیت</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="baskets-list">
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>457</td>
+                            <td>5</td>
+                            <td>128</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/category/fcake-png.png" alt="">
+                            </td>
+                            <td>پرداخت شده</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>457</td>
+                            <td>5</td>
+                            <td>128</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/category/fcake-png.png" alt="">
+                            </td>
+                            <td>پرداخت شده</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>457</td>
+                            <td>5</td>
+                            <td>128</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/category/fcake-png.png" alt="">
+                            </td>
+                            <td>پرداخت شده</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>457</td>
+                            <td>5</td>
+                            <td>128</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/category/fcake-png.png" alt="">
+                            </td>
+                            <td>پرداخت شده</td>
+                        </tr>
+                        <tr class="h-16 md:h-20">
+                            <td>
+                                    <span onclick='productModalHandler("${user[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeProductHandler("${user[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>457</td>
+                            <td>5</td>
+                            <td>128</td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="images/category/fcake-png.png" alt="">
+                            </td>
+                            <td>پرداخت شده</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="users-modal"
+     class="hidden md:block z-50 fixed md:max-w-[650px] transition-all duration-300 m-auto left-0 right-0 top-0 bottom-0 md:h-[492px] bg-gray-900 md:rounded-xl overflow-hidden md:edit__user--hidden">
+    <div class="w-full p-2.5 md:p-5">
+        <span id="user-modal-btn"
+              class="inline-flex justify-center items-center mb-5 md:mb-10 text-red-500 cursor-pointer">
+            <svg class="w-6 md:w-8 h-6 md:h-8">
+                <use href="#x-mark"></use>
+            </svg>
+        </span>
+        <form class="block px-4 md:px-8" action="#" id="user-edit-form">
+            <div class="grid grid-cols-2 grid-rows-3 gap-5">
+                <div class="form-group flex flex-col gap-y-1 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="user-name">نام :</label>
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 text-sm md:text-base outline-none px-2"
+                           type="text"
+                           id="user-name" placeholder="حسین">
+                </div>
+                <div class="form-group flex flex-col gap-y-1 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="user-lastname">نام خانوادگی :</label>
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 text-sm md:text-base outline-none px-2"
+                           type="text"
+                           id="user-lastname" placeholder="رستمی">
+                </div>
+                <div class="form-group flex flex-col gap-y-1 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="user-phoneNumber">شماره تلفن :</label>
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 text-sm md:text-base outline-none px-2"
+                           type="text"
+                           id="user-phoneNumber" placeholder="09930094221">
+                </div>
+                <div class="form-group flex flex-col gap-y-1 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="user-password">رمز ورود :</label>
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 text-sm md:text-base outline-none px-2"
+                           type="text"
+                           id="user-password" placeholder="Rostami8574">
+                </div>
+                <div class="form-group flex flex-col gap-y-1 w-full justify-between">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="user-role"> دسترسی ادمین :</label>
+                    <input class="w-6 md:h-8 h-6 md:w-8 outline-none px-2"
+                           type="checkbox" id="user-role" placeholder="Rostami8574">
+                </div>
+            </div>
+            <button class="w-52 md:w-64 h-10 md:h-14 rounded-md bg-indigo-600 flex items-center justify-center tracking-tighter md:text-xl hover:text-black text-white transition-colors mx-auto mt-5 md:mt-8 outline-none"
+                    type="submit" id="user-edit-btn">
+                ذخیره تغییرات
+            </button>
+        </form>
+    </div>
+</div>
+<div id="products-modal"
+     class="hidden md:block transition-all duration-300 fixed max-w-[1280px] left-0 right-0 top-0 bottom-0 m-auto md:h-[434px] bg-gray-900 z-50 md:rounded-xl overflow-hidden md:edit__product--hidden">
+    <div class="w-full p-2.5 md:p-5">
+        <span id="products-modal-btn" class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
+            <svg class="w-8 h-8">
+                <use href="#x-mark"></use>
+            </svg>
+        </span>
+        <form class="block px-8" action="#" id="edit-product-form">
+            <div class="flex items-center gap-x-6 md:gap-x-10">
+                <div class="form-group flex flex-col w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="product-price">قیمت :</label>
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="product-price" placeholder="345,000">
+                </div>
+                <div class="form-group flex flex-col w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="product-offer">تخفیف :</label>
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="product-offer" placeholder="24%">
+                </div>
+            </div>
+            <div class="flex gap-x-6 md:gap-x-10 mt-10">
+                <div class="form-group flex flex-col w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="product-description">توضیحات :</label>
+                    <textarea class="resize-none p-4 bg-transparent rounded-md outline-none border border-gray-400"
+                              placeholder="لطفا متن خود را وارد کنید ..." rows="3" id="product-description"></textarea>
+                </div>
+                <div class="form-group inline-flex flex-col gap-y-3 w-full">
+                    <span class="text-lg font-IRANSans-Medium">
+                         انتخاب تصویر :
+                    </span>
+                    <div class="flex items-center h-full">
+                        <label class="font-IRANSans-Medium inline-flex items-center gap-x-2 p-2"
+                               for="product-image-input">
+                            <svg class="w-8 h-8">
+                                <use href="#upload"></use>
+                            </svg>
+                            آپلود فایل
+                        </label>
+                        <img id="product-image" src="" class="w-14 md:w-20 h-14 md:h-20 mx-auto" alt="Product Image">
+                    </div>
+                    <input class="hidden h-12 rounded-md outline-none px-2" type="file" id="product-image-input">
+                </div>
+            </div>
+            <button id="edit-products-btn"
+                    class="w-full md:w-64 h-14 rounded-md bg-indigo-600 flex items-center justify-center text-xl hover:text-black text-white transition-colors mx-auto mt-8 outline-none"
+                    type="submit">
+                ذخیره تغییرات
+            </button>
+        </form>
+    </div>
+</div>
+<div id="comments-modal"
+     class="hidden md:block modal fixed w-[1280px] left-0 -top-[546px] right-0 mx-auto transition-all duration-300 bg-gray-900 z-50 items-center justify-center p-5 rounded-2xl">
+    <div class="w-full">
+        <span id="comment-modal-btn" class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
+            <svg class="w-8 h-8">
+                <use href="#x-mark"></use>
+            </svg>
+        </span>
+        <form class="block px-8" action="#">
+            <div class="flex items-center gap-x-10">
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="comments-name">نام :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="comments-name" placeholder="حسین">
+                </div>
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="comments-lastname">نام خانوادگی :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="comments-lastname" placeholder="رستمی">
+                </div>
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="comments-mail">ایمیل :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="comments-mail" placeholder="rostamiDev2002@gmail.com">
+                </div>
+            </div>
+            <div class="form-group flex flex-col gap-y-3 w-full mt-10">
+                <label class="font-IRANSans-Medium text-sm md:text-base" for="comments-text">توضیحات :</label>
+                <textarea class="resize-none p-4 rounded-md outline-none border border-gray-400 bg-transparent"
+                          placeholder="لطفا متن خود را وارد کنید ..." rows="6" id="comments-text"></textarea>
+            </div>
+            <button class="w-full md:w-64 h-14 rounded-md bg-indigo-600 flex items-center justify-center text-xl hover:text-black text-white transition-colors mx-auto mt-10 outline-none"
+                    type="submit">
+                ذخیره تغییرات
+            </button>
+        </form>
+    </div>
+</div>
+<div id="categories-modal"
+     class="hidden md:block fixed w-[1280px] transition-all duration-300 left-0 right-0 mx-auto -top-[400px] bg-gray-900 z-50 items-center justify-center p-5 rounded-2xl">
+    <div class="w-full">
+        <span id="categories-modal-btn"
+              class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
+            <svg class="w-8 h-8">
+                <use href="#x-mark"></use>
+            </svg>
+        </span>
+        <form class="block px-8" action="#" id="edit-category-form">
+            <div class="flex items-center gap-x-10">
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="edit-category-title">عنوان :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="edit-category-title">
+                </div>
+                <div class="form-group inline-flex flex-col gap-y-3 w-full">
+                    <span class="text-lg font-IRANSans-Medium">
+                         انتخاب تصویر :
+                    </span>
+                    <div class="flex items-center h-full">
+                        <label class="font-IRANSans-Medium inline-flex items-center gap-x-2 p-2"
+                               for="edit-category-image-input">
+                            <svg class="w-8 h-8">
+                                <use href="#upload"></use>
+                            </svg>
+                            آپلود فایل
+                        </label>
+                        <img id="edit-category-image" src="" class="w-24 h-24 mx-auto" alt="">
+                    </div>
+                    <input class="hidden h-12 rounded-md outline-none px-2" type="file" id="edit-category-image-input">
+                </div>
+            </div>
+            <button id="category-edit-btn"
+                    class="w-full md:w-64 h-14 rounded-md bg-indigo-600 flex items-center justify-center text-xl hover:text-black text-white transition-colors mx-auto mt-8 outline-none"
+                    type="submit">
+                ثبت اطلاعات
+            </button>
+        </form>
+    </div>
+</div>
+<div id="blogs-modal"
+     class="hidden md:block fixed w-[1280px] transition-all duration-300 left-0 right-0 mx-auto -top-[586px] bg-gray-900 z-50 items-center justify-center p-5 rounded-2xl">
+    <div class="w-full">
+        <span id="edit-blogs-modal-btn"
+              class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
+            <svg class="w-8 h-8">
+                <use href="#x-mark"></use>
+            </svg>
+        </span>
+        <form id="edit-blogs-form" class="block px-8" action="#">
+            <div class="flex gap-x-10 mt-10">
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="edit-blogs-title">عنوان :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="edit-blogs-title" placeholder="کیک و شکلات">
+                </div>
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="edit-blogs-date">تاریخ :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" data-jdp type="text"
+                           id="edit-blogs-date" placeholder="1403/02/08">
+                </div>
+            </div>
+            <div class="flex gap-x-10 mt-10">
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="edit-blogs-description">متن :</label>
+                    <textarea class="resize-none p-4 bg-transparent rounded-md outline-none border border-gray-400"
+                              placeholder="لطفا متن خود را وارد کنید ..." rows="6"
+                              id="edit-blogs-description"></textarea>
+                </div>
+                <div class="form-group inline-flex flex-col gap-y-3 w-full">
+                    <span class="font-IRANSans-Medium">
+                         انتخاب تصویر :
+                    </span>
+                    <div class="flex items-center border border-gray-400 h-full">
+                        <label class="font-IRANSans-Medium inline-flex items-center gap-x-2 p-2"
+                               for="edit-blogs-image-input">
+                            <svg class="w-8 h-8">
+                                <use href="#upload"></use>
+                            </svg>
+                            آپلود فایل
+                        </label>
+                        <img id="edit-blogs-image" src="" class="w-24 h-24 mx-auto" alt="">
+                    </div>
+                    <input class="hidden h-12 rounded-md outline-none px-2" type="file" id="edit-blogs-image-input">
+                </div>
+            </div>
+            <button id="edit-blog-btn"
+                    class="w-full md:w-64 h-14 rounded-md bg-indigo-600 flex items-center justify-center text-xl hover:text-black text-white transition-colors mx-auto mt-10 outline-none"
+                    type="submit">
+                ذخیره تغییرات
+            </button>
+        </form>
+    </div>
+</div>
+<div id="reserve-modal"
+     class="hidden md:block fixed w-[1280px] transition-all duration-300 left-0 right-0 mx-auto -top-[332px] bg-gray-900 z-50 items-center justify-center p-5 rounded-2xl">
+    <div class="w-full">
+        <span id="reserve-modal-btn" class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
+            <svg class="w-8 h-8">
+                <use href="#x-mark"></use>
+            </svg>
+        </span>
+        <form id="reserve-modal-form" class="block px-8" action="#">
+            <div class="flex gap-x-5 mt-10">
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-firstname">نام :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="reserve-modal-firstname" placeholder="">
+                </div>
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-lastname">نام خانوادگی :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="reserve-modal-lastname" placeholder="">
+                </div>
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-phone">شماره تماس :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                           id="reserve-modal-phone" placeholder="">
+                </div>
+                <div class="form-group flex flex-col gap-y-3 w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-date">تاریخ :</label>
+                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" data-jdp type="text"
+                           id="reserve-modal-date" placeholder="1403/02/08">
+                </div>
+                <div class="form-group flex flex-col justify-between w-full">
+                    <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-time">ساعت :</label>
+                    <div class="border-b border-b-gray-400 p-2 relative h-12">
+                        <div id="reserve-modal-time-btn" class="flex items-center justify-between gap-x-2 h-full">
+                            <span>
+                                <svg id="reserve-modal-time-icon"
+                                     class="w-6 h-6 transition-all duration-300 rotate-180">
+                                    <use href="#arrow-down"></use>
+                                </svg>
+                            </span>
+                            <span id="reserve-modal-time" class="inline-block dir-ltr">11 : 30</span>
+                        </div>
+                        <ul class="reserve-modal-time overflow-hidden transition-all duration-300 absolute left-0 right-0 top-full bg-gray-100 text-zinc-800 rounded-md flex flex-col gap-y-0.5 h-[208px] child-hover:bg-gray-400 child:cursor-pointer child:rounded-md child:leading-10 child:px-3 dir-ltr reserve-modal-time--hidden">
+                            <li class="reserve-modal__times">10 : 00</li>
+                            <li class="reserve-modal__times">11 : 30</li>
+                            <li class="reserve-modal__times">12 : 00</li>
+                            <li class="reserve-modal__times">13 : 30</li>
+                            <li class="reserve-modal__times">20 : 00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button id="reserve-modal-submit-btn"
+                    class="w-full md:w-64 h-14 rounded-md bg-indigo-600 flex items-center justify-center text-xl hover:text-black text-white transition-colors mx-auto mt-10 outline-none"
+                    type="submit">
+                ذخیره تغییرات
+            </button>
+        </form>
+    </div>
+</div>
+<div class="cover hidden md:block fixed bg-black/60 inset-0 cover--hidden"></div>
+
+
+<script src="scripts/jalalidatepicker.min.js"></script>
+<script src="scripts/App/user.js"></script>
+<script src="scripts/Admin-Panel/admin-panel.js"></script>
+<script src="scripts/Admin-Panel/user-panel.js"></script>
+<script src="scripts/Admin-Panel/category-panel.js"></script>
+<script src="scripts/Admin-Panel/blog-panel.js"></script>
+<script src="scripts/Admin-Panel/comment-panel.js"></script>
+<script src="scripts/Admin-Panel/product-panel.js"></script>
+<script src="scripts/Admin-Panel/basket-panel.js"></script>
+<script src="scripts/Admin-Panel/reserve-panel.js"></script>
+</body>
+</html>

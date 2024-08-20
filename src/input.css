@@ -1,0 +1,284 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "Shabnam Regular";
+        src: url("../fonts/Shabnam.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Shabnam Light";
+        src: url("../fonts/Shabnam-Light.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Shabnam Bold";
+        src: url("../fonts/Shabnam-Bold.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Shabnam Medium";
+        src: url("../fonts/Shabnam-Medium.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Brush Script Mt";
+        src: url("../fonts/BRUSHSCI.TTF") format("truetype");
+    }
+    @font-face {
+        font-family: "IRANSans";
+        src: url("../fonts/IRANSans/IRANSans.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "IRANSans Bold";
+        src: url("../fonts/IRANSans/IRANSans_Bold.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "IRANSans Light";
+        src: url("../fonts/IRANSans/IRANSans_Light.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "IRANSans Medium";
+        src: url("../fonts/IRANSans/IRANSans_Medium.ttf") format("truetype");
+    }
+}
+
+@layer components {
+    .menu__item{
+        position: relative;
+    }
+    .menu__item--active{
+        @apply child:text-indigo-300
+    }
+    .menu__item--active:before {
+        @apply w-full
+    }
+    .mobile-menu{
+        @apply max-h-screen transition-all duration-200 overflow-hidden
+    }
+    .mobile-menu--hidden{
+        @apply max-h-0
+    }
+    .mobile-menu__item{
+        @apply inline-flex gap-x-2
+    }
+    .mobile-menu__item--active{
+        @apply text-indigo-400
+    }
+    .sub-menu{
+        @apply flex flex-col gap-y-3 bg-zinc-900 rounded-lg transition-all mt-3 py-3 px-8 text-sm text-gray-300 max-h-[200px] overflow-hidden
+    }
+    .sub-menu--hidden{
+        @apply max-h-0 mt-0 py-0
+    }
+    .offer{
+        position: relative;
+    }
+    .offer::before{
+        position: absolute;
+        content: "";
+        background-color: #9ca3af;
+        height: 1px;
+        width: 100%;
+        inset: 0;
+        margin: auto;
+    }
+    .cart-body::-webkit-scrollbar{
+        width: 8px;
+    }
+    .cart-body::-webkit-scrollbar-thumb{
+        background-color: #9ca3af;
+        border-radius: 50px;
+    }
+    .cart-body::-webkit-scrollbar-track{
+        background-color: transparent;
+    }
+    .home{
+        height: calc(100vh - 84px);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url("../images/Header/Header-1.jpg");
+    }
+    @media screen and (min-width: 1024px) {
+        .body-index__bg{
+            background-image: url("../images/bg_4.jpg.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .category-banner{
+            @apply opacity-80 transition-opacity z-20
+        }
+        .category__title{
+            @apply absolute opacity-0 bottom-5 z-10
+        }
+        .category-banner:hover ~ .category__title{
+            @apply lg:opacity-100 lg:-bottom-10
+        }
+        .category-banner:hover{
+            @apply lg:opacity-100
+        }
+    }
+    @media screen and (min-width: 768px) {
+        .home{
+            height: 100vh
+        }
+    }
+    .heart--fill{
+        @apply fill-yellow-500 stroke-yellow-500
+    }
+    .special-products__item1{
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("../images/Products/Product 1.jpg") center no-repeat;
+        background-size: cover;
+    }
+    .special-products__item2{
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("../images/Products/Product 2.jpg") center no-repeat;
+        background-size: cover;
+    }
+    @media screen and (max-width: 640px) {
+        .services .container {
+            position: relative;
+        }
+
+        .services .container::before {
+            position: absolute;
+            content: "";
+            inset: 0;
+            height: 1px;
+            width: 100%;
+            background-color: #9ca3af;
+            margin: auto;
+        }
+
+        .services .container::after {
+            position: absolute;
+            content: "";
+            inset: 0;
+            width: 1px;
+            height: calc(100% + 22px);
+            background-color: #9ca3af;
+            margin: auto;
+        }
+    }
+
+    /* Basket Styles */
+
+    .basket__main{
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/bg-0.jpg") center no-repeat;
+        background-size: cover;
+    }
+    .panel-menu__item--active{
+        @apply bg-indigo-600 text-gray-300 font-IRANSans-Medium
+    }
+    .panel-menu__item--active:hover{
+        color: rgb(209, 213, 219) !important;
+    }
+    .mobile-panel__item--active{
+        @apply text-indigo-400;
+    }
+    .panel-section{
+        @apply hidden
+    }
+    .panel-section--active{
+        @apply block
+    }
+    .cover--hidden{
+        @apply invisible opacity-0
+    }
+    .edit__user--hidden{
+        height: 0 !important;
+    }
+    .add__product--hidden{
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    .add__category--hidden{
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    .add__blogs--hidden{
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    .add__reserve--hidden{
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    .edit__product--hidden{
+        height: 0 !important;
+    }
+    .reserve-content--hidden{
+        height: 0 !important;
+    }
+    .reserve-time--hidden{
+        height: 0 !important;
+    }
+    .reserve-modal-time--hidden{
+        height: 0 !important;
+    }
+    .modal-phone--hidden{
+        @apply opacity-0 invisible
+    }
+    .eye__icon{
+        display: none;
+    }
+    .eye-slash__icon{
+        display: inline;
+    }
+    .register-pass--show .eye__icon{
+        display: inline !important;
+    }
+    .register-pass--show .eye-slash__icon{
+        display: none !important;
+    }
+    .register-repeat-pass--show .eye__icon{
+        display: inline !important;
+    }
+    .register-repeat-pass--show .eye-slash__icon{
+        display: none !important;
+    }
+    .login-pass--show .eye__icon{
+        display: inline !important;
+    }
+    .login-pass--show .eye-slash__icon{
+        display: none !important;
+    }
+    .modal-reset-pass--hidden{
+        @apply opacity-0 invisible
+    }
+    .cover-login--hidden{
+        @apply opacity-0 invisible
+    }
+    .hand-down__icon{
+        display: none;
+    }
+    .hand-up__icon{
+        display: block;
+    }
+    .comments-status--checked .hand-down__icon{
+        display: block !important;
+        color: #b91c1c;
+    }
+    .comments-status--checked .hand-up__icon{
+        display: none !important;
+        color: rgb(21, 128, 61) ;
+    }
+    .users__table{
+
+    }
+    .users__table tbody tr:nth-child(odd),
+    .products__table tbody tr:nth-child(odd),
+    .categories__table tbody tr:nth-child(odd),
+    .comments__table tbody tr:nth-child(odd),
+    .reserves__table tbody tr:nth-child(odd),
+    .basket__table tbody tr:nth-child(odd),
+    .blogs__table tbody tr:nth-child(odd){
+        background-color: #111827;
+    }
+}
+
+@layer utilities {
+    .dir-ltr{
+        direction: ltr;
+    }
+    .dir-rtl{
+        direction: rtl;
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/input.css -o ./public/styles/app.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "persian-datepicker": "^0.5.11"
+  }
+}

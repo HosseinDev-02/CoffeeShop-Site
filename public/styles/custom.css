@@ -1,0 +1,28 @@
+.swiper-pagination-bullet {
+    background-color: #fff !important;
+    width: 15px !important;
+    height: 15px !important;
+    opacity: 0.4 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #4f46e5 !important;
+    opacity: 1 !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background: #111827;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #1f2937;
+}
