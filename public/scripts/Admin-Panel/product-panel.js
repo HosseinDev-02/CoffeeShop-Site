@@ -13,12 +13,13 @@ const addProductsModal = document.querySelector(".add__product")
 const addProductsPriceElem = document.getElementById("add-product-price")
 const addProductsOfferElem = document.getElementById("add-product-offer")
 const addProductsDescriptionElem = document.getElementById("add-product-description")
-const addProductsImage = document.getElementById("add-product-image")
+const addProductsImage = document.getElementById("product-img-wrapper")
 const addProductsImageElem = document.getElementById("add-product-image-input")
 const addProductsModalBtn = document.getElementById("add-product-modal")
 const addProductsForm = document.getElementById("add-product-form")
 const addProductsCloseBtn = document.getElementById("add-products-modal-btn")
 const editProductForm = document.getElementById("edit-product-form")
+// let img;
 // const addProductMobileBtn = document.getElementById("add-product-mobile-btn")
 let productEditId = null
 
@@ -36,7 +37,7 @@ function modalProductsClose() {
 function clearAddProductsInputs() {
     addProductsDescriptionElem.value = ""
     addProductsPriceElem.value = ""
-    addProductsImage.removeAttribute("src")
+    // addProductsImage.removeAttribute("src")
     addProductsOfferElem.value = ""
 }
 
@@ -62,7 +63,7 @@ async function addNewProduct() {
             price: addProductsPriceElem.value,
             offer: addProductsOfferElem.value,
             costPrice: addProductsPriceElem.value - (addProductsOfferElem.value / 100 * addProductsPriceElem.value),
-            img: addProductsImage.getAttribute("src"),
+            img: img.src,
             view: 0
         }
         let fetchNewProduct = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products.json', {
@@ -90,7 +91,7 @@ async function addProductsToDom() {
         allProducts.forEach(product => {
             let newProductRow = document.createElement("tr")
             newProductRow.className = 'h-24 text-lg child:font-Shabnam-Medium'
-            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-green-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${product[0]}</td><td class="max-w-[300px]"><p class="line-clamp-2 text-right">${product[1].detail}</p></td><td><img loading='lazy' class="mx-auto object-cover w-20 h-20" src="${product[1].img}" alt=""></td><td>${product[1].price}</td><td>${product[1].offer}</td><td>${product[1].costPrice}</td><td>${product[1].view}</td>`
+            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-green-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td><img loading='lazy' class="mx-auto object-cover w-20 h-20" src="${product[1].img}" alt=""></td><td class="max-w-[300px]"><p class="line-clamp-2 text-right">${product[1].detail}</p></td><td>${product[1].price}</td><td>${product[1].offer}</td><td>${product[1].costPrice}</td><td>${product[1].view}</td>`
             productFragment.append(newProductRow)
         })
         productsContainer.append(productFragment)
@@ -156,7 +157,7 @@ async function removeProductHandler(productId) {
 // Products Events
 
 window.addEventListener("load", async () => {
-    // await addProductsToDom()
+    await addProductsToDom()
 })
 addProductsBtn.addEventListener("click", function () {
     addProductsModal.classList.toggle("add__product--hidden")
@@ -172,8 +173,7 @@ editProductsModalBtn.addEventListener("click", function () {
     modalProductsClose()
 })
 editProductsImageElem.addEventListener("change", function (e) {
-    let mainProductImageName = e.target.files[0].name
-    editProductsImage.setAttribute("src", "images/Products/" + mainProductImageName + "")
+
 })
 editProductsIcons.forEach(function (icon) {
     icon.addEventListener("click", function () {
@@ -192,7 +192,10 @@ coverElem.addEventListener("click", function () {
     coverElem.classList.add("cover--hidden")
 })
 addProductsImageElem.addEventListener("change", function (e) {
-    addProductsImage.setAttribute("src", "images/Products/" + e.target.files[0].name + "")
+    img = new Image()
+    img.src = URL.createObjectURL(e.target.files[0])
+    img.setAttribute('class', 'w-full h-full object-cover')
+    addProductsImage.append(img)
 })
 addProductsModalBtn.addEventListener("click", async () => {
     await addNewProduct()

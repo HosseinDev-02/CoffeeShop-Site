@@ -490,20 +490,17 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="mobile-basket-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3.5 xl:hidden">
-                    <div class="rounded-md sm:rounded-xl bg-zinc-900 overflow-hidden">
-                        <a href="#"
-                           class="flex items-center justify-center w-full h-[120px] sm:h-[160px] md:h-36 rounded-md overflow-hidden">
-                            <img class="w-full h-full object-cover" src="images/Products/product-3.png" alt=""
-                                 loading="lazy">
-                        </a>
-                        <div class="p-2">
-                            <h4 class="text-sm font-IRANSans-Medium line-clamp-2 mb-2 sm:mb-4 h-10">
-                                چای سیاه یا چای قرمز یکی از محبوب‌‌ترین طعم‌های چای است.طعم‌های چای است.
-                            </h4>
-                            <div class="flex flex-col-reverse sm:flex-row justify-between items-center gap-y-2">
+                <div id="mobile-basket-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3.5 xl:hidden">
+                    <div class="rounded sm:rounded-md bg-zinc-900 overflow-hidden">
+                        <div class="flex justify-between w-full p-2">
+                            <a href="#"
+                               class="flex items-center justify-center w-24 h-24 rounded overflow-hidden">
+                                <img class="w-full h-full object-cover" src="images/Products/product-3.png" alt=""
+                                     loading="lazy">
+                            </a>
+                            <div class="flex flex-col-reverse justify-between items-center gap-y-2">
                                 <div class="flex items-center justify-between w-full">
-                                    <div class="flex items-center gap-x-2 bg-transparent text-white rounded-md w-28 sm:w-auto p-1">
+                                    <div class="flex items-center gap-x-2 bg-transparent text-white rounded-md p-1">
                                         <button type="button" class="rounded-full border border-red-500 p-0.5">
                                             <svg class="shrink-0 w-4 h-4 text-red-500">
                                                 <use href="#minus"></use>
@@ -516,42 +513,35 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <span class="sm:hidden">
-                                        <svg class="w-6 h-6 text-red-600">
-                                            <use href="#x-mark"></use>
-                                        </svg>
-                                    </span>
                                 </div>
-                                <div class="flex flex-row-reverse sm:flex-col justify-between items-start sm:items-end flex-wrap gap-x-4 w-full">
+                                <div class="flex flex-col items-center justify-between flex-wrap gap-x-4 w-full">
                                     <div class="product__price flex items-center gap-x-1 font-IRANSans-Bold tracking-wider">
                                         150,000
-                                        <!--                                    <span class="text-xs md:text-sm font-IRANSans tracking-tighter text-white">تومان</span>-->
                                     </div>
-                                    <div class="offer flex items-center gap-x-1 font-IRANSans-Bold tracking-wider text-gray-400">
+                                    <div class="offer inline-flex items-center gap-x-1 font-IRANSans-Bold tracking-wider text-gray-400">
                                         175,000
-                                        <!--                                    <span class="hidden md:inline text-xs tracking-tighter font-IRANSans">تومان</span>-->
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <h4 class="text-sm font-IRANSans-Medium line-clamp-2 mb-2 sm:mb-4 h-10 px-2 text-center">
+                            چای سیاه یا چای قرمز یکی از محبوب‌‌ترین طعم‌های چای است.طعم‌های چای است.
+                        </h4>
                         <button onclick='addProductToBasket("${product[0]}")'
-                                class="text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-red-600 font-IRANSans-Medium rounded-md text-sm md:text-base tracking-tighter hidden sm:flex">
+                                class="text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-red-600 font-IRANSans-Medium rounded-md text-sm md:text-base tracking-tighter flex">
                             حذف محصول
                         </button>
                     </div>
-                    <div class="rounded-md sm:rounded-xl bg-zinc-900 overflow-hidden">
-                        <a href="#"
-                           class="flex items-center justify-center w-full h-[120px] sm:h-[160px] md:h-36 rounded-md overflow-hidden">
-                            <img class="w-full h-full object-cover" src="images/Products/product-3.png" alt=""
-                                 loading="lazy">
-                        </a>
-                        <div class="p-2">
-                            <h4 class="text-sm font-IRANSans-Medium line-clamp-2 mb-2 sm:mb-4 h-10">
-                                چای سیاه یا چای قرمز یکی از محبوب‌‌ترین طعم‌های چای است.طعم‌های چای است.
-                            </h4>
-                            <div class="flex flex-col-reverse sm:flex-row justify-between items-center gap-y-2">
+                    <div class="rounded sm:rounded-md bg-zinc-900 overflow-hidden">
+                        <div class="flex justify-between w-full p-2">
+                            <a href="#"
+                               class="flex items-center justify-center w-24 h-24 rounded overflow-hidden">
+                                <img class="w-full h-full object-cover" src="images/Products/product-3.png" alt=""
+                                     loading="lazy">
+                            </a>
+                            <div class="flex flex-col-reverse justify-between items-center gap-y-2">
                                 <div class="flex items-center justify-between w-full">
-                                    <div class="flex items-center gap-x-2 bg-transparent text-white rounded-md w-28 sm:w-auto p-1">
+                                    <div class="flex items-center gap-x-2 bg-transparent text-white rounded-md p-1">
                                         <button type="button" class="rounded-full border border-red-500 p-0.5">
                                             <svg class="shrink-0 w-4 h-4 text-red-500">
                                                 <use href="#minus"></use>
@@ -564,42 +554,35 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <span class="sm:hidden">
-                                        <svg class="w-6 h-6 text-red-600">
-                                            <use href="#x-mark"></use>
-                                        </svg>
-                                    </span>
                                 </div>
-                                <div class="flex flex-row-reverse sm:flex-col justify-between items-start sm:items-end flex-wrap gap-x-4 w-full">
+                                <div class="flex flex-col items-center justify-between flex-wrap gap-x-4 w-full">
                                     <div class="product__price flex items-center gap-x-1 font-IRANSans-Bold tracking-wider">
                                         150,000
-                                        <!--                                    <span class="text-xs md:text-sm font-IRANSans tracking-tighter text-white">تومان</span>-->
                                     </div>
-                                    <div class="offer flex items-center gap-x-1 font-IRANSans-Bold tracking-wider text-gray-400">
+                                    <div class="offer inline-flex items-center gap-x-1 font-IRANSans-Bold tracking-wider text-gray-400">
                                         175,000
-                                        <!--                                    <span class="hidden md:inline text-xs tracking-tighter font-IRANSans">تومان</span>-->
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <h4 class="text-sm font-IRANSans-Medium line-clamp-2 mb-2 sm:mb-4 h-10 px-2 text-center">
+                            چای سیاه یا چای قرمز یکی از محبوب‌‌ترین طعم‌های چای است.طعم‌های چای است.
+                        </h4>
                         <button onclick='addProductToBasket("${product[0]}")'
-                                class="text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-red-600 font-IRANSans-Medium rounded-md text-sm md:text-base tracking-tighter hidden sm:flex">
+                                class="text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-red-600 font-IRANSans-Medium rounded-md text-sm md:text-base tracking-tighter flex">
                             حذف محصول
                         </button>
                     </div>
-                    <div class="rounded-md sm:rounded-xl bg-zinc-900 overflow-hidden">
-                        <a href="#"
-                           class="flex items-center justify-center w-full h-[120px] sm:h-[160px] md:h-36 rounded-md overflow-hidden">
-                            <img class="w-full h-full object-cover" src="images/Products/product-3.png" alt=""
-                                 loading="lazy">
-                        </a>
-                        <div class="p-2">
-                            <h4 class="text-sm font-IRANSans-Medium line-clamp-2 mb-2 sm:mb-4 h-10">
-                                چای سیاه یا چای قرمز یکی از محبوب‌‌ترین طعم‌های چای است.طعم‌های چای است.
-                            </h4>
-                            <div class="flex flex-col-reverse sm:flex-row justify-between items-center gap-y-2">
+                    <div class="rounded sm:rounded-md bg-zinc-900 overflow-hidden">
+                        <div class="flex justify-between w-full p-2">
+                            <a href="#"
+                               class="flex items-center justify-center w-24 h-24 rounded overflow-hidden">
+                                <img class="w-full h-full object-cover" src="images/Products/product-3.png" alt=""
+                                     loading="lazy">
+                            </a>
+                            <div class="flex flex-col-reverse justify-between items-center gap-y-2">
                                 <div class="flex items-center justify-between w-full">
-                                    <div class="flex items-center gap-x-2 bg-transparent text-white rounded-md w-28 sm:w-auto p-1">
+                                    <div class="flex items-center gap-x-2 bg-transparent text-white rounded-md p-1">
                                         <button type="button" class="rounded-full border border-red-500 p-0.5">
                                             <svg class="shrink-0 w-4 h-4 text-red-500">
                                                 <use href="#minus"></use>
@@ -612,26 +595,63 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <span class="sm:hidden">
-                                        <svg class="w-6 h-6 text-red-600">
-                                            <use href="#x-mark"></use>
-                                        </svg>
-                                    </span>
                                 </div>
-                                <div class="flex flex-row-reverse sm:flex-col justify-between items-start sm:items-end flex-wrap gap-x-4 w-full">
+                                <div class="flex flex-col items-center justify-between flex-wrap gap-x-4 w-full">
                                     <div class="product__price flex items-center gap-x-1 font-IRANSans-Bold tracking-wider">
                                         150,000
-                                        <!--                                    <span class="text-xs md:text-sm font-IRANSans tracking-tighter text-white">تومان</span>-->
                                     </div>
-                                    <div class="offer flex items-center gap-x-1 font-IRANSans-Bold tracking-wider text-gray-400">
+                                    <div class="offer inline-flex items-center gap-x-1 font-IRANSans-Bold tracking-wider text-gray-400">
                                         175,000
-                                        <!--                                    <span class="hidden md:inline text-xs tracking-tighter font-IRANSans">تومان</span>-->
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <h4 class="text-sm font-IRANSans-Medium line-clamp-2 mb-2 sm:mb-4 h-10 px-2 text-center">
+                            چای سیاه یا چای قرمز یکی از محبوب‌‌ترین طعم‌های چای است.طعم‌های چای است.
+                        </h4>
                         <button onclick='addProductToBasket("${product[0]}")'
-                                class="text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-red-600 font-IRANSans-Medium rounded-md text-sm md:text-base tracking-tighter hidden sm:flex">
+                                class="text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-red-600 font-IRANSans-Medium rounded-md text-sm md:text-base tracking-tighter flex">
+                            حذف محصول
+                        </button>
+                    </div>
+                    <div class="rounded sm:rounded-md bg-zinc-900 overflow-hidden">
+                        <div class="flex justify-between w-full p-2">
+                            <a href="#"
+                               class="flex items-center justify-center w-24 h-24 rounded overflow-hidden">
+                                <img class="w-full h-full object-cover" src="images/Products/product-3.png" alt=""
+                                     loading="lazy">
+                            </a>
+                            <div class="flex flex-col-reverse justify-between items-center gap-y-2">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center gap-x-2 bg-transparent text-white rounded-md p-1">
+                                        <button type="button" class="rounded-full border border-red-500 p-0.5">
+                                            <svg class="shrink-0 w-4 h-4 text-red-500">
+                                                <use href="#minus"></use>
+                                            </svg>
+                                        </button>
+                                        <span class="w-5 text-center">4</span>
+                                        <button type="button" class="p-0.5 border border-indigo-500 rounded-full">
+                                            <svg class="shrink-0 w-4 h-4 text-indigo-500">
+                                                <use href="#plus"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center justify-between flex-wrap gap-x-4 w-full">
+                                    <div class="product__price flex items-center gap-x-1 font-IRANSans-Bold tracking-wider">
+                                        150,000
+                                    </div>
+                                    <div class="offer inline-flex items-center gap-x-1 font-IRANSans-Bold tracking-wider text-gray-400">
+                                        175,000
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="text-sm font-IRANSans-Medium line-clamp-2 mb-2 sm:mb-4 h-10 px-2 text-center">
+                            چای سیاه یا چای قرمز یکی از محبوب‌‌ترین طعم‌های چای است.طعم‌های چای است.
+                        </h4>
+                        <button onclick='addProductToBasket("${product[0]}")'
+                                class="text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-red-600 font-IRANSans-Medium rounded-md text-sm md:text-base tracking-tighter flex">
                             حذف محصول
                         </button>
                     </div>

@@ -6,7 +6,7 @@ const addCategoryBtn = document.getElementById("add-category-btn")
 const addCategoryModalBtn = document.getElementById("add-category-modal-btn")
 const addCategoryForm = document.getElementById("add-category-form")
 const addCategoryTitle = document.getElementById("add-category-title")
-const addCategoryImage = document.getElementById("add-category-image")
+const addCategoryImage = document.getElementById("category-img-wrapper")
 const addCategoryImageInput = document.getElementById("add-category-image-input")
 const addNewCategoryBtn = document.getElementById("add-category-modal")
 const addCategory = document.querySelector(".add__category")
@@ -17,7 +17,7 @@ const categoryEditImageInput = document.getElementById("edit-category-image-inpu
 const categoryEditImage = document.getElementById("edit-category-image")
 const categoryEditBtn = document.getElementById("category-edit-btn")
 let editCategoryId = null
-
+let img;
 
 // Category Functions
 function modalCategoriesOpen() {
@@ -38,7 +38,7 @@ function showAddCategoryModal() {
 async function addNewCategory() {
     let categoryObj = {
         title: addCategoryTitle.value,
-        img: addCategoryImage.getAttribute("src")
+        img: img.src
     }
     let newCategory = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/categories.json', {
         method: "POST",
@@ -55,7 +55,7 @@ async function addNewCategory() {
 
 function clearAddCategoriesInputs() {
     addCategoryTitle.value = ""
-    addCategoryImage.removeAttribute("src")
+    // addCategoryImage.removeAttribute("src")
 }
 
 function addCategoriesModalHandler() {
@@ -143,7 +143,7 @@ function clearCategoryEditInputs() {
 
 
 window.addEventListener("load", async () => {
-    // await addCategoriesToDom()
+    await addCategoriesToDom()
 })
 categoriesModalBtn.addEventListener("click", function () {
     modalCategoriesClose()
@@ -171,7 +171,10 @@ addCategoryForm.addEventListener("submit", function (e) {
     e.preventDefault()
 })
 addCategoryImageInput.addEventListener("change", function (e) {
-    addCategoryImage.setAttribute("src", "images/category/" + e.target.files[0].name + "")
+    img = new Image()
+    img.src = URL.createObjectURL(e.target.files[0])
+    img.setAttribute('class', 'w-full h-full object-cover')
+    addCategoryImage.append(img)
 })
 categoryEditImageInput.addEventListener("change", function (e) {
     categoryEditImage.setAttribute("src", "images/category/" + e.target.files[0].name + "")

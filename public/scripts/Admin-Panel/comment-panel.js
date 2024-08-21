@@ -90,7 +90,7 @@ async function commentCheck(commentId) {
 
 
 window.addEventListener("load", async () => {
-    // await addCommentsToDom()
+    await addCommentsToDom()
 })
 commentModalBtn.addEventListener("click", function () {
     modalCommentsClose()
