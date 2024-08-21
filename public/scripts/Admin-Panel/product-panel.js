@@ -7,7 +7,7 @@ const editProductsPriceElem = document.getElementById("product-price")
 const editProductsOfferElem = document.getElementById("product-offer")
 const editProductsDescriptionElem = document.getElementById("product-description")
 const editProductsImageElem = document.getElementById("product-image-input")
-const editProductsImage = document.getElementById("product-image")
+const editProductsImage = document.getElementById("product-image-wrapper")
 const addProductsBtn = document.getElementById("add-product-btn")
 const addProductsModal = document.querySelector(".add__product")
 const addProductsPriceElem = document.getElementById("add-product-price")
@@ -19,8 +19,6 @@ const addProductsModalBtn = document.getElementById("add-product-modal")
 const addProductsForm = document.getElementById("add-product-form")
 const addProductsCloseBtn = document.getElementById("add-products-modal-btn")
 const editProductForm = document.getElementById("edit-product-form")
-// let img;
-// const addProductMobileBtn = document.getElementById("add-product-mobile-btn")
 let productEditId = null
 
 
@@ -37,7 +35,7 @@ function modalProductsClose() {
 function clearAddProductsInputs() {
     addProductsDescriptionElem.value = ""
     addProductsPriceElem.value = ""
-    // addProductsImage.removeAttribute("src")
+    addProductsImage.innerHTML = ''
     addProductsOfferElem.value = ""
 }
 
@@ -45,7 +43,7 @@ function clearEditProductsInputs() {
     editProductsPriceElem.value = ""
     editProductsOfferElem.value = ""
     editProductsDescriptionElem.value = ""
-    editProductsImage.setAttribute("src", "")
+    editProductsImage.innerHTML = ''
 }
 
 async function getAllProducts() {
@@ -98,14 +96,16 @@ async function addProductsToDom() {
     }
 }
 
+
 async function productModalHandler(productId) {
     let mainProduct = await getAllProducts()
     mainProduct.forEach(product => {
         if (product[0] === productId) {
+            img = new Image()
             editProductsPriceElem.value = product[1].price
             editProductsOfferElem.value = product[1].offer
             editProductsDescriptionElem.value = product[1].detail
-            editProductsImage.setAttribute("src", product[1].img)
+            editProductsImage.innerHTML = `<img class="w-full h-full object-cover" alt="#" src="${product[1].img}"/>`
             productEditId = product[0]
         }
     })
@@ -114,13 +114,14 @@ async function productModalHandler(productId) {
 
 async function editProductHandler() {
     try {
+        console.log(img)
         let mainProduct = (await getAllProducts()).find(product => product[0] === productEditId)
         let mainProductObj = {
             detail: editProductsDescriptionElem.value,
             price: editProductsPriceElem.value,
             offer: editProductsOfferElem.value,
             costPrice: editProductsPriceElem.value - (editProductsOfferElem.value / 100 * editProductsPriceElem.value),
-            img: editProductsImage.getAttribute("src"),
+            img: img.src,
             view: mainProduct[1].view
         }
         await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products/${productEditId}.json`, {
@@ -173,7 +174,10 @@ editProductsModalBtn.addEventListener("click", function () {
     modalProductsClose()
 })
 editProductsImageElem.addEventListener("change", function (e) {
-
+    img = new Image()
+    img.src = URL.createObjectURL(e.target.files[0])
+    console.log(img.src)
+    editProductsImage.innerHTML =  `<img class="w-full h-full object-cover" src="${img.src}"/>`
 })
 editProductsIcons.forEach(function (icon) {
     icon.addEventListener("click", function () {
