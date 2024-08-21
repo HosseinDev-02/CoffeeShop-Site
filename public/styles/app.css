@@ -882,6 +882,10 @@ video {
   opacity: 0 !important;
 }
 
+.edit__reserve--hidden {
+  height: 0 !important;
+}
+
 .reserve-time--hidden{
   height: 0 !important;
 }
@@ -1004,20 +1008,8 @@ video {
   top: -1.75rem;
 }
 
-.-top-\[332px\] {
-  top: -332px;
-}
-
-.-top-\[400px\] {
-  top: -400px;
-}
-
 .-top-\[546px\] {
   top: -546px;
-}
-
-.-top-\[586px\] {
-  top: -586px;
 }
 
 .bottom-0 {
@@ -1454,10 +1446,6 @@ video {
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid-rows-2 {
@@ -2316,6 +2304,18 @@ video {
   .md\:edit__product--hidden{
     height: 0 !important;
   }
+
+  .md\:edit__reserve--hidden {
+    height: 0 !important;
+  }
+
+  .md\:edit__blog--hidden {
+    height: 0 !important;
+  }
+
+  .md\:edit__category--hidden{
+    height: 0 !important;
+  }
 }
 
 .hover\:border-indigo-600:hover {
@@ -2489,14 +2489,6 @@ video {
     display: inline-block;
   }
 
-  .sm\:flex {
-    display: flex;
-  }
-
-  .sm\:hidden {
-    display: none;
-  }
-
   .sm\:h-12 {
     height: 3rem;
   }
@@ -2566,20 +2558,12 @@ video {
     row-gap: 0.5rem;
   }
 
-  .sm\:rounded-xl {
-    border-radius: 0.75rem;
-  }
-
-  .sm\:rounded {
-    border-radius: 0.25rem;
-  }
-
   .sm\:rounded-md {
     border-radius: 0.375rem;
   }
 
-  .sm\:text-center {
-    text-align: center;
+  .sm\:rounded-xl {
+    border-radius: 0.75rem;
   }
 
   .sm\:text-base {
@@ -2702,10 +2686,6 @@ video {
     height: 8rem;
   }
 
-  .md\:h-36 {
-    height: 9rem;
-  }
-
   .md\:h-5 {
     height: 1.25rem;
   }
@@ -2732,6 +2712,14 @@ video {
 
   .md\:h-\[304px\] {
     height: 304px;
+  }
+
+  .md\:h-\[320px\] {
+    height: 320px;
+  }
+
+  .md\:h-\[336px\] {
+    height: 336px;
   }
 
   .md\:h-\[434px\] {
@@ -2905,11 +2893,6 @@ video {
     color: rgb(209 213 219 / var(--tw-text-opacity));
   }
 
-  .md\:text-red-500 {
-    --tw-text-opacity: 1;
-    color: rgb(239 68 68 / var(--tw-text-opacity));
-  }
-
   .md\:hover\:bg-indigo-500:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(99 102 241 / var(--tw-bg-opacity));
@@ -3013,10 +2996,5 @@ video {
   .xl\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-
-  .xl\:text-red-500 {
-    --tw-text-opacity: 1;
-    color: rgb(239 68 68 / var(--tw-text-opacity));
   }
 }

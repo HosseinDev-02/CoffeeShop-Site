@@ -89,7 +89,7 @@ async function addProductsToDom() {
         allProducts.forEach(product => {
             let newProductRow = document.createElement("tr")
             newProductRow.className = 'h-24 text-lg child:font-Shabnam-Medium'
-            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-green-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td><img loading='lazy' class="mx-auto object-cover w-20 h-20" src="${product[1].img}" alt=""></td><td class="max-w-[300px]"><p class="line-clamp-2 text-right">${product[1].detail}</p></td><td>${product[1].price}</td><td>${product[1].offer}</td><td>${product[1].costPrice}</td><td>${product[1].view}</td>`
+            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td><img loading='lazy' class="mx-auto object-cover w-20 h-20" src="${product[1].img}" alt=""></td><td class="max-w-[300px]"><p class="line-clamp-2 text-right">${product[1].detail}</p></td><td>${product[1].price}</td><td>${product[1].offer}</td><td>${product[1].costPrice}</td><td>${product[1].view}</td>`
             productFragment.append(newProductRow)
         })
         productsContainer.append(productFragment)
@@ -142,16 +142,17 @@ async function editProductHandler() {
 }
 
 async function removeProductHandler(productId) {
-    try {
-        let mainRemoveProduct = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products/${productId}.json`, {
-            method: 'DELETE'
-        })
-        console.log(mainRemoveProduct)
-        await addProductsToDom()
-    } catch (err) {
-        console.log(err, "هنگام حذف محصول مشکلی بوجود آمد")
-        alert("هنگام حذف محصول مشکلی بوجود آمد")
-    }
+    // try {
+    //     let mainRemoveProduct = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products/${productId}.json`, {
+    //         method: 'DELETE'
+    //     })
+    //     console.log(mainRemoveProduct)
+    //     await addProductsToDom()
+    // } catch (err) {
+    //     console.log(err, "هنگام حذف محصول مشکلی بوجود آمد")
+    //     alert("هنگام حذف محصول مشکلی بوجود آمد")
+    // }
+    alert('پروژه بک اند ندارد !')
 }
 
 
@@ -164,19 +165,17 @@ addProductsBtn.addEventListener("click", function () {
     addProductsModal.classList.toggle("add__product--hidden")
     coverElem.classList.remove("cover--hidden")
 })
-// addProductMobileBtn.addEventListener("click", () => {
-//     addProductsModal.classList.toggle("add__product--hidden")
-// })
 editProductsBtn.addEventListener("click", async () => {
+    alert('پروژه بک اند ندارد !')
     await editProductHandler()
 })
 editProductsModalBtn.addEventListener("click", function () {
-    modalProductsClose()
+    alert('پروژه بک اند ندارد !')
+    // modalProductsClose()
 })
 editProductsImageElem.addEventListener("change", function (e) {
     img = new Image()
     img.src = URL.createObjectURL(e.target.files[0])
-    console.log(img.src)
     editProductsImage.innerHTML =  `<img class="w-full h-full object-cover" src="${img.src}"/>`
 })
 editProductsIcons.forEach(function (icon) {
@@ -202,6 +201,7 @@ addProductsImageElem.addEventListener("change", function (e) {
     addProductsImage.append(img)
 })
 addProductsModalBtn.addEventListener("click", async () => {
-    await addNewProduct()
+    // await addNewProduct()
+    alert('پروژه بک اند ندارد !')
 })
 editProductForm.addEventListener("submit", e => e.preventDefault())

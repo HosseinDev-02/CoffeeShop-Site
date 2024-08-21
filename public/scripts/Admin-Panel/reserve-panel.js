@@ -49,11 +49,11 @@ function reserveContentClose(){
     coverElem.classList.add("cover--hidden")
 }
 function reserveModalOpen(){
-    reserveModal.classList.remove("add__reserve--hidden")
+    reserveModal.classList.remove("md:edit__reserve--hidden")
     coverElem.classList.remove("cover--hidden")
 }
 function reserveModalClose(){
-    reserveModal.classList.add("add__reserve--hidden")
+    reserveModal.classList.add("md:edit__reserve--hidden")
     coverElem.classList.add("cover--hidden")
 }
 function clearReserveContentInputs(){
@@ -81,23 +81,39 @@ async function addReservesToDom(){
         let reservesFragment = document.createDocumentFragment()
         allReserves.forEach(function (reserve){
             let newReserveRow = document.createElement("tr")
-            newReserveRow.className = 'h-24 text-lg child:font-Shabnam-Medium'
-            newReserveRow.innerHTML = `<td><span onclick='reserveModalShow("${reserve[0]}")' class="blogs__edit text-green-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeReserve("${reserve[0]}")'  class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${reserve[0]}</td><td>${reserve[1].firstname}</td><td>${reserve[1].lastname}</td><td>${reserve[1].phone}</td><td>${reserve[1].date}</td><td dir='ltr'>${reserve[1].time}</td>`
+            newReserveRow.className = 'h-16 md:h-20'
+            newReserveRow.innerHTML = `<td>
+                                    <span onclick='reserveModalShow("${reserve[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span  onclick='removeReserve("${reserve[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>${reserve[1].firstname} ${reserve[1].lastname}</td>
+                            <td>${reserve[1].phone}</td>
+                            <td>${reserve[1].date}</td>
+                            <td class="hidden lg:table-cell">${reserve[1].time}</td>`
             reservesFragment.append(newReserveRow)
         })
         reserveContainer.append(reservesFragment)
     }
 }
 async function removeReserve(reserveId){
-    try {
-        let fetchRemoveReserve = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/reserves/${reserveId}.json`, {
-            method: 'DELETE'
-        })
-        console.log(fetchRemoveReserve)
-        await addReservesToDom()
-    }catch (err){
-        console.log(err, 'مشکلی در حذف رزرو میز بوجود آمد')
-    }
+    // try {
+    //     let fetchRemoveReserve = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/reserves/${reserveId}.json`, {
+    //         method: 'DELETE'
+    //     })
+    //     console.log(fetchRemoveReserve)
+    //     await addReservesToDom()
+    // }catch (err){
+    //     console.log(err, 'مشکلی در حذف رزرو میز بوجود آمد')
+    // }
+    alert('پروژه بک اند ندارد')
 }
 async function addNewReserve(){
     try {
@@ -178,10 +194,11 @@ async function editReserve(){
 // Reserves Events
 
 window.addEventListener("load", async () => {
-    // await addReservesToDom()
+    await addReservesToDom()
 })
 reserveModalSubmitBtn.addEventListener("click", async () => {
-    await editReserve()
+    // await editReserve()پ
+    alert('پروژه بک اند ندارد')
 })
 reserveModalTimes.forEach(function (item){
     item.addEventListener("click", function (){
@@ -198,7 +215,8 @@ reserveModalForm.addEventListener("submit", function (e){
     e.preventDefault()
 })
 reserveContentSubmitBtn.addEventListener("click", async () => {
-    await addNewReserve()
+    // await addNewReserve()
+    alert('پروژه بک اند ندارد')
 })
 reserveContentTimeItems.forEach(function (item) {
     item.addEventListener("click", function () {

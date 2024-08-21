@@ -225,6 +225,7 @@
 <!-- Admin Panel Menu -->
 <main>
     <section id="home" class="users panel-section ">
+
     </section>
     <section id="users" class="users panel-section panel-section--active">
         <div class="container">
@@ -638,7 +639,6 @@
                         <tr>
                             <th>ویرایش</th>
                             <th>حذف</th>
-                            <th class="hidden lg:table-cell">ایدی</th>
                             <th>عنوان</th>
                             <th>تصویر</th>
                         </tr>
@@ -681,8 +681,6 @@
                         <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Medium">
                         <tr>
                             <th>حذف</th>
-                            <th>ویرایش</th>
-                            <th class="hidden lg:table-cell">ایدی</th>
                             <th>نام کامل</th>
                             <th class="hidden lg:table-cell">ایمیل</th>
                             <th>متن</th>
@@ -791,11 +789,10 @@
                         <tr>
                             <th>ویرایش</th>
                             <th>حذف</th>
-                            <th class="hidden lg:table-cell">ایدی</th>
+                            <th>تصویر</th>
                             <th>عنوان</th>
                             <th class="w-1/4 lg:w-[35%] hidden lg:table-cell">متن</th>
                             <th>تاریخ</th>
-                            <th>تصویر</th>
                         </tr>
                         </thead>
                         <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="blogs-list">
@@ -918,7 +915,6 @@
                         <tr>
                             <th>ویرایش</th>
                             <th>حذف</th>
-                            <th class="hidden lg:table-cell">ایدی</th>
                             <th>نام کامل</th>
                             <th>شماره تماس</th>
                             <th>تاریخ</th>
@@ -939,7 +935,6 @@
                                         <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
                                     </span>
                             </td>
-                            <td>2450</td>
                             <td>حسین رستمی</td>
                             <td>09930094221</td>
                             <td>1403/03/10</td>
@@ -1230,8 +1225,8 @@
     </div>
 </div>
 <div id="categories-modal"
-     class="hidden md:block fixed w-[1280px] transition-all duration-300 left-0 right-0 mx-auto -top-[400px] bg-gray-900 z-50 items-center justify-center p-5 rounded-2xl">
-    <div class="w-full">
+     class="hidden md:block transition-all duration-300 fixed max-w-[1280px] left-0 right-0 top-0 bottom-0 m-auto md:h-[336px] bg-gray-900 z-50 md:rounded-xl overflow-hidden md:edit__category--hidden">
+    <div class="w-full p-2.5 md:p-5">
         <span id="categories-modal-btn"
               class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
             <svg class="w-8 h-8">
@@ -1271,8 +1266,8 @@
     </div>
 </div>
 <div id="blogs-modal"
-     class="hidden md:block fixed w-[1280px] transition-all duration-300 left-0 right-0 mx-auto -top-[586px] bg-gray-900 z-50 items-center justify-center p-5 rounded-2xl">
-    <div class="w-full">
+     class="hidden md:block transition-all duration-300 fixed max-w-[1280px] left-0 right-0 top-0 bottom-0 m-auto md:h-[466px] bg-gray-900 z-50 md:rounded-xl overflow-hidden md:edit__blog--hidden">
+    <div class="w-full p-2.5 md:p-5">
         <span id="edit-blogs-modal-btn"
               class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
             <svg class="w-8 h-8">
@@ -1281,29 +1276,30 @@
         </span>
         <form id="edit-blogs-form" class="block px-8" action="#">
             <div class="flex gap-x-10 mt-10">
-                <div class="form-group flex flex-col gap-y-3 w-full">
+                <div class="form-group flex flex-col w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="edit-blogs-title">عنوان :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
-                           id="edit-blogs-title" placeholder="کیک و شکلات">
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                           type="text" id="edit-blogs-title" placeholder="کیک و شکلات">
                 </div>
-                <div class="form-group flex flex-col gap-y-3 w-full">
+                <div class="form-group flex flex-col w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="edit-blogs-date">تاریخ :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" data-jdp type="text"
-                           id="edit-blogs-date" placeholder="1403/02/08">
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
+                           data-jdp type="text" id="edit-blogs-date" placeholder="1403/02/08">
                 </div>
             </div>
             <div class="flex gap-x-10 mt-10">
-                <div class="form-group flex flex-col gap-y-3 w-full">
+                <div class="form-group flex flex-col w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="edit-blogs-description">متن :</label>
-                    <textarea class="resize-none p-4 bg-transparent rounded-md outline-none border border-gray-400"
-                              placeholder="لطفا متن خود را وارد کنید ..." rows="6"
-                              id="edit-blogs-description"></textarea>
+                    <textarea
+                            class="resize-none p-4 bg-transparent rounded-md outline-none border border-white/20"
+                            placeholder="لطفا متن خود را وارد کنید ..." rows="3"
+                            id="edit-blogs-description"></textarea>
                 </div>
-                <div class="form-group inline-flex flex-col gap-y-3 w-full">
-                    <span class="font-IRANSans-Medium">
-                         انتخاب تصویر :
-                    </span>
-                    <div class="flex items-center border border-gray-400 h-full">
+                <div class="form-group inline-flex flex-col w-full">
+                                        <span class="font-IRANSans-Medium">
+                                            انتخاب تصویر :
+                                        </span>
+                    <div class="flex items-center h-full">
                         <label class="font-IRANSans-Medium inline-flex items-center gap-x-2 p-2"
                                for="edit-blogs-image-input">
                             <svg class="w-8 h-8">
@@ -1311,13 +1307,14 @@
                             </svg>
                             آپلود فایل
                         </label>
-                        <img id="edit-blogs-image" src="" class="w-24 h-24 mx-auto" alt="">
+                        <img id="edit-blogs-image" class="w-14 md:w-20 h-14 md:h-20 mx-auto rounded overflow-hidden" alt="">
                     </div>
-                    <input class="hidden h-12 rounded-md outline-none px-2" type="file" id="edit-blogs-image-input">
+                    <input class="hidden h-12 rounded-md outline-none px-2" type="file"
+                           id="edit-blogs-image-input">
                 </div>
             </div>
             <button id="edit-blog-btn"
-                    class="w-full md:w-64 h-14 rounded-md bg-indigo-600 flex items-center justify-center text-xl hover:text-black text-white transition-colors mx-auto mt-10 outline-none"
+                    class="w-48 md:w-64 h-10 md:h-12 rounded-md flex items-center justify-center border-2 border-indigo-500 tracking-tighter text-xl hover:text-white hover:bg-indigo-500 text-white transition-colors mx-auto mt-5 md:mt-8 outline-none"
                     type="submit">
                 ذخیره تغییرات
             </button>
@@ -1325,8 +1322,8 @@
     </div>
 </div>
 <div id="reserve-modal"
-     class="hidden md:block fixed w-[1280px] transition-all duration-300 left-0 right-0 mx-auto -top-[332px] bg-gray-900 z-50 items-center justify-center p-5 rounded-2xl">
-    <div class="w-full">
+     class="hidden md:block transition-all duration-300 fixed max-w-[1280px] left-0 right-0 top-0 bottom-0 m-auto md:h-[320px] bg-gray-900 z-50 md:rounded-xl overflow-hidden md:edit__reserve--hidden">
+    <div class="w-full p-2.5 md:p-5">
         <span id="reserve-modal-btn" class="inline-flex justify-center items-center mb-10 text-red-500 cursor-pointer">
             <svg class="w-8 h-8">
                 <use href="#x-mark"></use>
@@ -1334,29 +1331,29 @@
         </span>
         <form id="reserve-modal-form" class="block px-8" action="#">
             <div class="flex gap-x-5 mt-10">
-                <div class="form-group flex flex-col gap-y-3 w-full">
+                <div class="form-group flex flex-col w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-firstname">نام :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                    <input class="h-12 bg-transparent border-b border-b-white/20 outline-none px-2" type="text"
                            id="reserve-modal-firstname" placeholder="">
                 </div>
-                <div class="form-group flex flex-col gap-y-3 w-full">
+                <div class="form-group flex flex-col w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-lastname">نام خانوادگی :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                    <input class="h-12 bg-transparent border-b border-b-white/20 outline-none px-2" type="text"
                            id="reserve-modal-lastname" placeholder="">
                 </div>
-                <div class="form-group flex flex-col gap-y-3 w-full">
+                <div class="form-group flex flex-col w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-phone">شماره تماس :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                    <input class="h-12 bg-transparent border-b border-b-white/20 outline-none px-2" type="text"
                            id="reserve-modal-phone" placeholder="">
                 </div>
-                <div class="form-group flex flex-col gap-y-3 w-full">
+                <div class="form-group flex flex-col w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-date">تاریخ :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" data-jdp type="text"
+                    <input class="h-12 bg-transparent border-b border-b-white/20 outline-none px-2" data-jdp type="text"
                            id="reserve-modal-date" placeholder="1403/02/08">
                 </div>
                 <div class="form-group flex flex-col justify-between w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="reserve-modal-time">ساعت :</label>
-                    <div class="border-b border-b-gray-400 p-2 relative h-12">
+                    <div class="border-b border-b-white/20 p-2 relative h-12">
                         <div id="reserve-modal-time-btn" class="flex items-center justify-between gap-x-2 h-full">
                             <span>
                                 <svg id="reserve-modal-time-icon"

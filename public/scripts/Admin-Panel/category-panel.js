@@ -21,12 +21,12 @@ let img;
 
 // Category Functions
 function modalCategoriesOpen() {
-    categoriesModal.classList.remove("add__category--hidden")
+    categoriesModal.classList.remove("md:edit__category--hidden")
     coverElem.classList.remove("cover--hidden")
 }
 
 function modalCategoriesClose() {
-    categoriesModal.classList.add("add__category--hidden")
+    categoriesModal.classList.add("md:edit__category--hidden")
     coverElem.classList.add("cover--hidden")
 }
 
@@ -79,7 +79,7 @@ async function addCategoriesToDom() {
         allCategories.forEach(function (category) {
             let newCategoryRow = document.createElement('tr')
             newCategoryRow.className = 'h-24 text-lg child:font-Shabnam-Medium'
-            newCategoryRow.innerHTML = `<tr class=""><td><span onclick=categoryEditModalHandler("${category[0]}") class="categories__edit text-green-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeCategory("${category[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${category[0]}</td><td>${category[1].title}</td><td><img class="w-20 h-20 mx-auto object-cover" src="${category[1].img}" alt=""></td></tr>`
+            newCategoryRow.innerHTML = `<tr class=""><td><span onclick=categoryEditModalHandler("${category[0]}") class="categories__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeCategory("${category[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${category[1].title}</td><td><img class="w-20 h-20 mx-auto object-cover" src="${category[1].img}" alt=""></td></tr>`
             categoriesFragment.append(newCategoryRow)
         })
         categoriesContainer.append(categoriesFragment)
@@ -87,17 +87,18 @@ async function addCategoriesToDom() {
 }
 
 async function removeCategory(categoryId) {
-    console.log(categoryId)
-    try {
-        let fetchRemoveCategory = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/categories/${categoryId}.json`, {
-            method: "DELETE"
-        })
-        console.log(fetchRemoveCategory)
-        await addCategoriesToDom()
-    } catch (err) {
-        console.log(err, 'مشکلی در حذف دسته بندی مورد نظر بوجود آمد')
-        alert('مشکلی در حذف دسته بندی مورد نظر بوجود آمد')
-    }
+    // console.log(categoryId)
+    // try {
+    //     let fetchRemoveCategory = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/categories/${categoryId}.json`, {
+    //         method: "DELETE"
+    //     })
+    //     console.log(fetchRemoveCategory)
+    //     await addCategoriesToDom()
+    // } catch (err) {
+    //     console.log(err, 'مشکلی در حذف دسته بندی مورد نظر بوجود آمد')
+    //     alert('مشکلی در حذف دسته بندی مورد نظر بوجود آمد')
+    // }
+    alert('پروژه بک اند ندارد !')
 }
 
 
@@ -162,10 +163,12 @@ categoriesEditIcons.forEach(function (icon) {
     })
 })
 categoryEditBtn.addEventListener("click", async () => {
-    await categoryEdit()
+    // await categoryEdit()
+    alert('پروژه بک اند ندارد !')
 })
 addNewCategoryBtn.addEventListener("click", async () => {
-    await addNewCategory()
+    // await addNewCategory()
+    alert('پروژه بک اند ندارد !')
 })
 addCategoryForm.addEventListener("submit", function (e) {
     e.preventDefault()

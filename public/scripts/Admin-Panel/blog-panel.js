@@ -33,12 +33,12 @@ let editBlogId = null;
 
 
 function modalBlogsOpen() {
-    blogsModal.classList.remove("add__blogs--hidden")
+    blogsModal.classList.remove("md:edit__blog--hidden")
     coverElem.classList.remove("cover--hidden")
 }
 
 function modalBlogsClose() {
-    blogsModal.classList.add("add__blogs--hidden")
+    blogsModal.classList.add("md:edit__blog--hidden")
     coverElem.classList.add("cover--hidden")
 }
 
@@ -83,8 +83,31 @@ async function addBlogsToDom() {
 
         allBlogs.forEach(function (blog) {
             let newBlogsRow = document.createElement('tr')
-            newBlogsRow.className = 'h-24 text-lg child:font-Shabnam-Medium'
-            newBlogsRow.innerHTML = `<td><span onclick='editBlogsModalHandler("${blog[0]}")' class="blogs__edit text-green-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeBlogs("${blog[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${blog[0]}</td><td>${blog[1].title}</td><td class="max-w-[300px]"><p class="line-clamp-2 text-right">${blog[1].text}</p></td><td>${blog[1].date}</td><td><img class="mx-auto object-cover w-20 h-20" src="${blog[1].img}" alt=""></td>`
+            newBlogsRow.className = 'h-16 md:h-20'
+            newBlogsRow.innerHTML = `<td>
+                                    <span onclick='editBlogsModalHandler("${blog[0]}")'
+                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                    <span onclick='removeBlogs("${blog[0]}")'
+                                          class="text-red-700 cursor-pointer flex items-center justify-center">
+                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
+                                    </span>
+                            </td>
+                            <td>
+                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                     src="${blog[1].img}" alt="">
+                            </td>
+                            <td>${blog[1].title}</td>
+                            <td class="hidden lg:table-cell">
+                                <p class="line-clamp-2">
+                                    ${blog[1].text}
+                                </p>
+                            </td>
+                            <td>${blog[1].date}</td>`
+
             blogsFragment.append(newBlogsRow)
         })
 
@@ -118,16 +141,17 @@ async function addNewBlog() {
 }
 
 async function removeBlogs(blogId) {
-    try {
-        let fetchRemoveBlog = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/blogs/${blogId}.json`, {
-            method: 'DELETE'
-        })
-        console.log(fetchRemoveBlog)
-        alert('مقاله مورد نظر با موفقیت حذف شد')
-        await addBlogsToDom()
-    } catch (err) {
-        console.log(err, 'مشکلی در حذف مقاله بوجود آمد')
-    }
+    // try {
+    //     let fetchRemoveBlog = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/blogs/${blogId}.json`, {
+    //         method: 'DELETE'
+    //     })
+    //     console.log(fetchRemoveBlog)
+    //     alert('مقاله مورد نظر با موفقیت حذف شد')
+    //     await addBlogsToDom()
+    // } catch (err) {
+    //     console.log(err, 'مشکلی در حذف مقاله بوجود آمد')
+    // }
+    alert('پروژه بک اند ندارد !')
 }
 
 async function editBlogsModalHandler(blogId) {
@@ -146,7 +170,6 @@ async function editBlogsModalHandler(blogId) {
 
 async function editBlogsHandler() {
     try {
-
         let mainEditBlog = {
             title: editBlogsTitleInput.value,
             text: editBlogsDescriptionInput.value,
@@ -178,7 +201,7 @@ async function editBlogsHandler() {
 
 
 window.addEventListener("load", async () => {
-    // await addBlogsToDom()
+    await addBlogsToDom()
 })
 
 blogsModalBtn.addEventListener("click", function () {
@@ -198,8 +221,10 @@ blogsEditBtn.forEach(function (icon) {
 })
 
 addBlogsBtn.addEventListener("click", async () => {
-    await addNewBlog()
+    // await addNewBlog()
+    alert('پروژه بک اند ندارد !')
 })
+
 
 addBlogsForm.addEventListener("submit", function (e) {
     e.preventDefault()
@@ -220,5 +245,6 @@ editBlogsImageInput.addEventListener("change", function (e) {
 })
 
 editBlogBtn.addEventListener("click", async () => {
-    await editBlogsHandler()
+    // await editBlogsHandler()
+    alert('پروژه بک اند ندارد !')
 })

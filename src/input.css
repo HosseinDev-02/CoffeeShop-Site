@@ -205,6 +205,15 @@
     .edit__product--hidden{
         height: 0 !important;
     }
+    .edit__reserve--hidden {
+        height: 0 !important;
+    }
+    .edit__blog--hidden {
+        height: 0 !important;
+    }
+    .edit__category--hidden{
+        height: 0 !important;
+    }
     .reserve-content--hidden{
         height: 0 !important;
     }
