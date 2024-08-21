@@ -101,12 +101,15 @@
     </symbol>
 </svg>
 <header class="bg-gray-900 shadow-[0_0_1rem_rgba(165,180,252,0.5)] p-5 hidden md:flex flex-col text-gray-100">
-    <a href="index.html" id="panel-home-link" class="flex justify-end gap-x-3 pb-4 cursor-pointer text-lg hover:text-indigo-500 transition-colors border-b border-b-white/20">
-        بازگشت به سایت
-        <svg class="w-7 h-7">
-            <use href="#arrow-left-circle"></use>
-        </svg>
-    </a>
+    <div class="flex items-center justify-between border-b border-b-white/20 pb-5">
+        <span class="font-Moshfegh-Bold text-2xl text-indigo-500">کافه سناتور</span>
+        <a href="index.html" id="panel-home-link" class="flex justify-end gap-x-3 cursor-pointer text-lg hover:text-indigo-500 transition-colors">
+            بازگشت به سایت
+            <svg class="w-7 h-7">
+                <use href="#arrow-left-circle"></use>
+            </svg>
+        </a>
+    </div>
     <ul class="text-base xl:text-lg flex items-center justify-center gap-4 flex-wrap text-gray-100 pt-4">
         <li data-id="home"
             class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
@@ -156,13 +159,6 @@
                 <use href="#open-reserve"></use>
             </svg>
             رزرو میز
-        </li>
-        <li data-id="basket"
-            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
-            <svg class="w-6 xl:w-7 h-6 xl:h-7">
-                <use href="#open-reserve"></use>
-            </svg>
-            سبد خرید
         </li>
     </ul>
 </header>
@@ -239,7 +235,6 @@
                         <tr class="">
                             <th>ویرایش</th>
                             <th>حذف</th>
-                            <th class="hidden md:table-cell">ایدی</th>
                             <th>نام کامل</th>
                             <th>شماره تلفن</th>
                             <th>رمز ورود</th>
@@ -946,142 +941,6 @@
             </div>
         </div>
     </section>
-    <section id="basket" class="baskets panel-section">
-        <div class="container">
-            <div class="mt-10 md:mt-20">
-                <h3 class="text-lg md:text-2xl font-IRANSans-Bold mb-10 md:mb-20 relative">
-                    لیست خرید ها
-                </h3>
-                <div>
-                    <table class="w-full basket__table">
-                        <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Bold">
-                        <tr>
-                            <th>ویرایش</th>
-                            <th>حذف</th>
-                            <th class="hidden lg:table-cell">ایدی کالا</th>
-                            <th>تعداد</th>
-                            <th class="hidden lg:table-cell">ایدی کاربر</th>
-                            <th>تصویر</th>
-                            <th>وضعیت</th>
-                        </tr>
-                        </thead>
-                        <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="baskets-list">
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-700 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>457</td>
-                            <td>5</td>
-                            <td>128</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/category/fcake-png.png" alt="">
-                            </td>
-                            <td>پرداخت شده</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-700 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>457</td>
-                            <td>5</td>
-                            <td>128</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/category/fcake-png.png" alt="">
-                            </td>
-                            <td>پرداخت شده</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-700 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>457</td>
-                            <td>5</td>
-                            <td>128</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/category/fcake-png.png" alt="">
-                            </td>
-                            <td>پرداخت شده</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-700 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>457</td>
-                            <td>5</td>
-                            <td>128</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/category/fcake-png.png" alt="">
-                            </td>
-                            <td>پرداخت شده</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-700 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>457</td>
-                            <td>5</td>
-                            <td>128</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/category/fcake-png.png" alt="">
-                            </td>
-                            <td>پرداخت شده</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
 </main>
 
 <div id="users-modal"
@@ -1097,25 +956,25 @@
             <div class="grid grid-cols-2 grid-rows-3 gap-5">
                 <div class="form-group flex flex-col gap-y-1 w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="user-name">نام :</label>
-                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 text-sm md:text-base outline-none px-2"
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
                            type="text"
                            id="user-name" placeholder="حسین">
                 </div>
                 <div class="form-group flex flex-col gap-y-1 w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="user-lastname">نام خانوادگی :</label>
-                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 text-sm md:text-base outline-none px-2"
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
                            type="text"
                            id="user-lastname" placeholder="رستمی">
                 </div>
                 <div class="form-group flex flex-col gap-y-1 w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="user-phoneNumber">شماره تلفن :</label>
-                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 text-sm md:text-base outline-none px-2"
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
                            type="text"
                            id="user-phoneNumber" placeholder="09930094221">
                 </div>
                 <div class="form-group flex flex-col gap-y-1 w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="user-password">رمز ورود :</label>
-                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 text-sm md:text-base outline-none px-2"
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 text-sm md:text-base outline-none px-2"
                            type="text"
                            id="user-password" placeholder="Rostami8574">
                 </div>
@@ -1144,12 +1003,12 @@
             <div class="flex items-center gap-x-6 md:gap-x-10">
                 <div class="form-group flex flex-col w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="product-price">قیمت :</label>
-                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 outline-none px-2" type="text"
                            id="product-price" placeholder="345,000">
                 </div>
                 <div class="form-group flex flex-col w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="product-offer">تخفیف :</label>
-                    <input class="h-8 md:h-10 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                    <input class="h-8 md:h-10 bg-transparent border-b border-b-white/20 outline-none px-2" type="text"
                            id="product-offer" placeholder="24%">
                 </div>
             </div>
@@ -1198,17 +1057,17 @@
             <div class="flex items-center gap-x-10">
                 <div class="form-group flex flex-col gap-y-3 w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="comments-name">نام :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                    <input class="h-12 bg-transparent border-b border-b-white/20 outline-none px-2" type="text"
                            id="comments-name" placeholder="حسین">
                 </div>
                 <div class="form-group flex flex-col gap-y-3 w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="comments-lastname">نام خانوادگی :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                    <input class="h-12 bg-transparent border-b border-b-white/20 outline-none px-2" type="text"
                            id="comments-lastname" placeholder="رستمی">
                 </div>
                 <div class="form-group flex flex-col gap-y-3 w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="comments-mail">ایمیل :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                    <input class="h-12 bg-transparent border-b border-b-white/20 outline-none px-2" type="text"
                            id="comments-mail" placeholder="rostamiDev2002@gmail.com">
                 </div>
             </div>
@@ -1237,7 +1096,7 @@
             <div class="flex items-center gap-x-10">
                 <div class="form-group flex flex-col gap-y-3 w-full">
                     <label class="font-IRANSans-Medium text-sm md:text-base" for="edit-category-title">عنوان :</label>
-                    <input class="h-12 bg-transparent border-b border-b-gray-400 outline-none px-2" type="text"
+                    <input class="h-12 bg-transparent border-b border-b-white/20 outline-none px-2" type="text"
                            id="edit-category-title">
                 </div>
                 <div class="form-group inline-flex flex-col gap-y-3 w-full">

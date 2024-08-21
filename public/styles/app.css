@@ -882,10 +882,6 @@ video {
   opacity: 0 !important;
 }
 
-.edit__reserve--hidden {
-  height: 0 !important;
-}
-
 .reserve-time--hidden{
   height: 0 !important;
 }

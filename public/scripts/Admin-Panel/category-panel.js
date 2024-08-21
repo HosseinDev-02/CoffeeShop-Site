@@ -78,8 +78,8 @@ async function addCategoriesToDom() {
         let categoriesFragment = document.createDocumentFragment()
         allCategories.forEach(function (category) {
             let newCategoryRow = document.createElement('tr')
-            newCategoryRow.className = 'h-24 text-lg child:font-Shabnam-Medium'
-            newCategoryRow.innerHTML = `<tr class=""><td><span onclick=categoryEditModalHandler("${category[0]}") class="categories__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeCategory("${category[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${category[1].title}</td><td><img class="w-20 h-20 mx-auto object-cover" src="${category[1].img}" alt=""></td></tr>`
+            newCategoryRow.className = 'h-16 md:h-20'
+            newCategoryRow.innerHTML = `<tr class=""><td><span onclick=categoryEditModalHandler("${category[0]}") class="categories__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeCategory("${category[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${category[1].title}</td><td><img class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md" src="${category[1].img}" alt=""></td></tr>`
             categoriesFragment.append(newCategoryRow)
         })
         categoriesContainer.append(categoriesFragment)

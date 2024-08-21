@@ -22,7 +22,7 @@ async function addCommentsToDom() {
     if (allComments) {
         allComments.forEach(comment => {
             let newCommentRow = document.createElement('tr')
-            newCommentRow.className = 'h-24 text-lg child:font-Shabnam-Medium'
+            newCommentRow.className = 'h-16 md:h-20'
             if (comment[1].status) {
                 newCommentRow.innerHTML = `<td><span onclick='removeComment("${comment[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${comment[1].firstname} ${comment[1].lastname}</td><td>${comment[1].mail}</td><td class="max-w-[300px]"><p class="line-clamp-2 text-right">${comment[1].text}</p></td><td class='w-[152px]'><span onclick='commentCheck("${comment[0]}")' class="comments-status__icon text-indigo-600 cursor-pointer block comments-status--checked">تایید شد</span></td>`
                 commentsFragment.append(newCommentRow)

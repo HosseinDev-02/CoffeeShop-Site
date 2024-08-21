@@ -28,8 +28,8 @@ async function userListDomHandler() {
         let userFragment = document.createDocumentFragment()
         allUsers.forEach(user => {
             let newUserRow = document.createElement("tr")
-            newUserRow.className = "h-20 text-lg child:font-Shabnam-Bold"
-            newUserRow.innerHTML = `<td><span onclick='userModalHandler("${user[0]}")' class="users__edit text-green-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='userDelete("${user[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${user[0]}</td><td>${user[1].firstname}</td><td>${user[1].lastname}</td><td>${user[1].phone}</td><td>${user[1].password}</td><td>${user[1].isAdmin ? this.innerHTML = 'ادمین' : this.innerHTML = 'کاربر'}</td>`
+            newUserRow.className = "h-16 md:h-20"
+            newUserRow.innerHTML = `<td><span onclick='userModalHandler("${user[0]}")' class="users__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='userDelete("${user[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${user[1].firstname} ${user[1].lastname}</td><td>${user[1].phone}</td><td>${user[1].password}</td><td class="hidden md:table-cell">${user[1].isAdmin ? this.innerHTML = 'ادمین' : this.innerHTML = 'کاربر'}</td>`
             userFragment.append(newUserRow)
         })
         userContainer.append(userFragment)
@@ -106,7 +106,7 @@ async function editUserHandler() {
 // Users Panel Events
 
 window.addEventListener("load", async () => {
-    // await userListDomHandler()
+    await userListDomHandler()
 })
 usersModalBtn.addEventListener("click", function () {
     modalUserClose()

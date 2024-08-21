@@ -88,8 +88,8 @@ async function addProductsToDom() {
         let productFragment = document.createDocumentFragment()
         allProducts.forEach(product => {
             let newProductRow = document.createElement("tr")
-            newProductRow.className = 'h-24 text-lg child:font-Shabnam-Medium'
-            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td><img loading='lazy' class="mx-auto object-cover w-20 h-20" src="${product[1].img}" alt=""></td><td class="max-w-[300px]"><p class="line-clamp-2 text-right">${product[1].detail}</p></td><td>${product[1].price}</td><td>${product[1].offer}</td><td>${product[1].costPrice}</td><td>${product[1].view}</td>`
+            newProductRow.className = 'h-16 md:h-20'
+            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td><img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md" src="${product[1].img}" alt=""></td><td class="max-w-[300px]"><p class="line-clamp-2 text-right">${product[1].detail}</p></td><td>${product[1].price}</td><td>${product[1].offer}</td><td>${product[1].costPrice}</td><td>${product[1].view}</td>`
             productFragment.append(newProductRow)
         })
         productsContainer.append(productFragment)
