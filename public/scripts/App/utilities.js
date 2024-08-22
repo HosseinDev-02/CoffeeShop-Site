@@ -100,6 +100,9 @@ async function headerBasketPriceHandler() {
     totalBasketPrice.innerHTML = `${sumBasketPrice.toLocaleString()} تومان `
 }
 
+
+
+
 export {
     basketMinusCountAction,
     basketPlusCountAction,
