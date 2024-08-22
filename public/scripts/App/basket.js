@@ -2,6 +2,7 @@ const basketContainer = document.getElementById("basket-list")
 const basketCheckOutBtn = document.getElementById("basket-checkout-btn")
 const basketTotalPrice = document.getElementById("basket-total-price")
 const mobileBasketContainer = document.querySelector('#mobile-basket-list')
+import { basketMinusCountAction, basketPlusCountAction, userBasket, getAllBasket } from "./utilities.js";
 
 async function geaAllBaskets() {
     let fetchBaskets = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets.json')

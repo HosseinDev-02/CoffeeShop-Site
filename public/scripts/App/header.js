@@ -1,3 +1,4 @@
+import { basketMinusCountAction, basketPlusCountAction, headerBasketPriceHandler, totalBasketPrice, userBasket, getAllBasket } from "./utilities.js";
 
 const mobileMenuBtn = document.querySelector("#mobile-menu__btn")
 const mobileMenu = document.querySelector("#mobile-menu")
@@ -9,22 +10,10 @@ const indexRegisterBtn = document.querySelector("#index-register-btn")
 const basketCount = document.getElementById("basket-count")
 const headerBasketContainer = document.getElementById("header-basket-list")
 const basketBtn = document.getElementById("basket-btn")
-const totalBasketPrice = document.getElementById("total-basket-price")
 const basketHomeLink = document.getElementById("basket-home-link")
 const indexContactUsLink = document.getElementById("index-contactUs-link")
 
 
-async function getAllBasket (){
-    let fetchBaskets = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets.json')
-    let allBaskets = await fetchBaskets.json()
-    if(allBaskets){
-        return Object.entries(allBaskets)
-    }
-}
-async function userBasket () {
-    let allBaskets = await getAllBasket()
-    return allBaskets.filter(basket => basket[1].userId === userId)
-}
 async function addHeaderBasketToDom() {
     headerBasketContainer.innerHTML = ""
     let allBaskets = await getAllBasket()
@@ -47,7 +36,7 @@ async function addHeaderBasketToDom() {
                                     </a>
                                     <div class="flex items-end justify-between w-full">
                                         <div class="flex justify-between gap-x-1 bg-transparent border border-white/30 text-white rounded-md p-1">
-                                            <button onclick="basketMinusCountAction('${basket[0]}', addHeaderBasketToDom, headerBasketPriceHandler)" type="button" class="px-1">
+                                            <button onclick='basketMinusCountAction("${basket[0]}", addHeaderBasketToDom, headerBasketPriceHandler)' type="button" class="px-1">
                                                 <svg class="shrink-0 w-5 h-5">
                                                     <use href="#minus"></use>
                                                 </svg>
@@ -82,79 +71,7 @@ async function addHeaderBasketToDom() {
         basketCount.innerHTML = filteredUserBasket.length.toString()
     }
 }
-async function basketMinusCountAction(basketId, addBasketToDom, basketPriceHandler){
-    let allBaskets = await getAllBasket()
-    let mainBasket = allBaskets.find(basket => basket[0] === basketId)
 
-    let updateBasket = {
-        productId: mainBasket[1].productId,
-        userId: userId,
-        img: mainBasket[1].img,
-        detail: mainBasket[1].detail,
-        costPrice: mainBasket[1].costPrice,
-        price: mainBasket[1].price,
-        count: mainBasket[1].count - 1,
-        checkOut: mainBasket[1].checkOut
-    }
-    if (mainBasket[1].count === 1) {
-        try {
-            let fetchDeleteBasket = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basketId}.json`, {
-                method: 'DELETE'
-            })
-            console.log(fetchDeleteBasket)
-            Swal.fire({
-                title: 'محصول مورد نظر حذف شد',
-                icon: 'success'
-            })
-            await addBasketToDom()
-            await basketPriceHandler()
-        } catch (err) {
-            console.log(err, 'مشکلی در حذف محصول از سبد خرید رخ داد')
-        }
-    } else {
-        let fetchUpdateBasket = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basketId}.json`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateBasket)
-        })
-        console.log(fetchUpdateBasket)
-        await addBasketToDom()
-        await basketPriceHandler()
-    }
-}
-async function basketPlusCountAction(basketId, addBasketToDom, basketPriceHandler){
-    let allBasket = await getAllBasket()
-    let mainBasket = allBasket.find(basket => basket[0] === basketId)
-
-    let mainBasketPlus = {
-        productId: mainBasket[1].productId,
-        userId: userId,
-        img: mainBasket[1].img,
-        detail: mainBasket[1].detail,
-        costPrice: mainBasket[1].costPrice,
-        price: mainBasket[1].price,
-        count: mainBasket[1].count + 1,
-        checkOut: mainBasket[1].checkOut
-    }
-    let fetchUpdateBasket = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basketId}.json`, {
-        method: 'PUT',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(mainBasketPlus)
-    })
-    console.log(fetchUpdateBasket)
-    await addBasketToDom()
-    await basketPriceHandler()
-}
-async function headerBasketPriceHandler() {
-    let userBasketArray = await userBasket()
-    let sumBasketPrice = 0
-    userBasketArray.forEach(basket => sumBasketPrice += (basket[1].costPrice * basket[1].count))
-    totalBasketPrice.innerHTML = `${sumBasketPrice.toLocaleString()} تومان `
-}
 
 
 // Menu Events

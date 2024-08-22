@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'IRANSans';
+    src: url('./fonts/IRANSans/IRANSans.ttf') format("truetype");
+}
+
 * {
     outline: none !important;
     margin: 0;
@@ -33,27 +38,28 @@
     background: #1f2937;
 }
 
-.swal-modal {
+.swal2-modal {
     background-color: #09090b;
-    border: 3px solid #818cf8;
+    border: 2px solid #4f46e5;
 }
 
-.swal-title {
+.swal2-title {
     color: white;
+    /*font-family: 'IRANSans';*/
 }
 
-.swal-button--confirm {
+.swal2-info {
+    border-color: #4f46e5 !important;
+    color: #4f46e5 !important;
+}
+
+.swal2-confirm {
+    background-color: #4f46e5;
     padding: 8px 20px;
-    border-radius: 2px;
-    background-color: #6366f1;
-    font-size: 16px;
-    border: 1px solid #6366f1;
+    color: #fff;
 }
 
-.swal-button {
-
-}
-
-.swal-button--confirm:hover {
-
+.swal2-shown {
+    padding: 0 !important;
+    overflow: auto !important;
 }
