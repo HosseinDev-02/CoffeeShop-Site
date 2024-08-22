@@ -1752,33 +1752,33 @@
                     <form id="reserve-form" class="flex justify-center flex-col h-full gap-y-5" action="#">
                         <div class="font-IRANSans-Medium flex justify-between items-center">
                             <div class="w-[48%] flex flex-col">
-                                <label class="md:text-lg text-gray-400" for="reserve-firstname">نام و نام خانوادگی
+                                <label class="text-sm md:text-base text-gray-400" for="reserve-firstname">نام و نام خانوادگی
                                     :</label>
-                                <input class="bg-transparent text-sm md:text-base border-b border-b-white/30 p-2 outline-none text-white"
+                                <input class="bg-transparent text-sm md:text-base border-b border-b-white/30 p-2 outline-none text-gray-100"
                                        id="reserve-firstname" type="text">
                             </div>
                             <div class="w-[48%] flex flex-col">
-                                <label class="text-gray-400 md:text-lg" for="reserve-date">تاریخ :</label>
+                                <label class="text-gray-400 text-sm md:text-base" for="reserve-date">تاریخ :</label>
                                 <input data-jdp
-                                       class="bg-transparent text-sm md:text-base border-b border-b-white/30 p-2 outline-none text-white"
+                                       class="bg-transparent text-sm md:text-base border-b border-b-white/30 p-2 outline-none text-gray-100"
                                        id="reserve-date" type="text">
                             </div>
                         </div>
                         <div class="font-IRANSans-Medium flex justify-between items-center">
                             <div class="w-[48%] flex flex-col">
-                                <label class="text-gray-400 md:text-lg" for="reserve-time">ساعت :</label>
+                                <label class="text-gray-400 text-sm md:text-base" for="reserve-time">ساعت :</label>
                                 <div class="border-b border-b-white/30 p-2 relative">
                                     <div id="reserve-time-input-btn"
                                          class="flex items-center justify-between gap-x-2 h-full">
                                         <span>
                                             <svg id="reserve-time-icon"
-                                                 class="w-6 h-6 transition-all duration-300 rotate-180">
+                                                 class="w-6 h-6 transition-all duration-300">
                                                 <use href="#arrow-down"></use>
                                             </svg>
                                         </span>
                                         <span id="reserve-time" class="inline-block dir-ltr">11 : 30</span>
                                     </div>
-                                    <ul class="reserve-time overflow-hidden transition-all duration-300 absolute left-0 right-0 top-full bg-gray-100 text-zinc-800 rounded-md flex flex-col gap-y-0.5 h-[208px] child-hover:bg-gray-400 child:cursor-pointer child:rounded-md child:leading-10 child:px-3 dir-ltr reserve-time--hidden">
+                                    <ul class="reserve-time overflow-hidden transition-all duration-300 absolute left-0 right-0 top-full bg-zinc-950 border-y-[3px] border-y-indigo-400 text-gray-300 rounded-md flex flex-col gap-y-0.5 h-[208px] child-hover:text-indigo-400 child-hover:bg-zinc-800 child:cursor-pointer child:rounded-md child:leading-10 child:px-3 dir-ltr reserve-time--hidden">
                                         <li class="book__times">10 : 00</li>
                                         <li class="book__times">11 : 30</li>
                                         <li class="book__times">12 : 00</li>
@@ -1788,8 +1788,8 @@
                                 </div>
                             </div>
                             <div class="flex w-[48%] flex-col gap-y-1">
-                                <label class="text-gray-400 md:text-lg" for="reserve-phone">شماره تماس :</label>
-                                <input class="bg-transparent text-sm md:text-base border-b border-b-white/30 p-2 outline-none dir-ltr text-white"
+                                <label class="text-gray-400 text-sm md:text-base" for="reserve-phone">شماره تماس :</label>
+                                <input class="bg-transparent text-sm md:text-base border-b border-b-white/30 p-2 outline-none dir-ltr text-gray-100"
                                        id="reserve-phone" type="text" placeholder="09**">
                             </div>
                         </div>
@@ -1909,9 +1909,10 @@
 <script type="text/javascript" src="scripts/App/categories.js"></script>
 <script type="text/javascript" src="scripts/App/blogs.js"></script>
 <script type="text/javascript" src="scripts/App/app.js"></script>
-<script type="text/javascript" src="scripts/App/header.js"></script>
+<script type="module" src="scripts/App/header.js"></script>
 <script type="text/javascript" src="scripts/App/products.js"></script>
 <script src="./scripts/swiper-bundle.min.js"></script>
+<script src="./scripts/sweetalert.min.js"></script>
 <script type="text/javascript">
     const swiper = new Swiper(".mySwiper", {
         loop: true,

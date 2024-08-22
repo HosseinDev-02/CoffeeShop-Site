@@ -219,6 +219,7 @@
     }
     .reserve-time--hidden{
         height: 0 !important;
+        border: none !important;
     }
     .reserve-modal-time--hidden{
         height: 0 !important;

@@ -1,14 +1,12 @@
-const menuItems = document.querySelectorAll(".menu__item")
+import { showSwal } from "./utilities.js";
+
 const mobileMenuBtn = document.querySelector("#mobile-menu__btn")
 const mobileMenu = document.querySelector("#mobile-menu")
 const subMenuBtn = document.querySelector("#sub-menu__btn")
 const subMenu = document.querySelector(".sub-menu")
 const mobilMenuItems = document.querySelectorAll(".mobile-menu__item")
-const adminPanelBtn = document.getElementById("admin-panel-btn")
 const adminPanelLink = document.getElementById("admin-panel-link")
 const indexRegisterBtn = document.querySelector("#index-register-btn")
-const contactUsBtn = document.querySelector("#contact-us-btn")
-// basket variable
 const basketCount = document.getElementById("basket-count")
 const headerBasketContainer = document.getElementById("header-basket-list")
 const basketBtn = document.getElementById("basket-btn")
@@ -16,19 +14,6 @@ const totalBasketPrice = document.getElementById("total-basket-price")
 const basketHomeLink = document.getElementById("basket-home-link")
 const indexContactUsLink = document.getElementById("index-contactUs-link")
 
-
-// Users variable
-
-// function separate(number) {
-//     let y = number
-//     let rgx = /(\d+)(\d{3})/;
-//     while (rgx.test(y)){
-//         y = y.replace(rgx, '$1' + ',' + '$2');
-//     }
-//     return y
-// }
-
-// Basket Functions
 
 async function getAllBasket (){
     let fetchBaskets = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets.json')
@@ -118,7 +103,10 @@ async function basketMinusCountAction(basketId, addBasketToDom, basketPriceHandl
                 method: 'DELETE'
             })
             console.log(fetchDeleteBasket)
-            alert('محصول مورد نظر حذف شد')
+            showSwal({
+                title: 'محصول مورد نظر حذف شد',
+                icon: 'success'
+            })
             await addBasketToDom()
             await basketPriceHandler()
         } catch (err) {
@@ -184,7 +172,7 @@ basketBtn.addEventListener("click", (e) => {
     if(userId){
         location.href = `basket.html?id=${userId}`
     }else{
-        alert('ابتدا وارد شوید')
+        showSwal('ابتدا وارد شوید', 'info', 'فهمیدم', () => {})
     }
 })
 indexRegisterBtn.addEventListener("click", e => {
@@ -230,29 +218,9 @@ window.addEventListener("load", async () => {
     if (userId) {
         let allUsersArray = await getAllUsers()
         let isAdminLogin = allUsersArray.some(user => user[0] === userId && user[1].isAdmin === true)
-        // if (isAdminLogin) {
-        //     adminPanelBtn.classList.add("block")
-        //     adminPanelBtn.classList.remove("hidden")
-        // } else {
-        //     adminPanelBtn.classList.add("hidden")
-        //     adminPanelBtn.classList.remove("block")
-        // }
         indexRegisterBtn.innerHTML = 'خروج'
     } else {
-        // adminPanelBtn.classList.add("hidden")
         indexRegisterBtn.innerHTML = 'ورود / ثبت نام'
     }
-    // if(locationHref.includes('comments')){
-    //     document.querySelector(".menu__item--active").classList.remove("menu__item--active")
-    //     contactUsBtn.classList.add('menu__item--active')
-    // }
-})
-indexContactUsLink.addEventListener("click", e => {
-    // e.preventDefault()
-    // if(userId){
-    //     location.href = `http://localhost:3000/comments.html?id=${userId}`
-    // }else{
-    //     alert('ابتدا وارد شوید')
-    // }
 })
 

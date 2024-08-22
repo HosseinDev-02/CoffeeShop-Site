@@ -36,5 +36,5 @@ async function addCategoriesToDom() {
 
 
 window.addEventListener('load', async () => {
-    // await addCategoriesToDom()
+    await addCategoriesToDom()
 })

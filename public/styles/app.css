@@ -884,6 +884,7 @@ video {
 
 .reserve-time--hidden{
   height: 0 !important;
+  border: none !important;
 }
 
 .reserve-modal-time--hidden{
@@ -1682,8 +1683,17 @@ video {
   border-bottom-width: 3px;
 }
 
+.border-y-2 {
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+}
+
 .border-b {
   border-bottom-width: 1px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
 }
 
 .border-l {
@@ -1750,9 +1760,9 @@ video {
   border-bottom-color: rgb(129 140 248 / var(--tw-border-opacity));
 }
 
-.border-b-gray-400 {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(156 163 175 / var(--tw-border-opacity));
+.border-y-\[\] {
+  border-top-color: ;
+  border-bottom-color: ;
 }
 
 .border-b-indigo-400 {
@@ -2284,6 +2294,10 @@ video {
   transition-duration: 300ms;
 }
 
+.ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
 .dir-ltr{
   direction: ltr;
 }
@@ -2385,10 +2399,6 @@ video {
   padding-right: 0.75rem;
 }
 
-.child\:font-Shabnam-Bold > * {
-  font-family: Shabnam Bold;
-}
-
 .child\:font-Shabnam-Medium > * {
   font-family: Shabnam Medium;
 }
@@ -2410,6 +2420,11 @@ video {
 .child-hover\:bg-gray-400 > *:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
+.child-hover\:bg-zinc-800 > *:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(39 39 42 / var(--tw-bg-opacity));
 }
 
 .child-hover\:text-indigo-400 > *:hover {
