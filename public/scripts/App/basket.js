@@ -2,6 +2,7 @@ const basketContainer = document.getElementById("basket-list")
 const basketCheckOutBtn = document.getElementById("basket-checkout-btn")
 const basketTotalPrice = document.getElementById("basket-total-price")
 const mobileBasketContainer = document.querySelector('#mobile-basket-list')
+
 import { basketMinusCountAction, basketPlusCountAction, userBasket, getAllBasket } from "./utilities.js";
 
 async function geaAllBaskets() {
@@ -108,11 +109,13 @@ function userBasketCheckOut() {
     setBasketToLocal(allBasket)
 }
 
-async function basketPriceHandler() {
+const basketPriceHandler = () => {
     let sumBasketPrice = 0
-    let userBasketArray = await userBasket()
-    userBasketArray.forEach(basket => sumBasketPrice += (basket[1].costPrice * basket[1].count))
-    basketTotalPrice.innerHTML = `${sumBasketPrice.toLocaleString()} تومان`
+    let userBasketArray = userBasket()
+        .then(userBasketArray => {
+            userBasketArray.forEach(basket => sumBasketPrice += (basket[1].costPrice * basket[1].count))
+            basketTotalPrice.innerHTML = `${sumBasketPrice.toLocaleString()} تومان`
+        })
 }                              
 
 //=========================================================================================================================
