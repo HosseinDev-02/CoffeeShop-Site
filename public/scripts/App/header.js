@@ -1,4 +1,3 @@
-import { showSwal } from "./utilities.js";
 
 const mobileMenuBtn = document.querySelector("#mobile-menu__btn")
 const mobileMenu = document.querySelector("#mobile-menu")
@@ -103,7 +102,7 @@ async function basketMinusCountAction(basketId, addBasketToDom, basketPriceHandl
                 method: 'DELETE'
             })
             console.log(fetchDeleteBasket)
-            showSwal({
+            Swal.fire({
                 title: 'محصول مورد نظر حذف شد',
                 icon: 'success'
             })
@@ -172,7 +171,11 @@ basketBtn.addEventListener("click", (e) => {
     if(userId){
         location.href = `basket.html?id=${userId}`
     }else{
-        showSwal('ابتدا وارد شوید', 'info', 'فهمیدم', () => {})
+        Swal.fire({
+            title: 'ابتدا وارد شوید',
+            icon: 'info',
+            confirmButtonText: 'فهمیدم'
+        })
     }
 })
 indexRegisterBtn.addEventListener("click", e => {
