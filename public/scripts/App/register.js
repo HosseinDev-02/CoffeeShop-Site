@@ -70,22 +70,6 @@ registerPassIcons.forEach(item => {
     })
 })
 
-// registerPassIcon.addEventListener("click", function () {
-//     registerPassIcon.classList.toggle("register-pass--show")
-//     if (userPassword.getAttribute("type") === "text") {
-//         userPassword.setAttribute("type", "password")
-//     } else {
-//         userPassword.setAttribute("type", "text")
-//     }
-// })
-// registerRepeatPassIcon.addEventListener("click", function () {
-//     registerRepeatPassIcon.classList.toggle("register-repeat-pass--show")
-//     if (userRepeatPassword.getAttribute("type") === "text") {
-//         userRepeatPassword.setAttribute("type", "password")
-//     } else {
-//         userRepeatPassword.setAttribute("type", "text")
-//     }
-// })
 userRegisterBtn.addEventListener("click", async () => {
     await userRegisterHandler()
 })

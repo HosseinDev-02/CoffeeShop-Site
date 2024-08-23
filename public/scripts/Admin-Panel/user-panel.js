@@ -21,32 +21,60 @@ async function getAllUsers() {
     }
 }
 
-async function userListDomHandler() {
-    let allUsers = await getAllUsers()
-    userContainer.innerHTML = ""
-    if (allUsers) {
-        let userFragment = document.createDocumentFragment()
-        allUsers.forEach(user => {
-            let newUserRow = document.createElement("tr")
-            newUserRow.className = "h-16 md:h-20"
-            newUserRow.innerHTML = `<td><span onclick='userModalHandler("${user[0]}")' class="users__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='userDelete("${user[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${user[1].firstname} ${user[1].lastname}</td><td>${user[1].phone}</td><td>${user[1].password}</td><td class="hidden md:table-cell">${user[1].isAdmin ? this.innerHTML = 'ادمین' : this.innerHTML = 'کاربر'}</td>`
-            userFragment.append(newUserRow)
+const userListDomHandler = () => {
+    let allUsers = getAllUsers()
+        .then(allUsers => {
+            if (allUsers) {
+                let userFragment = document.createDocumentFragment()
+                userContainer.innerHTML = ""
+                allUsers.forEach(user => {
+                    let newUserRow = document.createElement("tr")
+                    newUserRow.className = "h-16 md:h-20"
+                    newUserRow.innerHTML = `<td><span onclick='userModalHandler("${user[0]}")' class="users__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='userDelete("${user[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td>${user[1].firstname} ${user[1].lastname}</td><td>${user[1].phone}</td><td>${user[1].password}</td><td class="hidden md:table-cell">${user[1].isAdmin ? this.innerHTML = 'ادمین' : this.innerHTML = 'کاربر'}</td>`
+                    userFragment.append(newUserRow)
+                })
+                userContainer.append(userFragment)
+            }
         })
-        userContainer.append(userFragment)
-    }
 }
 
-async function userDelete(userId) {
-    try {
-        let fetchMainUser = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/users/${userId}.json`, {
-            method: "DELETE"
+const userDelete = (userId) => {
+    swal.fire({
+        title: 'از خذف این کاربر اطمینان دارید ؟',
+        icon: 'question',
+        confirmButtonText: 'بله',
+        showCancelButton: true,
+        cancelButtonText: 'خیر'
+    })
+        .then(res => {
+            if(res.isConfirmed) {
+                try {
+                    let fetchMainUser = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/users/${userId}.json`, {
+                        method: "DELETE"
+                    })
+                        .then(res => {
+                            if(res.ok) {
+                                swal.fire({
+                                    title: 'کاربر با موفقیت حذف شد',
+                                    icon: 'success',
+                                    confirmButtonText: 'ممنون'
+                                })
+                                    .then(res => {
+                                        if(res.isConfirmed) {
+                                            userListDomHandler()
+                                        }
+                                    })
+                            }
+                        })
+                } catch (err) {
+                    swal.fire({
+                        title: 'هنگام حذف کارب مشکلی رخ داد',
+                        icon: 'error',
+                        confirmButtonText: 'فهمیدم'
+                    })
+                }
+            }
         })
-        console.log(fetchMainUser)
-        await userListDomHandler()
-    } catch (err) {
-        console.log("هنگام حذف کاربر مشکلی به وجود آمد", err)
-        alert("هنگام حذف کاربر مشکلی به وجود آمد")
-    }
 
 }
 
@@ -92,10 +120,22 @@ async function editUserHandler() {
             },
             body: JSON.stringify(mainUpdateUser)
         })
-        console.log(mainUser)
-        alert("اطلاعات کاربر با موفقیت بروزرسانی شد")
-        await userListDomHandler()
-        modalUserClose()
+            .then(res => {
+                if(res.ok) {
+                    swal.fire({
+                        title: 'اطلاعات کاربر بروز شد',
+                        icon: 'success',
+                        confirmButtonText: 'ممنون'
+                    })
+                        .then(res => {
+                            if(res.isConfirmed) {
+                                userListDomHandler()
+                                modalUserClose()
+                            }
+                        })
+                }
+            })
+
     } catch (err) {
         console.log("در آپدیت اطلاعات کاربر مشکلی بوجود آمد", err)
         alert("مشکلی در آپدیت اطلاعات کاربر بوجود آمد")
@@ -106,7 +146,7 @@ async function editUserHandler() {
 // Users Panel Events
 
 window.addEventListener("load", async () => {
-    await userListDomHandler()
+    userListDomHandler()
 })
 usersModalBtn.addEventListener("click", function () {
     modalUserClose()
