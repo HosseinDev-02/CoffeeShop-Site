@@ -1,4 +1,3 @@
-
 const mobileMenuBtn = document.querySelector("#mobile-menu__btn")
 const mobileMenu = document.querySelector("#mobile-menu")
 const subMenuBtn = document.querySelector("#sub-menu__btn")
@@ -10,8 +9,8 @@ const basketBtn = document.getElementById("basket-btn")
 const basketHomeLink = document.getElementById("basket-home-link")
 const basketCount = document.getElementById("basket-count")
 const headerBasketContainer = document.getElementById("header-basket-list")
-
 const totalBasketPrice = document.getElementById("total-basket-price")
+
 
 async function getAllBasket (){
     let fetchBaskets = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets.json')
@@ -35,28 +34,42 @@ const basketMinusCountAction = (basketId, addBasketToDom, basketPriceHandler) =>
                 checkOut: mainBasket[1].checkOut
             }
             if (mainBasket[1].count === 1) {
-                try {
-                    let fetchDeleteBasket = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basketId}.json`, {
-                        method: 'DELETE'
+                    swal.fire({
+                        title: 'آیا از حذف این محصول اطمینان دارید ؟',
+                        icon: 'question',
+                        confirmButton: true,
+                        showCancelButton: true,
+                        cancelButtonText: 'خیر',
+                        confirmButtonText: 'بله'
                     })
                         .then(result => {
-                            if(result.ok) {
-                                console.log(fetchDeleteBasket)
-                                Swal.fire({
-                                    title: 'محصول مورد نظر حذف شد',
-                                    icon: 'success',
-                                    confirmButton: true,
-                                    cancelButton: true
-                                })
-                                    .then(result => console.log(result))
-                                addBasketToDom()
-                                basketPriceHandler()
+                            if(result.isConfirmed) {
+                                try {
+                                    let fetchDeleteBasket = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basketId}.json`, {
+                                        method: 'DELETE'
+                                    })
+                                        .then(result => {
+                                            if(result.ok) {
+                                                Swal.fire({
+                                                    title: 'محصول مورد نظر حذف شد',
+                                                    icon: 'success',
+                                                    confirmButton: true,
+                                                    cancelButton: true
+                                                })
+                                                addBasketToDom()
+                                                basketPriceHandler()
+                                            }
+                                        })
+                                } catch (err) {
+                                    swal.fire({
+                                        title: 'مشکلی در حذف محصول رخ داد',
+                                        icon: 'error',
+                                        confirmButtonText: 'فهمیدم'
+                                    })
+                                }
+
                             }
                         })
-
-                } catch (err) {
-                    console.log(err, 'مشکلی در حذف محصول از سبد خرید رخ داد')
-                }
             } else {
                 let fetchUpdateBasket = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basketId}.json`, {
                     method: 'PUT',
@@ -110,7 +123,6 @@ const userBasket = () => {
         })
     return allBaskets
 }
-
 const headerBasketPriceHandler = () => {
     let sumBasketPrice = 0
     userBasket()
@@ -121,7 +133,6 @@ const headerBasketPriceHandler = () => {
             }
         })
 }
-
 const addHeaderBasketToDom = () => {
     headerBasketContainer.innerHTML = ""
     let basketsArray = getAllBasket()
@@ -164,7 +175,18 @@ basketBtn.addEventListener("click", (e) => {
 indexRegisterBtn.addEventListener("click", e => {
     e.preventDefault()
     if (userId) {
-        location.href = 'index.html'
+        swal.fire({
+            title: 'آبا می خواهید خارج شوید ؟',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'بله',
+            cancelButtonText: 'خیر'
+        })
+            .then(res => {
+                if(res.isConfirmed) {
+                    location.href = 'index.html'
+                }
+            })
     }else{
         location.href = 'register.html'
     }
@@ -197,6 +219,7 @@ mobileMenuBtn.addEventListener("click", () => {
         subMenuBtn.classList.remove("text-indigo-400")
     }
 })
+
 addHeaderBasketToDom()
 
 window.addEventListener("load", async () => {

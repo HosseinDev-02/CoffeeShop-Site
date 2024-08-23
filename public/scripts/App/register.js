@@ -11,7 +11,11 @@ const registerRepeatPassIcon = document.querySelector(".register-repeat-pass__ic
 
 async function userRegisterHandler() {
     if (userPassword.value !== userRepeatPassword.value) {
-        alert("پسوورد و تکرار آن همخوانی ندارند !")
+        swal.fire({
+            title: 'پسوورد و تکرار آن همخوانی ندارند !',
+            icon: 'error',
+            confirmButtonText: 'فهمیدم'
+        })
     } else {
         let newUser = {
             firstname: userFirstname.value,
@@ -27,10 +31,21 @@ async function userRegisterHandler() {
             },
             body: JSON.stringify(newUser)
         })
-        console.log(fetchNewUser)
-        clearUserRegisterInputs()
-        alert('ثبت نام شما با موفقیت انجام شد')
-        location.href = 'login.html'
+            .then(res => {
+                if(res.ok) {
+                    clearUserRegisterInputs()
+                    swal.fire({
+                        title: 'ثبت نام شما با موفقیت انجام شد',
+                        icon: 'success',
+                        confirmButtonText: 'ممنون'
+                    })
+                        .then(res => {
+                            if(res.isConfirmed) {
+                                location.href = 'login.html'
+                            }
+                        })
+                }
+            })
     }
 
 }

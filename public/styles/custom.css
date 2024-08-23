@@ -59,6 +59,12 @@
     color: #fff;
 }
 
+.swal2-cancel {
+    background-color: #ef4444;
+    color: white;
+    padding: 8px 20px;
+}
+
 .swal2-shown {
     padding: 0 !important;
     overflow: auto !important;

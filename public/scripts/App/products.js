@@ -1,21 +1,8 @@
-// products variable
 
 const productLikeIcon = document.querySelectorAll(".product-like--icon")
 const productsContainer = document.getElementById("products-container")
-let allProductsArray = JSON.parse(localStorage.getItem("products"))
 const bestProductsContainer = document.getElementById("best-products-container")
 
-
-// Products Functions
-
-// function separate(number) {
-//     let y = number
-//     let rgx = /(\d+)(\d{3})/;
-//     while (rgx.test(y)) {
-//         y = y.replace(rgx, '$1' + ',' + '$2');
-//     }
-//     return y
-// }
 
 async function getAllProducts() {
     let fetchProducts = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products.json')
@@ -32,7 +19,6 @@ async function getAllBasket() {
         return Object.entries(allBaskets)
     }
 }
-
 
 async function addProductsToDom() {
     let allProducts = await getAllProducts()
@@ -65,12 +51,8 @@ async function addProductToBasket(productId) {
                     view: product[1].view + 1
                 }
                 mainProduct = product
-                console.log(mainProduct)
             }
         })
-
-        console.log(productId)
-
 
         let fetchUpdateProduct = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products/${productId}.json`, {
             method: "PATCH",
@@ -80,11 +62,9 @@ async function addProductToBasket(productId) {
             body: JSON.stringify(updateProductView)
         })
 
-        console.log('fetchUpdateProduct : ', fetchUpdateProduct)
-
         let allBaskets = await getAllBasket()
 
-            let mainBasketCount = null
+        let mainBasketCount = null
         let mainBasketId = null
         if (allBaskets) {
             let isOnBasket = allBaskets.some(basket => {
@@ -104,7 +84,17 @@ async function addProductToBasket(productId) {
                     },
                     body: JSON.stringify(mainBasketCount)
                 })
-                console.log('fetchUpdateBasket : ', fetchUpdateBasket)
+                    .then(res => {
+                        if(res.ok) {
+                            swal.fire({
+                                title: 'محصول مورد نظر به سبد خرید شما اضافه شد',
+                                icon: 'success',
+                                confirmButtonText: 'ممنون'
+                            })
+                            addHeaderBasketToDom()
+                            headerBasketPriceHandler()
+                        }
+                    })
             } else {
                 let newBasket = {
                     productId: productId,
@@ -124,7 +114,17 @@ async function addProductToBasket(productId) {
                     },
                     body: JSON.stringify(newBasket)
                 })
-                console.log('fetchBasket : ', fetchBasket)
+                    .then(res => {
+                        if(res.ok) {
+                            swal.fire({
+                                title: 'محصول مورد نظر به سبد خرید شما اضافه شد',
+                                icon: 'success',
+                                confirmButtonText: 'ممنون'
+                            })
+                            addHeaderBasketToDom()
+                            headerBasketPriceHandler()
+                        }
+                    })
             }
         } else {
             let newBasket = {
@@ -145,15 +145,29 @@ async function addProductToBasket(productId) {
                 },
                 body: JSON.stringify(newBasket)
             })
-            console.log('fetchBasket : ', fetchBasket)
+                .then(res => {
+                    if(res.ok) {
+                        swal.fire({
+                            title: 'محصول مورد نظر به سبد خرید شما اضافه شد',
+                            icon: 'success',
+                            confirmButtonText: 'ممنون'
+                        })
+                        addHeaderBasketToDom()
+                        headerBasketPriceHandler()
+                    }
+                })
         }
     } else {
-        alert("ابتدا وارد شوید !")
+        Swal.fire({
+            title: 'ابتدا وارد شوید',
+            icon: 'info',
+            confirmButtonText: 'فهمیدم'
+        })
     }
 }
 
 
-
 window.addEventListener("load", async () => {
+
     await addProductsToDom()
 })

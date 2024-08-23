@@ -17,8 +17,9 @@ const userPhoneElem = document.getElementById("forget-phone")
 const userPasswordElem = document.getElementById("reset-pass-password")
 const userRepeatPasswordElem = document.getElementById("reset-pass-repeat-password")
 const mainUserIdElem = document.getElementById("main-user-id")
-const loginPassIcon = document.querySelector(".login-pass__icon")
+const loginPassIcons = document.querySelectorAll(".login-pass__icon")
 let mainUserId = null;
+const loginPasswordInputs = document.querySelectorAll('.password__input')
 
 
 async function loginUser() {
@@ -30,13 +31,23 @@ async function loginUser() {
             return true
         }
     })
-    console.log(isRegistered)
-    console.log(mainUser)
     if (isRegistered) {
-        location.href = `index.html?id=${mainUser[0]}`
-        alert("شما با موفقیت وارد شدید")
+        swal.fire({
+            title: 'شما با موفقیت وارد شدید',
+            icon: 'success',
+            confirmButtonText: 'ممنون'
+        })
+            .then(res => {
+                if(res.isConfirmed) {
+                    location.href = `index.html?id=${mainUser[0]}`
+                }
+            })
     } else {
-        alert("کاربری با این شماره وجود ندارد !")
+        swal.fire({
+            title: 'کاربری با این مشخصات وجود ندارد !',
+            icon: 'error',
+            confirmButtonText: 'فهمیدم'
+        })
     }
 }
 
@@ -78,7 +89,11 @@ async function checkUserPhone() {
         loginModal.classList.add("modal-phone--hidden")
         resetPassModal.classList.remove("modal-reset-pass--hidden")
     } else {
-        alert("کاربری با این شماره وجود ندارد !")
+        swal.fire({
+            title: 'کاربری با این شماره وجود ندارد !',
+            icon: 'error',
+            confirmButtonText: 'فهمیدم'
+        })
     }
 
 }
@@ -97,26 +112,38 @@ async function resetPassword() {
             },
             body: JSON.stringify(updateUserPass)
         })
-        console.log(fetchUpdateUser)
-        loginCover.classList.add("cover-login--hidden")
-        loginModal.classList.add("modal-phone--hidden")
-        resetPassModal.classList.add("modal-reset-pass--hidden")
-        alert('رمز شما با موفقیت تغییر کرد')
-        loginFormShow()
+        swal.fire({
+            title: 'رمز شما با موفقیت تغییر کرد',
+            icon: 'success',
+            confirmButtonText: 'ممنون'
+        })
+            .then(res => {
+                if(res.isConfirmed) {
+                    loginCover.classList.add("cover-login--hidden")
+                    loginModal.classList.add("modal-phone--hidden")
+                    resetPassModal.classList.add("modal-reset-pass--hidden")
+                    loginFormShow()
+                }
+            })
     } else {
-        alert("رمز و تکرار آن همخوانی ندارند !")
+        swal.fire({
+            title: 'رمز و تکرار آن همخوانی ندارند !',
+            icon: 'error',
+            confirmButtonText: 'فهمیدم'
+        })
     }
 
 }
 
-
-loginPassIcon.addEventListener("click", function () {
-    loginPassIcon.classList.toggle("login-pass--show")
-    if (loginPassword.getAttribute("type") === "text") {
-        loginPassword.setAttribute("type", "password")
-    } else {
-        loginPassword.setAttribute("type", "text")
-    }
+loginPassIcons.forEach(item => {
+    item.addEventListener("click", function () {
+        item.classList.toggle("login-pass--show")
+        if (item.previousElementSibling.getAttribute("type") === "text") {
+            item.previousElementSibling.setAttribute("type", "password")
+        } else {
+            item.previousElementSibling.setAttribute("type", "text")
+        }
+    })
 })
 forgetPasswordBtn.addEventListener("click", function (e) {
     e.preventDefault()
