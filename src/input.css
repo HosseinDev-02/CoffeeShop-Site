@@ -228,28 +228,22 @@
         @apply opacity-0 invisible
     }
     .eye__icon{
-        display: none;
-    }
-    .eye-slash__icon{
         display: inline;
     }
+    .eye-slash__icon{
+        display: none;
+    }
     .register-pass--show .eye__icon{
-        display: inline !important;
+        display: none !important;
     }
     .register-pass--show .eye-slash__icon{
-        display: none !important;
-    }
-    .register-repeat-pass--show .eye__icon{
         display: inline !important;
-    }
-    .register-repeat-pass--show .eye-slash__icon{
-        display: none !important;
     }
     .login-pass--show .eye__icon{
-        display: inline !important;
+        display: none !important;
     }
     .login-pass--show .eye-slash__icon{
-        display: none !important;
+        display: inline !important;
     }
     .modal-reset-pass--hidden{
         @apply opacity-0 invisible

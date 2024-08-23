@@ -5,8 +5,8 @@ const userLastname = document.getElementById("user-lastname")
 const userPhoneNumber = document.getElementById("user-phone-number")
 const userPassword = document.getElementById("user-password")
 const userRepeatPassword = document.getElementById("user-r-password")
-const registerPassIcon = document.querySelector(".register-pass__icon")
-const registerRepeatPassIcon = document.querySelector(".register-repeat-pass__icon")
+const registerPassIcons = document.querySelectorAll(".register-pass__icon")
+// const registerRepeatPassIcon = document.querySelector(".register-repeat-pass__icon")
 
 
 async function userRegisterHandler() {
@@ -59,22 +59,33 @@ function clearUserRegisterInputs() {
 
 // Register Events
 
-registerPassIcon.addEventListener("click", function () {
-    registerPassIcon.classList.toggle("register-pass--show")
-    if (userPassword.getAttribute("type") === "text") {
-        userPassword.setAttribute("type", "password")
-    } else {
-        userPassword.setAttribute("type", "text")
-    }
+registerPassIcons.forEach(item => {
+    item.addEventListener("click", function () {
+        item.classList.toggle("register-pass--show")
+        if (item.previousElementSibling.getAttribute("type") === "text") {
+            item.previousElementSibling.setAttribute("type", "password")
+        } else {
+            item.previousElementSibling.setAttribute("type", "text")
+        }
+    })
 })
-registerRepeatPassIcon.addEventListener("click", function () {
-    registerRepeatPassIcon.classList.toggle("register-repeat-pass--show")
-    if (userRepeatPassword.getAttribute("type") === "text") {
-        userRepeatPassword.setAttribute("type", "password")
-    } else {
-        userRepeatPassword.setAttribute("type", "text")
-    }
-})
+
+// registerPassIcon.addEventListener("click", function () {
+//     registerPassIcon.classList.toggle("register-pass--show")
+//     if (userPassword.getAttribute("type") === "text") {
+//         userPassword.setAttribute("type", "password")
+//     } else {
+//         userPassword.setAttribute("type", "text")
+//     }
+// })
+// registerRepeatPassIcon.addEventListener("click", function () {
+//     registerRepeatPassIcon.classList.toggle("register-repeat-pass--show")
+//     if (userRepeatPassword.getAttribute("type") === "text") {
+//         userRepeatPassword.setAttribute("type", "password")
+//     } else {
+//         userRepeatPassword.setAttribute("type", "text")
+//     }
+// })
 userRegisterBtn.addEventListener("click", async () => {
     await userRegisterHandler()
 })
