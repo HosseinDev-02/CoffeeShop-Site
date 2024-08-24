@@ -113,7 +113,11 @@ async function removeReserve(reserveId){
     // }catch (err){
     //     console.log(err, 'مشکلی در حذف رزرو میز بوجود آمد')
     // }
-    alert('پروژه بک اند ندارد')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 }
 async function addNewReserve(){
     try {
@@ -198,7 +202,11 @@ window.addEventListener("load", async () => {
 })
 reserveModalSubmitBtn.addEventListener("click", async () => {
     // await editReserve()پ
-    alert('پروژه بک اند ندارد')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 })
 reserveModalTimes.forEach(function (item){
     item.addEventListener("click", function (){
@@ -216,7 +224,11 @@ reserveModalForm.addEventListener("submit", function (e){
 })
 reserveContentSubmitBtn.addEventListener("click", async () => {
     // await addNewReserve()
-    alert('پروژه بک اند ندارد')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 })
 reserveContentTimeItems.forEach(function (item) {
     item.addEventListener("click", function () {

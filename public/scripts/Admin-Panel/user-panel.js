@@ -40,7 +40,7 @@ const userListDomHandler = () => {
 
 const userDelete = (userId) => {
     swal.fire({
-        title: 'از خذف این کاربر اطمینان دارید ؟',
+        title: 'از حذف این کاربر اطمینان دارید ؟',
         icon: 'question',
         confirmButtonText: 'بله',
         showCancelButton: true,

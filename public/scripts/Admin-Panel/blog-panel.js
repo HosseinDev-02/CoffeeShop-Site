@@ -151,7 +151,11 @@ async function removeBlogs(blogId) {
     // } catch (err) {
     //     console.log(err, 'مشکلی در حذف مقاله بوجود آمد')
     // }
-    alert('پروژه بک اند ندارد !')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 }
 
 async function editBlogsModalHandler(blogId) {
@@ -222,7 +226,11 @@ blogsEditBtn.forEach(function (icon) {
 
 addBlogsBtn.addEventListener("click", async () => {
     // await addNewBlog()
-    alert('پروژه بک اند ندارد !')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 })
 
 
@@ -246,5 +254,9 @@ editBlogsImageInput.addEventListener("change", function (e) {
 
 editBlogBtn.addEventListener("click", async () => {
     // await editBlogsHandler()
-    alert('پروژه بک اند ندارد !')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 })

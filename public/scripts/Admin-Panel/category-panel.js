@@ -55,7 +55,6 @@ async function addNewCategory() {
 
 function clearAddCategoriesInputs() {
     addCategoryTitle.value = ""
-    // addCategoryImage.removeAttribute("src")
 }
 
 function addCategoriesModalHandler() {
@@ -98,7 +97,11 @@ async function removeCategory(categoryId) {
     //     console.log(err, 'مشکلی در حذف دسته بندی مورد نظر بوجود آمد')
     //     alert('مشکلی در حذف دسته بندی مورد نظر بوجود آمد')
     // }
-    alert('پروژه بک اند ندارد !')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 }
 
 
@@ -164,11 +167,19 @@ categoriesEditIcons.forEach(function (icon) {
 })
 categoryEditBtn.addEventListener("click", async () => {
     // await categoryEdit()
-    alert('پروژه بک اند ندارد !')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 })
 addNewCategoryBtn.addEventListener("click", async () => {
     // await addNewCategory()
-    alert('پروژه بک اند ندارد !')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 })
 addCategoryForm.addEventListener("submit", function (e) {
     e.preventDefault()

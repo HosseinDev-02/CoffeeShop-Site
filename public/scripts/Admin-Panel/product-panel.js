@@ -53,13 +53,12 @@ async function getAllProducts() {
         return Object.entries(allProducts)
     }
 }
-
 async function addNewProduct() {
     try {
         let productObj = {
             detail: addProductsDescriptionElem.value,
-            price: addProductsPriceElem.value,
-            offer: addProductsOfferElem.value,
+            price: +addProductsPriceElem.value,
+            offer: +addProductsOfferElem.value,
             costPrice: addProductsPriceElem.value - (addProductsOfferElem.value / 100 * addProductsPriceElem.value),
             img: img.src,
             view: 0
@@ -80,7 +79,6 @@ async function addNewProduct() {
         alert("مشکلی در  افزودن محصول بوجود امد")
     }
 }
-
 async function addProductsToDom() {
     let allProducts = await getAllProducts()
     productsContainer.innerHTML = ""
@@ -89,14 +87,12 @@ async function addProductsToDom() {
         allProducts.forEach(product => {
             let newProductRow = document.createElement("tr")
             newProductRow.className = 'h-16 md:h-20'
-            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td><img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md" src="${product[1].img}" alt=""></td><td class="max-w-[300px]"><p class="line-clamp-2 text-right">${product[1].detail}</p></td><td>${product[1].price}</td><td>${product[1].offer}</td><td>${product[1].costPrice}</td><td>${product[1].view}</td>`
+            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td><img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md" src="${product[1].img}" alt=""></td><td class="max-w-[300px] hidden lg:table-cell"><p class="line-clamp-2 text-right">${product[1].detail}</p></td><td>${product[1].price.toLocaleString()}</td><td>${product[1].offer}%</td><td>${product[1].costPrice.toLocaleString()}</td><td class="hidden lg:table-cell">${product[1].view}</td>`
             productFragment.append(newProductRow)
         })
         productsContainer.append(productFragment)
     }
 }
-
-
 async function productModalHandler(productId) {
     let mainProduct = await getAllProducts()
     mainProduct.forEach(product => {
@@ -111,7 +107,6 @@ async function productModalHandler(productId) {
     })
     modalProductsOpen()
 }
-
 async function editProductHandler() {
     try {
         console.log(img)
@@ -140,7 +135,6 @@ async function editProductHandler() {
     }
 
 }
-
 async function removeProductHandler(productId) {
     // try {
     //     let mainRemoveProduct = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products/${productId}.json`, {
@@ -152,7 +146,11 @@ async function removeProductHandler(productId) {
     //     console.log(err, "هنگام حذف محصول مشکلی بوجود آمد")
     //     alert("هنگام حذف محصول مشکلی بوجود آمد")
     // }
-    alert('پروژه بک اند ندارد !')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 }
 
 
@@ -166,12 +164,15 @@ addProductsBtn.addEventListener("click", function () {
     coverElem.classList.remove("cover--hidden")
 })
 editProductsBtn.addEventListener("click", async () => {
-    alert('پروژه بک اند ندارد !')
-    await editProductHandler()
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
+    // await editProductHandler()
 })
 editProductsModalBtn.addEventListener("click", function () {
-    alert('پروژه بک اند ندارد !')
-    // modalProductsClose()
+    modalProductsClose()
 })
 editProductsImageElem.addEventListener("change", function (e) {
     img = new Image()
@@ -202,6 +203,10 @@ addProductsImageElem.addEventListener("change", function (e) {
 })
 addProductsModalBtn.addEventListener("click", async () => {
     // await addNewProduct()
-    alert('پروژه بک اند ندارد !')
+    swal.fire({
+        title: 'فقط قسمت کاربران بک اند دارد',
+        icon: 'info',
+        confirmButtonText: 'فهمیدم'
+    })
 })
 editProductForm.addEventListener("submit", e => e.preventDefault())

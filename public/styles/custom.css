@@ -45,27 +45,94 @@
 
 .swal2-title {
     color: white;
-    /*font-family: 'IRANSans';*/
+    font-size: 18px;
 }
 
-.swal2-info {
-    border-color: #4f46e5 !important;
-    color: #4f46e5 !important;
+.swal2-cancel,
+.swal2-confirm{
+    padding: 4px 12px;
+    font-size: 14px;
 }
 
 .swal2-confirm {
     background-color: #4f46e5;
-    padding: 8px 20px;
     color: #fff;
+}
+
+.swal2-icon {
+    width: 3em;
+    height: 3em;
+    margin-top: 1.5rem;
+    border-width: 0.15em;
+    border-color: #4f46e5 !important;
+    color: #4f46e5 !important;
+}
+
+.swal2-icon-content {
+    font-size: 2em !important;
 }
 
 .swal2-cancel {
     background-color: #ef4444;
     color: white;
-    padding: 8px 20px;
 }
 
 .swal2-shown {
     padding: 0 !important;
     overflow: auto !important;
+}
+
+.swal2-html-container {
+    color: #d1d5db !important;
+    font-size: 14px !important;
+}
+
+@media screen and (min-width: 768px){
+    .swal2-cancel,
+    .swal2-confirm{
+        padding: 6px 16px;
+        font-size: 16px;
+    }
+    .swal2-icon {
+        width: 4em;
+        height: 4em;
+        margin-top: 2rem;
+        border-width: 0.20em;
+    }
+    .swal2-title {
+        color: white;
+        font-size: 24px;
+    }
+    .swal2-icon-content {
+        font-size: 2.75em !important;
+    }
+
+    .swal2-html-container {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .swal2-cancel,
+    .swal2-confirm{
+        padding: 8px 20px;
+        font-size: 18px;
+    }
+    .swal2-icon {
+        width: 5em;
+        height: 5em;
+        margin-top: 2.75rem;
+        border-width: 0.25em;
+    }
+    .swal2-icon-content {
+        font-size: 3.75em !important;
+    }
+    .swal2-title {
+        color: white;
+        font-size: 26px;
+    }
+    .swal2-html-container {
+        font-size: 18px !important;
+    }
+
 }
