@@ -97,16 +97,14 @@ async function addBlogsToDom() {
                                     </span>
                             </td>
                             <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
+                                <img loading='lazy' class="mx-auto object-cover w-10 lg:w-16 h-10 lg:h-16 rounded-md"
                                      src="${blog[1].img}" alt="">
                             </td>
                             <td>${blog[1].title}</td>
-                            <td class="hidden lg:table-cell">
-                                <p class="line-clamp-2">
-                                    ${blog[1].text}
-                                </p>
+                            <td>
+                                <button onclick="showBlogText('${blog[1].text}')" class="bg-indigo-400 rounded py-1 md:py-2 px-2 md:px-4" type="button">نمایش</button>
                             </td>
-                            <td>${blog[1].date}</td>`
+                            <td class="hidden lg:table-cell">${blog[1].date}</td>`
 
             blogsFragment.append(newBlogsRow)
         })
@@ -194,6 +192,14 @@ async function editBlogsHandler() {
         console.log(err, 'هنگام بروزرسانی اطلاعات مقاله مورد نظر مشکلی بوجود آمد')
     }
 
+}
+
+const showBlogText = text => {
+    swal.fire({
+        text: text,
+        icon: 'info',
+        confirmButtonText: 'دیدم'
+    })
 }
 
 

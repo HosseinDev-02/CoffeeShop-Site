@@ -87,11 +87,18 @@ async function addProductsToDom() {
         allProducts.forEach(product => {
             let newProductRow = document.createElement("tr")
             newProductRow.className = 'h-16 md:h-20'
-            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td><img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md" src="${product[1].img}" alt=""></td><td class="max-w-[300px] hidden lg:table-cell"><p class="line-clamp-2 text-right">${product[1].detail}</p></td><td>${product[1].price.toLocaleString()}</td><td>${product[1].offer}%</td><td>${product[1].costPrice.toLocaleString()}</td><td class="hidden lg:table-cell">${product[1].view}</td>`
+            newProductRow.innerHTML = `<td><span onclick='productModalHandler("${product[0]}")' class="products__edit text-indigo-600 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#pencil"></use></svg></span></td><td><span onclick='removeProductHandler("${product[0]}")' class="text-red-700 cursor-pointer flex items-center justify-center"><svg class="w-6 h-6"><use href="#x-mark"></use></svg></span></td><td><img loading='lazy' class="mx-auto object-cover w-10 lg:w-16 h-10 lg:h-16 rounded-md" src="${product[1].img}" alt=""></td><td class="hidden lg:table-cell"><button onclick="showProductText('${product[1].detail}')" class="bg-indigo-400 rounded py-1 md:py-2 px-2 md:px-4" type="button">نمایش</button></td><td>${product[1].price.toLocaleString()}</td><td>${product[1].offer}%</td><td>${product[1].costPrice.toLocaleString()}</td><td class="hidden lg:table-cell">${product[1].view}</td>`
             productFragment.append(newProductRow)
         })
         productsContainer.append(productFragment)
     }
+}
+const showProductText = text => {
+    swal.fire({
+        text: text,
+        icon: 'info',
+        confirmButtonText: 'دیدم'
+    })
 }
 async function productModalHandler(productId) {
     let mainProduct = await getAllProducts()
