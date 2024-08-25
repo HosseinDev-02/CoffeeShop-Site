@@ -22,7 +22,6 @@ const addBasketToDom = () => {
                 let basketsFragment = document.createDocumentFragment()
                 let mobileBasketFrag = document.createDocumentFragment()
                 filteredUserBasket.forEach(function (basket) {
-                    console.log(basket)
                     if(!basket[1].checkOut) {
                         let newBasketRow = document.createElement('tr')
                         newBasketRow.className = 'border-b border-white/50'
@@ -126,6 +125,26 @@ function userBasketCheckOut() {
     })
         .then(res => {
             if(res.isConfirmed) {
+                let mainUpdateBasket;
+                let mainBasket = null
+                getAllBaskets()
+                    .then(allBaskets => {
+                        allBaskets.forEach(basket => {
+                            if(basket[1].userId === userId && basket[1].checkOut !== true) {
+                                mainUpdateBasket = {
+                                    checkOut: true
+                                }
+                                mainBasket = basket
+                            }
+                        })
+                    })
+                const fetchData = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${mainBasket[0]}.json`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(mainUpdateBasket)
+                })
                 swal.fire({
                     title: 'پرداخت شما انجام شد',
                     icon: 'success',
@@ -133,20 +152,7 @@ function userBasketCheckOut() {
                 })
                     .then(res => {
                         if(res.isConfirmed) {
-                            const allBasket = getAllBaskets()
-                                .then(allBasket => {
-                                    allBasket.forEach(function (basket) {
-                                        if (basket[1].userId === userId) {
-                                            basket[1].checkOut = true
-                                        }
-                                    })
-                                    let mainUserBasket = allBasket.filter(function (basket) {
-                                        if (basket.count !== 0 && +basket[1].userId === +userId && basket.checkOut !== true) {
-                                            return true
-                                        }
-                                    })
-                                    addBasketToDom()
-                                })
+                            addBasketToDom()
                         }
                     })
             }
@@ -158,7 +164,13 @@ const basketPriceHandler = () => {
     let userBasketArray = userBasket()
         .then(userBasketArray => {
             if(userBasketArray) {
-                userBasketArray.forEach(basket => sumBasketPrice += (basket[1].costPrice * basket[1].count))
+                userBasketArray.forEach(basket => {
+                    if(basket[1].userId === userId && basket[1].checkOut !== true) {
+                        sumBasketPrice += (basket[1].costPrice * basket[1].count)
+                    }else {
+                        sumBasketPrice = 0
+                    }
+                })
                 basketTotalPrice.innerHTML = `${sumBasketPrice.toLocaleString()} تومان`
             }
         })
@@ -168,8 +180,8 @@ const basketPriceHandler = () => {
 
 
 window.addEventListener("load", async () => {
-    await addBasketToDom()
-    await basketPriceHandler()
+    addBasketToDom()
+    basketPriceHandler()
 })
 
 basketCheckOutBtn.addEventListener("click", userBasketCheckOut)

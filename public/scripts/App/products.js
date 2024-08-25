@@ -80,7 +80,6 @@ const addBestProductsToDom = () => {
             if(products) {
                 let bestProducts = products.filter(product => product[1].view > 5)
                 bestProducts.slice(0, 10).forEach(product => {
-                    console.log(product)
                     bestProductsContainer.insertAdjacentHTML('beforeend', `<div class="swiper-slide"><div class="rounded-lg bg-zinc-900 overflow-hidden">
                             <a href="#"
                                class="flex items-center justify-center w-full h-[120px] sm:h-[160px] md:h-[200px] rounded-md overflow-hidden">
@@ -140,7 +139,6 @@ async function addProductToBasket(productId) {
                 mainProduct = product
             }
         })
-        console.log(mainProduct)
         let fetchUpdateProduct = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products/${productId}.json`, {
             method: "PATCH",
             headers: {
