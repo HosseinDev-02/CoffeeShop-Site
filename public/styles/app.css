@@ -2521,24 +2521,6 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-@media (min-width: 440px) {
-  .xs\:w-\[48\%\] {
-    width: 48%;
-  }
-
-  .xs\:flex-row {
-    flex-direction: row;
-  }
-
-  .xs\:items-center {
-    align-items: center;
-  }
-
-  .xs\:justify-between {
-    justify-content: space-between;
-  }
-}
-
 @media (min-width: 640px) {
   .sm\:mb-4 {
     margin-bottom: 1rem;
@@ -2554,14 +2536,6 @@ video {
 
   .sm\:mt-0\.5 {
     margin-top: 0.125rem;
-  }
-
-  .sm\:inline-block {
-    display: inline-block;
-  }
-
-  .sm\:h-12 {
-    height: 3rem;
   }
 
   .sm\:h-40 {
@@ -2584,12 +2558,12 @@ video {
     width: auto;
   }
 
-  .sm\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .sm\:w-\[400px\] {
+    width: 400px;
   }
 
-  .sm\:flex-row {
-    flex-direction: row;
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .sm\:flex-col {
@@ -2620,17 +2594,8 @@ video {
     gap: 0.875rem;
   }
 
-  .sm\:gap-x-1 {
-    -moz-column-gap: 0.25rem;
-         column-gap: 0.25rem;
-  }
-
   .sm\:rounded-md {
     border-radius: 0.375rem;
-  }
-
-  .sm\:rounded-xl {
-    border-radius: 0.75rem;
   }
 
   .sm\:text-base {
@@ -2711,10 +2676,6 @@ video {
 
   .md\:block {
     display: block;
-  }
-
-  .md\:inline {
-    display: inline;
   }
 
   .md\:flex {

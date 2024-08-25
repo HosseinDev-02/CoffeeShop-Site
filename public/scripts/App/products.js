@@ -79,11 +79,8 @@ const addBestProductsToDom = () => {
         .then(products => {
             if(products) {
                 let bestProducts = products.filter(product => product[1].view > 5)
-                // let productsFragment = document.createDocumentFragment()
-                // bestProductsContainer.innerHTML = ''
                 bestProducts.slice(0, 10).forEach(product => {
-                    // let newProductCard = document.createElement('div')
-                    // newProductCard.classList.add('swiper-slide')
+                    console.log(product)
                     bestProductsContainer.insertAdjacentHTML('beforeend', `<div class="swiper-slide"><div class="rounded-lg bg-zinc-900 overflow-hidden">
                             <a href="#"
                                class="flex items-center justify-center w-full h-[120px] sm:h-[160px] md:h-[200px] rounded-md overflow-hidden">
@@ -119,19 +116,18 @@ const addBestProductsToDom = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button onclick='addProductToBasket("${product[0]}")'
+                            <button onclick="addProductToBasket('${product[0]}')"
                                     class="flex text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-indigo-600 font-IRANSans-Medium rounded-md tracking-tighter text-sm md:text-base">
                                 افزودن به سبد خرید
                             </button>
                             </div></div>`)
-                    // productsFragment.append(newProductCard)
                 })
-                // bestProductsContainer.append(productsFragment)
             }
         })
 }
 
 async function addProductToBasket(productId) {
+    console.log(productId)
     if (userId) {
         let allProducts = await getAllProducts()
         let updateProductView = null
@@ -144,7 +140,7 @@ async function addProductToBasket(productId) {
                 mainProduct = product
             }
         })
-
+        console.log(mainProduct)
         let fetchUpdateProduct = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products/${productId}.json`, {
             method: "PATCH",
             headers: {
