@@ -20,7 +20,7 @@ const addProductsForm = document.getElementById("add-product-form")
 const addProductsCloseBtn = document.getElementById("add-products-modal-btn")
 const editProductForm = document.getElementById("edit-product-form")
 let productEditId = null
-
+let newImageElem;
 
 function modalProductsOpen() {
     coverElem.classList.remove("cover--hidden")
@@ -60,7 +60,7 @@ async function addNewProduct() {
             price: +addProductsPriceElem.value,
             offer: +addProductsOfferElem.value,
             costPrice: addProductsPriceElem.value - (addProductsOfferElem.value / 100 * addProductsPriceElem.value),
-            img: img.src,
+            img: newImageElem.getAttribute('src'),
             view: 0
         }
         let fetchNewProduct = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products.json', {
@@ -143,16 +143,16 @@ async function editProductHandler() {
 
 }
 async function removeProductHandler(productId) {
-    // try {
-    //     let mainRemoveProduct = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products/${productId}.json`, {
-    //         method: 'DELETE'
-    //     })
-    //     console.log(mainRemoveProduct)
-    //     await addProductsToDom()
-    // } catch (err) {
-    //     console.log(err, "هنگام حذف محصول مشکلی بوجود آمد")
-    //     alert("هنگام حذف محصول مشکلی بوجود آمد")
-    // }
+    try {
+        let mainRemoveProduct = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products/${productId}.json`, {
+            method: 'DELETE'
+        })
+        console.log(mainRemoveProduct)
+        await addProductsToDom()
+    } catch (err) {
+        console.log(err, "هنگام حذف محصول مشکلی بوجود آمد")
+        alert("هنگام حذف محصول مشکلی بوجود آمد")
+    }
     swal.fire({
         title: 'فقط قسمت کاربران بک اند دارد',
         icon: 'info',
@@ -203,13 +203,13 @@ coverElem.addEventListener("click", function () {
     coverElem.classList.add("cover--hidden")
 })
 addProductsImageElem.addEventListener("change", function (e) {
-    img = new Image()
-    img.src = URL.createObjectURL(e.target.files[0])
-    img.setAttribute('class', 'w-full h-full object-cover')
-    addProductsImage.append(img)
+    newImageElem = document.querySelector('img')
+    newImageElem.className = 'w-full h-full object-cover'
+    newImageElem.setAttribute('src', "images/Products/" + e.target.files[0].name + "")
+    addProductsImage.append(newImageElem)
 })
 addProductsModalBtn.addEventListener("click", async () => {
-    // await addNewProduct()
+    await addNewProduct()
     swal.fire({
         title: 'فقط قسمت کاربران بک اند دارد',
         icon: 'info',

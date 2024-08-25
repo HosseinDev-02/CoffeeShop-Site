@@ -3,7 +3,6 @@ const productLikeIcon = document.querySelectorAll(".product-like--icon")
 const productsContainer = document.getElementById("products-container")
 const bestProductsContainer = document.getElementById("best-products-container")
 
-
 async function getAllProducts() {
     let fetchProducts = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/products.json')
     let allProducts = await fetchProducts.json()
@@ -20,15 +19,16 @@ async function getAllBasket() {
     }
 }
 
-async function addProductsToDom() {
-    let allProducts = await getAllProducts()
-    if (allProducts) {
-        let productsFragment = document.createDocumentFragment()
-        productsContainer.innerHTML = ''
-        allProducts.forEach(product => {
-            let newProductCard = document.createElement('div')
-            newProductCard.className = 'rounded-lg bg-zinc-900 overflow-hidden'
-            newProductCard.innerHTML = `<a href="#"
+const addProductsToDom = () => {
+    let allProducts = getAllProducts()
+        .then(allProducts => {
+            if (allProducts) {
+                let productsFragment = document.createDocumentFragment()
+                productsContainer.innerHTML = ''
+                allProducts.forEach(product => {
+                    let newProductCard = document.createElement('div')
+                    newProductCard.className = 'rounded-lg bg-zinc-900 overflow-hidden'
+                    newProductCard.innerHTML = `<a href="#"
                                class="flex items-center justify-center w-full h-[120px] sm:h-[160px] md:h-[200px] rounded-md overflow-hidden">
                                 <img class="w-full h-full object-cover" src="${product[1].img}" alt=""
                                      loading="lazy">
@@ -67,10 +67,68 @@ async function addProductsToDom() {
                                 افزودن به سبد خرید
                             </button>`
 
-            productsFragment.append(newProductCard)
+                    productsFragment.append(newProductCard)
+                })
+                productsContainer.append(productsFragment)
+            }
         })
-        productsContainer.append(productsFragment)
-    }
+}
+
+const addBestProductsToDom = () => {
+    getAllProducts()
+        .then(products => {
+            if(products) {
+                let bestProducts = products.filter(product => product[1].view > 5)
+                // let productsFragment = document.createDocumentFragment()
+                // bestProductsContainer.innerHTML = ''
+                bestProducts.slice(0, 10).forEach(product => {
+                    // let newProductCard = document.createElement('div')
+                    // newProductCard.classList.add('swiper-slide')
+                    bestProductsContainer.insertAdjacentHTML('beforeend', `<div class="swiper-slide"><div class="rounded-lg bg-zinc-900 overflow-hidden">
+                            <a href="#"
+                               class="flex items-center justify-center w-full h-[120px] sm:h-[160px] md:h-[200px] rounded-md overflow-hidden">
+                                <img class="w-full h-full object-cover" src="${product[1].img}" alt=""
+                                     loading="lazy">
+                            </a>
+                            <div class="p-2">
+                                <h4 class="text-sm md:text-base font-IRANSans-Medium line-clamp-2 mb-4 sm:mb-6 text-gray-200 h-10 md:h-12">
+                                    ${product[1].detail}
+                                </h4>
+                                <div class="flex justify-between">
+                                    <div class="flex flex-col justify-between sm:justify-start gap-y-2.5">
+                                        <div class="flex items-center gap-x-1">
+                                            <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-amber-300 shrink-0 text-amber-300">
+                                                <use href="#star"></use>
+                                            </svg>
+                                            <span class="font-IRANSans-Bold text-xs leading-5 sm:leading-[19px] sm:text-sm">
+                                        4.5
+                                    </span>
+                                        </div>
+                                        <div class="flex items-center gap-1 font-IRANSans-Bold text-xs tracking-tighter">
+                                            <svg class="w-4 h-4"><use href="#eye"></use></svg>
+                                            <span class="font-IRANSans">${product[1].view}</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col justify-between items-start sm:items-end flex-wrap gap-x-4">
+                                        <div class="product__price flex items-center gap-x-1 font-IRANSans-Bold text-base tracking-wider md:text-xl text-white">
+                                            ${product[1].price.toLocaleString()}
+                                        </div>
+                                        <div class="offer flex items-center gap-x-1 font-IRANSans-Bold text-base tracking-wider text-gray-400">
+                                            ${product[1].costPrice.toLocaleString()}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick='addProductToBasket("${product[0]}")'
+                                    class="flex text-gray-100 sm:mt-0.5 md:text-gray-300 items-center justify-center md:hover:text-white transition-colors w-full h-10 md:h-12 bg-indigo-600 font-IRANSans-Medium rounded-md tracking-tighter text-sm md:text-base">
+                                افزودن به سبد خرید
+                            </button>
+                            </div></div>`)
+                    // productsFragment.append(newProductCard)
+                })
+                // bestProductsContainer.append(productsFragment)
+            }
+        })
 }
 
 async function addProductToBasket(productId) {
@@ -200,7 +258,39 @@ async function addProductToBasket(productId) {
 }
 
 
-window.addEventListener("load", async () => {
-
-    await addProductsToDom()
+window.addEventListener("load",  () => {
+    const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 10,
+        // Navigation arrows
+        navigation: {
+            nextEl: '.my-swiper-button-next',
+            prevEl: '.my-swiper-button-prev',
+        },
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            410: {
+                slidesPerView: 2,
+                spaceBetween: 14,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 14,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            },
+        },
+    });
+    addProductsToDom()
+    addBestProductsToDom()
 })
