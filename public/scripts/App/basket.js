@@ -2,7 +2,8 @@ const basketContainer = document.getElementById("basket-list")
 const basketCheckOutBtn = document.getElementById("basket-checkout-btn")
 const basketTotalPrice = document.getElementById("basket-total-price")
 const mobileBasketContainer = document.querySelector('#mobile-basket-list')
-
+const basketWrapper = document.querySelector('#basket-wrapper')
+const basketTable = document.querySelector('#basket-table')
 
 const addBasketToDom = () => {
     basketContainer.innerHTML = ""
@@ -10,18 +11,17 @@ const addBasketToDom = () => {
     let allBasket = getAllBaskets()
         .then(allBasket => {
             if (allBasket) {
-                let filteredUserBasket = allBasket.filter(basket => basket[1].userId === userId)
+                let filteredUserBasket = allBasket.filter(basket => basket[1].userId === userId && basket[1].checkOut === false)
                 let basketsFragment = document.createDocumentFragment()
                 let mobileBasketFrag = document.createDocumentFragment()
-                filteredUserBasket.forEach(function (basket) {
-                    if(!basket[1].checkOut) {
-                        let newBasketRow = document.createElement('tr')
-                        newBasketRow.className = 'border-b border-white/50'
-                        newBasketRow.innerHTML = `<td><span onclick='removeProductFromBasket("${basket[0]}")' class="cursor-pointer mx-auto flex items-center justify-center bg-transparent border border-white/30 w-6 md:w-8 h-6 md:h-8 hover:text-black hover:bg-white transition-colors"><svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg></span></td><td class="p-2.5 md:p-6"><div class="w-16 md:w-24 h-16 md:h-24 mx-auto"><img class="w-full h-full object-cover" src="${basket[1].img}" alt=""></div></td><td class="p-2.5 md:p-6 text-center w-[450px] align-middle"><p class="w-[300px] md:w-[400px] mt-2 font-Shabnam-Light md:text-lg line-clamp-2">${basket[1].detail}</p></td><td class="p-2.5 md:p-6 text-center align-middle"><div class="justify-center flex items-center gap-x-1.5 font-Shabnam-Bold text-xl">${basket[1].costPrice.toLocaleString()}<span class="text-base tracking-tighter font-Shabnam-Regular">تومان</span></div><div class="offer inline-flex items-center gap-x-1.5 font-Shabnam-Bold text-white/50">${basket[1].price.toLocaleString()}<span class="text-sm tracking-tighter font-Shabnam-Regular">تومان</span></div></td><td class="p-2.5 md:p-6 align-middle"><div class="flex justify-between gap-x-1 bg-transparent border border-white/30 w-28 mx-auto text-white rounded-md px-1 py-2"><button onclick='basketMinusCountAction("${basket[0]}", addBasketToDom, basketPriceHandler)' type="button" class="px-1"><svg class="shrink-0 w-5 h-5"><use href="#minus"></use></svg></button><div class="w-8 border-x border-x-white/50 text-center text-indigo-400 font-Shabnam-Bold text-xl">${basket[1].count}</div><button onclick='basketPlusCountAction("${basket[0]}", addBasketToDom, basketPriceHandler)' type="button" class="px-1"><svg class="shrink-0 w-5 h-5"><use href="#plus"></use></svg></button></div></td><td class="p-2.5 md:p-6"><div class="justify-center flex items-center gap-x-1.5 font-Shabnam-Bold text-xl">${(basket[1].count * basket[1].costPrice).toLocaleString()}<span class="text-base tracking-tighter font-Shabnam-Regular">تومان</span></div></td>`
-
-                        let newDivElem = document.createElement('div')
-                        newDivElem.className = 'rounded sm:rounded-md bg-zinc-900 overflow-hidden'
-                        newDivElem.innerHTML = `<div class="flex justify-between w-full p-2">
+                if(filteredUserBasket.length) {
+                    filteredUserBasket.forEach(function (basket) {
+                            let newBasketRow = document.createElement('tr')
+                            newBasketRow.className = 'border-b border-white/50'
+                            newBasketRow.innerHTML = `<td><span onclick='removeProductFromBasket("${basket[0]}")' class="cursor-pointer mx-auto flex items-center justify-center bg-transparent border border-white/30 w-6 md:w-8 h-6 md:h-8 hover:text-black hover:bg-white transition-colors"><svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg></span></td><td class="p-2.5 md:p-6"><div class="w-16 md:w-24 h-16 md:h-24 mx-auto"><img class="w-full h-full object-cover" src="${basket[1].img}" alt=""></div></td><td class="p-2.5 md:p-6 text-center w-[450px] align-middle"><p class="w-[300px] md:w-[400px] mt-2 font-Shabnam-Light md:text-lg line-clamp-2">${basket[1].detail}</p></td><td class="p-2.5 md:p-6 text-center align-middle"><div class="justify-center flex items-center gap-x-1.5 font-Shabnam-Bold text-xl">${basket[1].costPrice.toLocaleString()}<span class="text-base tracking-tighter font-Shabnam-Regular">تومان</span></div><div class="offer inline-flex items-center gap-x-1.5 font-Shabnam-Bold text-white/50">${basket[1].price.toLocaleString()}<span class="text-sm tracking-tighter font-Shabnam-Regular">تومان</span></div></td><td class="p-2.5 md:p-6 align-middle"><div class="flex justify-between gap-x-1 bg-transparent border border-white/30 w-28 mx-auto text-white rounded-md px-1 py-2"><button onclick='basketMinusCountAction("${basket[0]}", addBasketToDom, basketPriceHandler)' type="button" class="px-1"><svg class="shrink-0 w-5 h-5"><use href="#minus"></use></svg></button><div class="w-8 border-x border-x-white/50 text-center text-indigo-400 font-Shabnam-Bold text-xl">${basket[1].count}</div><button onclick='basketPlusCountAction("${basket[0]}", addBasketToDom, basketPriceHandler)' type="button" class="px-1"><svg class="shrink-0 w-5 h-5"><use href="#plus"></use></svg></button></div></td><td class="p-2.5 md:p-6"><div class="justify-center flex items-center gap-x-1.5 font-Shabnam-Bold text-xl">${(basket[1].count * basket[1].costPrice).toLocaleString()}<span class="text-base tracking-tighter font-Shabnam-Regular">تومان</span></div></td>`
+                            let newDivElem = document.createElement('div')
+                            newDivElem.className = 'rounded sm:rounded-md bg-zinc-900 overflow-hidden'
+                            newDivElem.innerHTML = `<div class="flex justify-between w-full p-2">
                             <a href="#"
                                class="flex items-center justify-center w-24 h-24 rounded overflow-hidden">
                                 <img class="w-full h-full object-cover" src="${basket[1].img}" alt=""
@@ -61,12 +61,21 @@ const addBasketToDom = () => {
                             حذف محصول
                         </button>`
 
-                        basketsFragment.append(newBasketRow)
-                        mobileBasketFrag.append(newDivElem)
-                    }
-                })
-                basketContainer.append(basketsFragment)
-                mobileBasketContainer.append(mobileBasketFrag)
+                            basketsFragment.append(newBasketRow)
+                            mobileBasketFrag.append(newDivElem)
+
+                    })
+                    basketContainer.append(basketsFragment)
+                    mobileBasketContainer.append(mobileBasketFrag)
+                }else {
+                    let newTitleElem = document.createElement('h3')
+                    newTitleElem.className = 'text-center text-red-500 text-xl md:text-2xl'
+                    newTitleElem.innerHTML = 'سبد خرید شما خالی است !'
+                    mobileBasketContainer.append(newTitleElem)
+
+                    basketTable.classList.add('hidden')
+                    basketWrapper.append(newTitleElem)
+                }
             }
         })
 }
@@ -108,48 +117,62 @@ const removeProductFromBasket = (basketId) => {
 }
 
 const userBasketCheckOut = () => {
-    swal.fire({
-        title: 'آیا از پرداخت نهایی اطمینان دارید ؟',
-        icon: 'question',
-        showCancelButton: true,
-        cancelButtonText: 'خیر',
-        confirmButtonText: 'بله'
-    })
-        .then(res => {
-            if(res.isConfirmed) {
-                let mainUpdateBasket;
-                let mainBasket = null
-                getAllBaskets()
-                    .then(allBaskets => {
-                        allBaskets.forEach(basket => {
-                            if(basket[1].userId === userId && basket[1].checkOut === false) {
-                                const fetchData = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basket[0]}.json`, {
-                                    method: 'PATCH',
-                                    headers: {
-                                        'content-type': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        checkOut: true
-                                    })
-                                })
-                                    .then(res => {
-                                        if(res.ok) {
-                                            swal.fire({
-                                                title: 'پرداخت شما انجام شد',
-                                                icon: 'success',
-                                                confirmButtonText: 'ممنون'
-                                            })
-                                                .then(res => {
-                                                    if(res.isConfirmed) {
-                                                        addBasketToDom()
-                                                        basketPriceHandler()
-                                                    }
+    let allBasket = getAllBaskets()
+        .then(allBasket => {
+            if(allBasket) {
+                let filteredUserBasket = allBasket.filter(basket => basket[1].userId === userId && basket[1].checkOut === false)
+                if(filteredUserBasket.length) {
+                    swal.fire({
+                        title: 'آیا از پرداخت نهایی اطمینان دارید ؟',
+                        icon: 'question',
+                        showCancelButton: true,
+                        cancelButtonText: 'خیر',
+                        confirmButtonText: 'بله'
+                    })
+                        .then(res => {
+                            if(res.isConfirmed) {
+                                let mainUpdateBasket;
+                                let mainBasket = null
+                                getAllBaskets()
+                                    .then(allBaskets => {
+                                        allBaskets.forEach(basket => {
+                                            if(basket[1].userId === userId && basket[1].checkOut === false) {
+                                                const fetchData = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basket[0]}.json`, {
+                                                    method: 'PATCH',
+                                                    headers: {
+                                                        'content-type': 'application/json'
+                                                    },
+                                                    body: JSON.stringify({
+                                                        checkOut: true
+                                                    })
                                                 })
-                                        }
+                                                    .then(res => {
+                                                        if(res.ok) {
+                                                            swal.fire({
+                                                                title: 'پرداخت شما انجام شد',
+                                                                icon: 'success',
+                                                                confirmButtonText: 'ممنون'
+                                                            })
+                                                                .then(res => {
+                                                                    if(res.isConfirmed) {
+                                                                        addBasketToDom()
+                                                                        basketPriceHandler()
+                                                                    }
+                                                                })
+                                                        }
+                                                    })
+                                            }
+                                        })
                                     })
                             }
                         })
+                }else {
+                    swal.fire({
+                        title: 'سبد خرید شما خالی است !',
+                        icon: 'error',
+                        confirmButtonText: 'فهمیدم'
                     })
+                }
             }
         })
 }

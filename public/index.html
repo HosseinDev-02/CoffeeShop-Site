@@ -353,11 +353,8 @@
                     </li>
                     <li class="menu__item group">
                         <a href="#">محصولات</a>
-                        <div class="z-50 absolute delay-75 invisible opacity-0 group-hover:visible group-hover:opacity-100 inline-flex items-start flex-col right-0 top-full w-52 bg-black/90 text-base py-4 px-6 rounded-2xl border-y-[3px] border-y-indigo-400 text-gray-300 child-hover:text-indigo-400 child:transition-colors gap-y-4 tracking-normal">
-                            <a href="#">ویژه</a>
-                            <a href="#">دسرها</a>
-                            <a href="#">نوشیدنی</a>
-                            <a href="#">قهوه و اسپرسو</a>
+                        <div id="header-category-container" class="z-50 absolute delay-75 invisible opacity-0 group-hover:visible group-hover:opacity-100 inline-flex items-start flex-col right-0 top-full w-52 bg-black/90 text-base py-4 px-6 rounded-2xl border-y-[3px] border-y-indigo-400 text-gray-300 child-hover:text-indigo-400 child:transition-colors gap-y-4 tracking-normal">
+                        <!--  Data Loaded From Js  -->
                         </div>
                     </li>
                     <li class="menu__item">
@@ -392,60 +389,20 @@
                     <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute delay-75 p-4 left-0 top-full w-[400px] bg-black/90 border-y-[3px] rounded-2xl border-y-indigo-400 backdrop-blur">
                         <!--  Cart Header  -->
                         <div class="flex items-center justify-between pb-4 border-b border-b-zinc-500">
-                            <span class="text-sm font-IRANSans-Medium text-white/50">
-                                4 مورد
+                            <span id="header-basket-count" class="text-sm font-IRANSans-Medium text-white/50">
+                            <!--  Data Loaded From Js  -->
                             </span>
-                            <a class="flex items-center gap-x-2 hover:text-indigo-400 transition-colors font-IRANSans-Medium tracking-tighter"
-                               href="#">
-                                مشاهده سبد خرید
+                            <span class="flex items-center gap-x-2 hover:text-indigo-400 transition-colors font-IRANSans-Medium tracking-tighter">
+                                سبد خرید
                                 <svg class="w-6 h-6">
                                     <use href="#arrow-left"></use>
                                 </svg>
-                            </a>
+                            </span>
                         </div>
                         <!--  Cart Body  -->
                         <div id="header-basket-list"
                              class="my-2 card-body divide-y divide-white/10 flex flex-col max-h-[309px] overflow-y-auto dir-ltr text-right pr-2">
-
-                            <div class="flex flex-row-reverse py-3.5 justify-between items-center gap-x-3.5">
-                                <div class="w-28 h-28 shrink-0 rounded-md overflow-hidden">
-                                    <img class="w-full h-full object-cover" src="images/Products/product-3.png"
-                                         alt="product 1">
-                                </div>
-                                <div class="flex flex-col items-end justify-between gap-y-4">
-                                    <a href="#" class="line-clamp-1 hover:text-indigo-400 dir-rtl">
-                                        کافه آمریکانو یک واژه ایتالیایی است که عده‌ای می‌گویند در زمان جنگ جهانی دوم یک
-                                        آب داغ رقیق کند و بنوشد.
-                                    </a>
-                                    <div class="flex items-end justify-between w-full">
-                                        <div class="flex justify-between gap-x-1 bg-transparent border border-white/30 text-white rounded-md p-1">
-                                            <button type="button" class="px-1">
-                                                <svg class="shrink-0 w-5 h-5">
-                                                    <use href="#minus"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="w-8 border-x border-x-white/50 text-center text-indigo-400 font-IRANSans-Medium text-lg">
-                                                1
-                                            </div>
-                                            <button type="button" class="px-1">
-                                                <svg class="shrink-0 w-5 h-5">
-                                                    <use href="#plus"></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="flex flex-col items-start gap-y-1 dir-rtl">
-                                            <div class="flex items-center gap-x-1.5 font-IRANSans-Bold text-lg">
-                                                54,000
-                                                <span class="text-base tracking-tighter">تومان</span>
-                                            </div>
-                                            <div class="offer flex items-center gap-x-1.5 font-IRANSans-Bold text-white/50 text-sm">
-                                                67,000
-                                                <span class="text-xs tracking-tighter">تومان</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <!--  Data Loaded From Js   -->
                         </div>
                         <!--  Cart Footer  -->
                         <div class="flex items-center justify-between border-t border-t-zinc-500 pt-2">
@@ -506,12 +463,8 @@
                         <use href="#chevron-down"></use>
                     </svg>
                 </div>
-                <div class="sub-menu sub-menu--hidden">
-                    <a href="#">ویژه</a>
-                    <a href="#">دسرها</a>
-                    <a href="#">نوشیدنی</a>
-                    <a href="#">کیک</a>
-                    <a href="#">قهوه و اسپرسو</a>
+                <div id="mobile-header-categories" class="sub-menu sub-menu--hidden">
+                    <!--  Data Loaded From Js   -->
                 </div>
             </li>
             <li class="mobile-menu__item">

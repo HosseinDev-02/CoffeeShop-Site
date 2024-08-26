@@ -13,6 +13,30 @@ const totalBasketPrice = document.getElementById("total-basket-price")
 const mobileHomeLink = document.querySelector('#mobile-home-link')
 const mobileBasketBtn = document.querySelector('#mobile-basket-btn')
 const mobileRegisterBtn = document.querySelector('#mobile-register-btn')
+const headerCategoryContainer = document.querySelector('#header-category-container')
+const headerBasketCount = document.querySelector('#header-basket-count')
+const mobileHeaderCategoriesContainer = document.querySelector('#mobile-header-categories')
+
+
+async function getAllCategories() {
+    let fetchCategories = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/categories.json')
+    let allCategories = await fetchCategories.json()
+    if (allCategories) {
+        return Object.entries(allCategories)
+    }
+}
+const addCategoriesToHeader = wrapper => {
+    getAllCategories()
+        .then(allCategories => {
+            if(allCategories) {
+                wrapper.innerHTML = ''
+                allCategories.forEach(category => {
+                    wrapper.insertAdjacentHTML('beforeend', `<a href="#">${category[1].title}</a>`)
+                })
+            }
+        })
+}
+
 
 async function getAllBaskets (){
     let fetchBaskets = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets.json')
@@ -85,7 +109,6 @@ const basketMinusCountAction = (basketId, addBasketToDom, basketPriceHandler) =>
                         basketPriceHandler()
                     }
                 })
-                console.log(fetchUpdateBasket)
             }
         })
 
@@ -153,7 +176,6 @@ const addHeaderBasketToDom = () => {
                 let filteredUserBasket = allBaskets.filter(basket => {
                     return basket[1].userId === userId && basket[1].checkOut === false
                 })
-                console.log(filteredUserBasket)
                 if(filteredUserBasket.length) {
                     let basketsFragment = document.createDocumentFragment()
                     filteredUserBasket.forEach(basket => {
@@ -165,11 +187,12 @@ const addHeaderBasketToDom = () => {
                     headerBasketContainer.append(basketsFragment)
                 }else {
                     let newTitleElem = document.createElement('h3')
-                    newTitleElem.className = 'text-indigo-400 text-center text-lg md:text-x my-2 md:my-4'
+                    newTitleElem.className = 'text-red-500 text-center text-lg md:text-x my-2 md:my-4'
                     newTitleElem.innerHTML = '! سبد خرید شما خالی است'
                     headerBasketContainer.append(newTitleElem)
                 }
                 basketCount.innerHTML = filteredUserBasket.length.toString()
+                headerBasketCount.innerHTML = `${filteredUserBasket.length.toString()} مورد`
             }
         })
 }
@@ -249,6 +272,8 @@ mobileMenuBtn.addEventListener("click", () => {
 
 window.addEventListener("load", async () => {
     addHeaderBasketToDom()
+    addCategoriesToHeader(headerCategoryContainer)
+    addCategoriesToHeader(mobileHeaderCategoriesContainer)
     headerBasketPriceHandler()
     if (userId) {
         let allUsersArray = await getAllUsers()
