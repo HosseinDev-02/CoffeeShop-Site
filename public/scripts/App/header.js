@@ -10,7 +10,7 @@ const basketHomeLink = document.getElementById("basket-home-link")
 const basketCount = document.getElementById("basket-count")
 const headerBasketContainer = document.getElementById("header-basket-list")
 const totalBasketPrice = document.getElementById("total-basket-price")
-
+const mobileHomeLink = document.querySelector('#mobile-home-link')
 
 async function getAllBasket (){
     let fetchBaskets = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets.json')
@@ -89,30 +89,34 @@ const basketMinusCountAction = (basketId, addBasketToDom, basketPriceHandler) =>
 
 
 }
-async function basketPlusCountAction(basketId, addBasketToDom, basketPriceHandler){
-    let allBasket = await getAllBasket()
-    let mainBasket = allBasket.find(basket => basket[0] === basketId)
-
-    let mainBasketPlus = {
-        productId: mainBasket[1].productId,
-        userId: userId,
-        img: mainBasket[1].img,
-        detail: mainBasket[1].detail,
-        costPrice: mainBasket[1].costPrice,
-        price: mainBasket[1].price,
-        count: mainBasket[1].count + 1,
-        checkOut: mainBasket[1].checkOut
-    }
-    let fetchUpdateBasket = await fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basketId}.json`, {
-        method: 'PUT',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(mainBasketPlus)
-    })
-    console.log(fetchUpdateBasket)
-    await addBasketToDom()
-    await basketPriceHandler()
+const basketPlusCountAction = (basketId, addBasketToDom, basketPriceHandler) => {
+    let allBasket = getAllBasket()
+        .then(allBasket => {
+            let mainBasket = allBasket.find(basket => basket[0] === basketId)
+            let mainBasketPlus = {
+                productId: mainBasket[1].productId,
+                userId: userId,
+                img: mainBasket[1].img,
+                detail: mainBasket[1].detail,
+                costPrice: mainBasket[1].costPrice,
+                price: mainBasket[1].price,
+                count: mainBasket[1].count + 1,
+                checkOut: mainBasket[1].checkOut
+            }
+            let fetchUpdateBasket = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basketId}.json`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(mainBasketPlus)
+            })
+                .then(res => {
+                    if(res.ok) {
+                        addBasketToDom()
+                        basketPriceHandler()
+                    }
+                })
+        })
 }
 const userBasket = () => {
     let allBaskets = getAllBasket()
@@ -168,6 +172,14 @@ const addHeaderBasketToDom = () => {
         })
 }
 
+const homeLinkHandler = () => {
+    if(userId){
+        location.href = `index.html?id=${userId}`
+    }else{
+        location.href = `index.html`
+    }
+}
+
 adminPanelLink.addEventListener("click",  e => {
     e.preventDefault()
     if(userId) {
@@ -205,13 +217,8 @@ indexRegisterBtn.addEventListener("click", e => {
         location.href = 'register.html'
     }
 })
-basketHomeLink.addEventListener("click", function (e){
-    if(userId){
-        location.href = `index.html?id=${userId}`
-    }else{
-        location.href = `index.html`
-    }
-})
+basketHomeLink.addEventListener("click", homeLinkHandler)
+mobileHomeLink.addEventListener('click', homeLinkHandler)
 mobilMenuItems.forEach(item => {
     item.addEventListener("click", () => {
         if (!item.className.includes("flex-col")) {
@@ -237,7 +244,7 @@ mobileMenuBtn.addEventListener("click", () => {
 
 window.addEventListener("load", async () => {
     addHeaderBasketToDom()
-    await headerBasketPriceHandler()
+    headerBasketPriceHandler()
     if (userId) {
         let allUsersArray = await getAllUsers()
         let isAdminLogin = allUsersArray.some(user => user[0] === userId && user[1].isAdmin === true)

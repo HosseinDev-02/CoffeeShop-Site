@@ -130,30 +130,33 @@ function userBasketCheckOut() {
                 getAllBaskets()
                     .then(allBaskets => {
                         allBaskets.forEach(basket => {
-                            if(basket[1].userId === userId && basket[1].checkOut !== true) {
-                                mainUpdateBasket = {
-                                    checkOut: true
-                                }
-                                mainBasket = basket
+                            if(basket[1].userId === userId && basket[1].checkOut === false) {
+                                const fetchData = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${basket[0]}.json`, {
+                                    method: 'PATCH',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        checkOut: true
+                                    })
+                                })
+                                    .then(res => {
+                                        if(res.ok) {
+                                            swal.fire({
+                                                title: 'پرداخت شما انجام شد',
+                                                icon: 'success',
+                                                confirmButtonText: 'ممنون'
+                                            })
+                                                .then(res => {
+                                                    if(res.isConfirmed) {
+                                                        addBasketToDom()
+                                                        basketPriceHandler()
+                                                    }
+                                                })
+                                        }
+                                    })
                             }
                         })
-                    })
-                const fetchData = fetch(`https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets/${mainBasket[0]}.json`, {
-                    method: 'PATCH',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(mainUpdateBasket)
-                })
-                swal.fire({
-                    title: 'پرداخت شما انجام شد',
-                    icon: 'success',
-                    confirmButtonText: 'ممنون'
-                })
-                    .then(res => {
-                        if(res.isConfirmed) {
-                            addBasketToDom()
-                        }
                     })
             }
         })

@@ -1,5 +1,4 @@
 
-const productLikeIcon = document.querySelectorAll(".product-like--icon")
 const productsContainer = document.getElementById("products-container")
 const bestProductsContainer = document.getElementById("best-products-container")
 
@@ -126,7 +125,6 @@ const addBestProductsToDom = () => {
 }
 
 async function addProductToBasket(productId) {
-    console.log(productId)
     if (userId) {
         let allProducts = await getAllProducts()
         let updateProductView = null
@@ -153,7 +151,7 @@ async function addProductToBasket(productId) {
         let mainBasketId = null
         if (allBaskets) {
             let isOnBasket = allBaskets.some(basket => {
-                if (basket[1].productId === productId && basket[1].userId === userId) {
+                if (basket[1].productId === productId && basket[1].userId === userId && basket[1].checkOut === false) {
                     mainBasketCount = {
                         count: basket[1].count + 1
                     }
