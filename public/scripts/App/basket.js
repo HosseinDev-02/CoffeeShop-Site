@@ -4,14 +4,6 @@ const basketTotalPrice = document.getElementById("basket-total-price")
 const mobileBasketContainer = document.querySelector('#mobile-basket-list')
 
 
-const getAllBaskets = async () => {
-    let fetchBaskets = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets.json')
-    let allBaskets = await fetchBaskets.json()
-    if (allBaskets) {
-        return Object.entries(allBaskets)
-    }
-}
-
 const addBasketToDom = () => {
     basketContainer.innerHTML = ""
     mobileBasketContainer.innerHTML = ''
@@ -115,7 +107,7 @@ const removeProductFromBasket = (basketId) => {
         })
 }
 
-function userBasketCheckOut() {
+const userBasketCheckOut = () => {
     swal.fire({
         title: 'آیا از پرداخت نهایی اطمینان دارید ؟',
         icon: 'question',

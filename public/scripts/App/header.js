@@ -11,8 +11,10 @@ const basketCount = document.getElementById("basket-count")
 const headerBasketContainer = document.getElementById("header-basket-list")
 const totalBasketPrice = document.getElementById("total-basket-price")
 const mobileHomeLink = document.querySelector('#mobile-home-link')
+const mobileBasketBtn = document.querySelector('#mobile-basket-btn')
+const mobileRegisterBtn = document.querySelector('#mobile-register-btn')
 
-async function getAllBasket (){
+async function getAllBaskets (){
     let fetchBaskets = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/baskets.json')
     let allBaskets = await fetchBaskets.json()
     if(allBaskets){
@@ -20,7 +22,7 @@ async function getAllBasket (){
     }
 }
 const basketMinusCountAction = (basketId, addBasketToDom, basketPriceHandler) => {
-    let allBaskets = getAllBasket()
+    let allBaskets = getAllBaskets()
         .then(allBaskets => {
             let mainBasket = allBaskets.find(basket => basket[0] === basketId)
             let updateBasket = {
@@ -90,7 +92,7 @@ const basketMinusCountAction = (basketId, addBasketToDom, basketPriceHandler) =>
 
 }
 const basketPlusCountAction = (basketId, addBasketToDom, basketPriceHandler) => {
-    let allBasket = getAllBasket()
+    let allBasket = getAllBaskets()
         .then(allBasket => {
             let mainBasket = allBasket.find(basket => basket[0] === basketId)
             let mainBasketPlus = {
@@ -119,7 +121,7 @@ const basketPlusCountAction = (basketId, addBasketToDom, basketPriceHandler) => 
         })
 }
 const userBasket = () => {
-    let allBaskets = getAllBasket()
+    let allBaskets = getAllBaskets()
         .then(allBaskets => {
             if(allBaskets) {
                 return allBaskets.filter(basket => basket[1].userId === userId)
@@ -145,7 +147,7 @@ const headerBasketPriceHandler = () => {
 }
 const addHeaderBasketToDom = () => {
     headerBasketContainer.innerHTML = ""
-    let basketsArray = getAllBasket()
+    let basketsArray = getAllBaskets()
         .then(allBaskets => {
             if(allBaskets){
                 let filteredUserBasket = allBaskets.filter(basket => {
@@ -179,27 +181,7 @@ const homeLinkHandler = () => {
         location.href = `index.html`
     }
 }
-
-adminPanelLink.addEventListener("click",  e => {
-    e.preventDefault()
-    if(userId) {
-        location.href = `admin-panel.html?id=${userId}`
-    }
-})
-basketBtn.addEventListener("click", (e) => {
-    e.preventDefault()
-    if(userId){
-        location.href = `basket.html?id=${userId}`
-    }else{
-        Swal.fire({
-            title: 'ابتدا وارد شوید',
-            icon: 'info',
-            confirmButtonText: 'فهمیدم'
-        })
-    }
-})
-indexRegisterBtn.addEventListener("click", e => {
-    e.preventDefault()
+const registerBtnHandler = () => {
     if (userId) {
         swal.fire({
             title: 'آبا می خواهید خارج شوید ؟',
@@ -216,7 +198,30 @@ indexRegisterBtn.addEventListener("click", e => {
     }else{
         location.href = 'register.html'
     }
+}
+const basketBtnHandler = () => {
+    if(userId){
+        location.href = `basket.html?id=${userId}`
+    }else{
+        Swal.fire({
+            title: 'ابتدا وارد شوید',
+            icon: 'info',
+            confirmButtonText: 'فهمیدم'
+        })
+    }
+}
+
+
+adminPanelLink.addEventListener("click",  e => {
+    e.preventDefault()
+    if(userId) {
+        location.href = `admin-panel.html?id=${userId}`
+    }
 })
+basketBtn.addEventListener("click", basketBtnHandler)
+mobileBasketBtn.addEventListener("click", basketBtnHandler)
+indexRegisterBtn.addEventListener("click", registerBtnHandler)
+mobileRegisterBtn.addEventListener("click", registerBtnHandler)
 basketHomeLink.addEventListener("click", homeLinkHandler)
 mobileHomeLink.addEventListener('click', homeLinkHandler)
 mobilMenuItems.forEach(item => {
@@ -249,8 +254,22 @@ window.addEventListener("load", async () => {
         let allUsersArray = await getAllUsers()
         let isAdminLogin = allUsersArray.some(user => user[0] === userId && user[1].isAdmin === true)
         indexRegisterBtn.innerHTML = 'خروج'
+        mobileRegisterBtn.classList.add('text-red-500')
+        mobileRegisterBtn.innerHTML = `
+        <svg class="w-6 h-6">
+             <use href="#power-off"></use>
+        </svg>
+        خروج
+`
     } else {
         indexRegisterBtn.innerHTML = 'ورود / ثبت نام'
+        mobileRegisterBtn.classList.remove('text-red-500')
+        mobileRegisterBtn.innerHTML = `
+        <svg class="w-6 h-6">
+             <use href="#arrow-right-end-on-rectangle"></use>
+        </svg>
+        ورود / ثبت نام
+`
     }
 })
 

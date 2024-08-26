@@ -177,7 +177,9 @@
     <symbol id="eye-slash" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
     </symbol>
-
+    <symbol id="power-off" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9" />
+    </symbol>
 </svg>
 <!--  Desktop Header  -->
 <header class="absolute left-0 right-0 top-0 h-24 hidden md:flex items-center z-50">
@@ -310,7 +312,7 @@
 
 
 <!--  Mobile Header  -->
-<div class="md:hidden pt-3 px-3 pb-5 bg-black/50 text-gray-300 z-50">
+<div class="md:hidden pt-3 px-3 pb-5 bg-transparent text-gray-300 z-50">
     <div class="flex md:hidden items-center justify-between">
         <!--  Mobile Menu Icon  -->
         <span id="mobile-menu__btn">
@@ -330,7 +332,7 @@
                 <svg class="w-6 h-6">
                     <use href="#home"></use>
                 </svg>
-                <a href="#">صفحه اصلی</a>
+                <a id="mobile-home-link" href="#">صفحه اصلی</a>
             </li>
             <li class="mobile-menu__item flex-col">
                 <div id="sub-menu__btn" class="flex items-center gap-x-2">
@@ -372,13 +374,13 @@
             </li>
         </ul>
         <div class="inline-flex flex-col gap-y-4 mt-5">
-            <a class="inline-flex items-center gap-x-2" href="#">
+            <a class="inline-flex items-center gap-x-2" href="#" id="mobile-register-btn">
                 <svg class="w-6 h-6">
                     <use href="#arrow-right-end-on-rectangle"></use>
                 </svg>
                 ورود / <span>ثبت نام</span>
             </a>
-            <a class="inline-flex items-center gap-x-2" href="#">
+            <a class="inline-flex items-center gap-x-2" href="#" id="mobile-basket-btn">
                 <svg class="w-6 h-6">
                     <use href="#shopping-cart"></use>
                 </svg>
@@ -387,6 +389,7 @@
         </div>
     </div>
 </div>
+
 <main>
     <section class="home relative bg-center bg-cover bg-no-repeat overflow-hidden">
         <div class="container flex items-center justify-center h-full">
@@ -509,21 +512,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-                    <!--                    <div class="flex flex-col gap-y-2 w-full mb-5">-->
-<!--                        <label class="font-IRANSans-Medium text-lg" for="reset-pass-password">-->
-<!--                            رمز جدید :-->
-<!--                        </label>-->
-<!--                        <input class="bg-transparent h-12 rounded-md border border-white/30 px-2 outline-none" type="password" id="reset-pass-password">-->
-<!--                    </div>-->
-<!--                    <div class="flex flex-col gap-y-2 w-full mb-5">-->
-<!--                        <label class="font-IRANSans-Medium text-lg" for="reset-pass-repeat-password">-->
-<!--                            تکرار رمز :-->
-<!--                        </label>-->
-<!--                        <input class="bg-transparent h-12 rounded-md border border-white/30 px-2 outline-none" type="password" id="reset-pass-repeat-password">-->
-<!--                    </div>-->
                     <button id="reset-pass-submit" class="w-full h-14 rounded-md bg-transparent border-2 border-indigo-600 flex items-center justify-center text-xl hover:bg-indigo-600 hover:text-white transition-colors mx-auto outline-none" type="submit">
                         تایید
                     </button>
