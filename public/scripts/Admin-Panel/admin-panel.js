@@ -4,6 +4,7 @@ const panelSections = $.querySelectorAll(".panel-section")
 const mobilePanelItems = document.querySelectorAll(".mobile-panel__item")
 const coverElem = $.querySelector(".cover")
 const panelHomeLink = document.getElementById("panel-home-link")
+const mobileAdminHomeBtn = document.querySelector('#mobile-admin-home-link')
 jalaliDatepicker.startWatch();
 
 
@@ -65,11 +66,21 @@ mobilePanelItems.forEach(item => {
 
     })
 })
-window.addEventListener("load", function (){
 
-})
-panelHomeLink.addEventListener("click", e => {
-    e.preventDefault()
-    location.href = `http://localhost:3000/index.html?id=${userId}`
-    // panelHomeLink.setAttribute("href", "index.html?id="+ userId +"")
-})
+const adminPanelHomeLinkHandler = () => {
+    swal.fire({
+        title: 'آیا می خواهید به سایت بازگردید ؟',
+        icon: 'question',
+        confirmButtonText: 'بله',
+        showCancelButton: true,
+        cancelButtonText: 'خیر'
+    })
+        .then(res => {
+            if(res.isConfirmed) {
+                location.href = `index.html?id=${userId}`
+            }
+        })
+}
+
+mobileAdminHomeBtn.addEventListener('click', adminPanelHomeLinkHandler)
+panelHomeLink.addEventListener("click", adminPanelHomeLinkHandler)

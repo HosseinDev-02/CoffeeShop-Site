@@ -3,7 +3,6 @@ const mobileMenu = document.querySelector("#mobile-menu")
 const subMenuBtn = document.querySelector("#sub-menu__btn")
 const subMenu = document.querySelector(".sub-menu")
 const mobilMenuItems = document.querySelectorAll(".mobile-menu__item")
-const adminPanelLink = document.getElementById("admin-panel-link")
 const indexRegisterBtn = document.querySelector("#index-register-btn")
 const basketBtn = document.getElementById("basket-btn")
 const basketHomeLink = document.getElementById("basket-home-link")
@@ -16,7 +15,8 @@ const mobileRegisterBtn = document.querySelector('#mobile-register-btn')
 const headerCategoryContainer = document.querySelector('#header-category-container')
 const headerBasketCount = document.querySelector('#header-basket-count')
 const mobileHeaderCategoriesContainer = document.querySelector('#mobile-header-categories')
-
+const menuContainer = document.querySelector('#menu')
+const mobileMenuBtns = document.querySelector('#mobile-menu-btns')
 
 async function getAllCategories() {
     let fetchCategories = await fetch('https://coffee-shop-6fe4c-default-rtdb.firebaseio.com/categories.json')
@@ -233,14 +233,12 @@ const basketBtnHandler = () => {
         })
     }
 }
-
-
-adminPanelLink.addEventListener("click",  e => {
-    e.preventDefault()
+const panelHandler = () => {
     if(userId) {
         location.href = `admin-panel.html?id=${userId}`
     }
-})
+}
+
 basketBtn.addEventListener("click", basketBtnHandler)
 mobileBasketBtn.addEventListener("click", basketBtnHandler)
 indexRegisterBtn.addEventListener("click", registerBtnHandler)
@@ -278,6 +276,17 @@ window.addEventListener("load", async () => {
     if (userId) {
         let allUsersArray = await getAllUsers()
         let isAdminLogin = allUsersArray.some(user => user[0] === userId && user[1].isAdmin === true)
+        if(isAdminLogin) {
+            menuContainer.insertAdjacentHTML('beforeend', `<li onclick="panelHandler()" id="admin-panel-btn" class="menu__item">
+                        <a id="admin-panel-link" href="#">پنل کاربری</a>
+                    </li>`)
+            mobileMenuBtns.insertAdjacentHTML('afterbegin', `<a class="inline-flex items-center gap-x-2 text-indigo-400" href="#" onclick="panelHandler()">
+                <svg class="w-6 h-6">
+                    <use href="#user"></use>
+                </svg>
+                پنل کاربری
+            </a>`)
+        }
         indexRegisterBtn.innerHTML = 'خروج'
         mobileRegisterBtn.classList.add('text-red-500')
         mobileRegisterBtn.innerHTML = `

@@ -12,6 +12,9 @@
 <body class="bg-zinc-950 body-index__bg text-gray-300 font-IRANSans">
 
 <svg class="hidden">
+    <symbol id="user" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+    </symbol>
     <symbol id="shopping-cart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
     </symbol>
@@ -187,7 +190,7 @@
         <nav class="flex items-center justify-between">
             <!--  Header Logo - Menu   -->
             <div class="flex items-center gap-x-5 lg:gap-x-9">
-                <ul class="flex items-center text-lg lg:text-xl gap-x-6 lg:gap-x-8 tracking-tighter child-hover:text-white child:leading-[52px] child:transition-colors">
+                <ul id="menu" class="flex items-center text-lg lg:text-xl gap-x-6 lg:gap-x-8 tracking-tighter child-hover:text-white child:leading-[52px] child:transition-colors">
                     <li class="menu__item menu__item--active">
                         <a id="basket-home-link" href="#">صفحه اصلی</a>
                     </li>
@@ -205,9 +208,6 @@
                     </li>
                     <li id="contact-us-btn" class="menu__item">
                         <a id="index-contactUs-link" href="#">تماس با ما</a>
-                    </li>
-                    <li id="admin-panel-btn" class="menu__item">
-                        <a id="admin-panel-link" href="admin-panel.html">پنل کاربری</a>
                     </li>
                 </ul>
             </div>
@@ -266,6 +266,7 @@
         </nav>
     </div>
 </header>
+
 
 <!--  Mobile Header  -->
 
@@ -326,18 +327,18 @@
                 <a href="#">درباره ما</a>
             </li>
         </ul>
-        <div class="inline-flex flex-col gap-y-4 mt-5">
-            <a class="inline-flex items-center gap-x-2" href="#" id="mobile-register-btn">
-                <svg class="w-6 h-6">
-                    <use href="#arrow-right-end-on-rectangle"></use>
-                </svg>
-                ورود / <span>ثبت نام</span>
-            </a>
-            <a class="inline-flex items-center gap-x-2" href="#" id="mobile-basket-btn">
+        <div id="mobile-menu-btns" class="inline-flex flex-col gap-y-4 mt-5">
+            <a class="inline-flex items-center gap-x-2 text-indigo-400" href="#" id="mobile-basket-btn">
                 <svg class="w-6 h-6">
                     <use href="#shopping-cart"></use>
                 </svg>
                 سبد خرید
+            </a>
+            <a class="inline-flex items-center gap-x-2 text-indigo-400" href="#" id="mobile-register-btn">
+                <svg class="w-6 h-6">
+                    <use href="#arrow-right-end-on-rectangle"></use>
+                </svg>
+                ورود / <span>ثبت نام</span>
             </a>
         </div>
     </div>

@@ -105,7 +105,7 @@
 <header class="bg-gray-900 shadow-[0_0_1rem_rgba(165,180,252,0.5)] p-5 hidden md:flex flex-col text-gray-100">
     <div class="flex items-center justify-between border-b border-b-white/20 pb-5">
         <span class="font-Moshfegh-Bold text-2xl text-indigo-500 pointer-events-none">کافه سناتور</span>
-        <a href="index.html" id="panel-home-link" class="flex justify-end gap-x-3 cursor-pointer text-lg hover:text-indigo-500 transition-colors">
+        <a href="#" id="panel-home-link" class="flex justify-end gap-x-3 cursor-pointer text-lg hover:text-indigo-500 transition-colors">
             بازگشت به سایت
             <svg class="w-7 h-7">
                 <use href="#arrow-left-circle"></use>
@@ -114,14 +114,14 @@
     </div>
     <ul class="text-base xl:text-lg flex items-center justify-center gap-4 flex-wrap text-gray-100 pt-4">
         <li data-id="home"
-            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item panel-menu__item--active">
             <svg class="w-6 xl:w-7 h-6 xl:h-7">
-                <use href="#users"></use>
+                <use href="#home"></use>
             </svg>
             صفحه اصلی
         </li>
         <li data-id="users"
-            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item panel-menu__item--active">
+            class="flex items-center justify-center gap-x-3 px-2.5 h-8 xl:h-11 cursor-pointer hover:text-indigo-500 transition-colors rounded-md panel-menu__item">
             <svg class="w-6 xl:w-7 h-6 xl:h-7">
                 <use href="#users"></use>
             </svg>
@@ -170,14 +170,14 @@
         <span class="font-Moshfegh-Bold text-lg text-indigo-400">
             کافه سناتور
         </span>
-        <a class="text-sm font-IRANSans-Bold flex items-center justify-center" href="#">
+        <a id="mobile-admin-home-link" class="text-sm font-IRANSans-Bold flex items-center justify-center" href="#">
             <svg class="w-7 h-7">
                 <use href="#logout"></use>
             </svg>
         </a>
     </div>
     <div class="md:hidden grid grid-cols-4 grid-rows-2 gap-4 px-4 text-gray-100 h-16 w-full mt-4">
-        <span data-id="home" class="mobile-panel__item flex items-center justify-center">
+        <span data-id="home" class="mobile-panel__item flex items-center justify-center mobile-panel__item--active">
             <svg class="w-6 xl:w-7 h-6 xl:h-7">
                 <use href="#home"></use>
             </svg>
@@ -212,20 +212,13 @@
             <use href="#open-reserve"></use>
         </svg>
     </span>
-        <span data-id="basket" class="mobile-panel__item flex items-center justify-center mobile-panel__item--active">
-        <svg class="w-6 xl:w-7 h-6 xl:h-7">
-            <use href="#shopping-bag"></use>
-        </svg>
-    </span>
     </div>
 </div>
 <!--Mobile Panel Menu-->
 <!-- Admin Panel Menu -->
 <main>
-    <section id="home" class="users panel-section ">
-
-    </section>
-    <section id="users" class="users panel-section panel-section--active">
+    <section id="home" class="users panel-section panel-section--active"></section>
+    <section id="users" class="users panel-section">
         <div class="container">
             <div class="relative mt-10 md:mt-20">
                 <h3 class="text-lg md:text-2xl font-IRANSans-Medium mb-10 md:mb-20">
@@ -244,74 +237,7 @@
                         </tr>
                         </thead>
                         <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="user-list">
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span class="users__edit flex items-center justify-center text-indigo-600 cursor-pointer" onclick='userModalHandler("${user[0]}")'>
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span class="text-red-700 flex items-center justify-center cursor-pointer" onclick='userDelete("${user[0]}")'>
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td class="hidden lg:table-cell font-sans font-medium">4500</td>
-                            <td>حسین رستمی</td>
-                            <td class="hidden lg:table-cell font-sans font-medium">09930094221</td>
-                            <td class="hidden lg:table-cell font-sans font-medium">8574</td>
-                            <td class="hidden md:table-cell">دارد</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span class="users__edit flex items-center justify-center text-indigo-600 cursor-pointer" onclick='userModalHandler("${user[0]}")'>
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span class="text-red-700 flex items-center justify-center cursor-pointer" onclick='userDelete("${user[0]}")'>
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td class="hidden lg:table-cell font-sans font-medium">4500</td>
-                            <td>حسین رستمی</td>
-                            <td class="hidden lg:table-cell font-sans font-medium">09930094221</td>
-                            <td class="hidden lg:table-cell font-sans font-medium">8574</td>
-                            <td class="hidden md:table-cell">دارد</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span class="users__edit flex items-center justify-center text-indigo-600 cursor-pointer" onclick='userModalHandler("${user[0]}")'>
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span class="text-red-700 flex items-center justify-center cursor-pointer" onclick='userDelete("${user[0]}")'>
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td class="hidden lg:table-cell font-sans font-medium">4500</td>
-                            <td>حسین رستمی</td>
-                            <td class="hidden lg:table-cell font-sans font-medium">09930094221</td>
-                            <td class="hidden lg:table-cell font-sans font-medium">8574</td>
-                            <td class="hidden md:table-cell">دارد</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span class="users__edit flex items-center justify-center text-indigo-600 cursor-pointer" onclick='userModalHandler("${user[0]}")'>
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span class="text-red-700 flex items-center justify-center cursor-pointer" onclick='userDelete("${user[0]}")'>
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td class="hidden lg:table-cell font-sans font-medium">4500</td>
-                            <td>حسین رستمی</td>
-                            <td class="hidden lg:table-cell font-sans font-medium">09930094221</td>
-                            <td class="hidden lg:table-cell font-sans font-medium">8574</td>
-                            <td class="hidden md:table-cell">دارد</td>
-                        </tr>
+                            <!--  Data Loaded From Js  -->
                         </tbody>
                     </table>
                 </div>
@@ -397,7 +323,7 @@
                 <div>
                     <table class="w-full products__table">
                         <thead class="h-14 md:h-20 text-sm md:text-lg font-IRANSans-Medium">
-                        <tr class="">
+                        <tr>
                             <th>ویرایش</th>
                             <th>حذف</th>
                             <th>تصویر</th>
@@ -409,156 +335,7 @@
                         </tr>
                         </thead>
                         <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="product-list">
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-600 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>1356</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/Products/product-1.png" alt="">
-                            </td>
-                            <td class="hidden lg:table-cell">
-                                <p class="line-clamp-2">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                                </p>
-                            </td>
-                            <td>170,000</td>
-                            <td>25 %</td>
-                            <td>150,000</td>
-                            <td class="hidden lg:table-cell">355</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-600 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>1356</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/Products/product-1.png" alt="">
-                            </td>
-                            <td class="hidden lg:table-cell">
-                                <p class="line-clamp-2">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                                </p>
-                            </td>
-                            <td>170,000</td>
-                            <td>25 %</td>
-                            <td>150,000</td>
-                            <td class="hidden lg:table-cell">355</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-600 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>1356</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/Products/product-1.png" alt="">
-                            </td>
-                            <td class="hidden lg:table-cell">
-                                <p class="line-clamp-2">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                                </p>
-                            </td>
-                            <td>170,000</td>
-                            <td>25 %</td>
-                            <td>150,000</td>
-                            <td class="hidden lg:table-cell">355</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-600 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>1356</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/Products/product-1.png" alt="">
-                            </td>
-                            <td class="hidden lg:table-cell">
-                                <p class="line-clamp-2">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                                </p>
-                            </td>
-                            <td>170,000</td>
-                            <td>25 %</td>
-                            <td>150,000</td>
-                            <td class="hidden lg:table-cell">355</td>
-                        </tr>
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-600 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>1356</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/Products/product-1.png" alt="">
-                            </td>
-                            <td class="hidden lg:table-cell">
-                                <p class="line-clamp-2">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                                </p>
-                            </td>
-                            <td>170,000</td>
-                            <td>25 %</td>
-                            <td>150,000</td>
-                            <td class="hidden lg:table-cell">355</td>
-                        </tr>
+                            <!--  Data Loaded From Js  -->
                         </tbody>
                     </table>
                 </div>
@@ -635,26 +412,7 @@
                         </tr>
                         </thead>
                         <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="categories-list">
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-700 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>2458</td>
-                            <td>170,000</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover rounded-md w-11 lg:w-16 h-11 lg:h-16"
-                                     src="images/category/fcake-png.png" alt="">
-                            </td>
-                        </tr>
+                            <!--  Data Loaded From Js  -->
                         </tbody>
                     </table>
                 </div>
@@ -679,25 +437,7 @@
                         </tr>
                         </thead>
                         <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="comments-list">
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-700 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>1400</td>
-                            <td>حسین رستمی</td>
-                            <td>RostamiDev@gmail.com</td>
-                            <td>سلام خدمت همه</td>
-                            <td>تایید شده</td>
-                        </tr>
+                            <!--  Data Loaded From Js  -->
                         </tbody>
                     </table>
                 </div>
@@ -787,33 +527,7 @@
                         </tr>
                         </thead>
                         <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="blogs-list">
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-700 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>4323</td>
-                            <td>تمیزکاری</td>
-                            <td class="hidden lg:table-cell">
-                                <p class="line-clamp-2">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                                </p>
-                            </td>
-                            <td>1403/03/10</td>
-                            <td>
-                                <img loading='lazy' class="mx-auto object-cover w-11 lg:w-16 h-11 lg:h-16 rounded-md"
-                                     src="images/category/fcake-png.png" alt="">
-                            </td>
-                        </tr>
+                            <!--  Data Loaded From Js  -->
                         </tbody>
                     </table>
                 </div>
@@ -913,24 +627,7 @@
                         </tr>
                         </thead>
                         <tbody class="text-center font-IRANSans-Medium text-xs md:text-base" id="reserve-list">
-                        <tr class="h-16 md:h-20">
-                            <td>
-                                    <span onclick='productModalHandler("${user[0]}")'
-                                          class="flex items-center justify-center text-indigo-600 cursor-pointer">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#pencil"></use></svg>
-                                    </span>
-                            </td>
-                            <td>
-                                    <span onclick='removeProductHandler("${user[0]}")'
-                                          class="text-red-700 cursor-pointer flex items-center justify-center">
-                                        <svg class="w-5 md:w-6 h-5 md:h-6"><use href="#x-mark"></use></svg>
-                                    </span>
-                            </td>
-                            <td>حسین رستمی</td>
-                            <td>09930094221</td>
-                            <td>1403/03/10</td>
-                            <td class="hidden lg:table-cell">10 : 30</td>
-                        </tr>
+                            <!--  Data Loaded From Js  -->
                         </tbody>
                     </table>
                 </div>

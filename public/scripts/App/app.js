@@ -9,13 +9,9 @@ const bookLastname = document.getElementById("reserve-lastname")
 const bookDate = document.getElementById("reserve-date")
 const bookPhone = document.getElementById("reserve-phone")
 const bookSubmitBtn = document.getElementById("reserve-submit-btn")
-
-
-
 jalaliDatepicker.startWatch();
 
 
-// Book Functions
 async function reserveNewTable() {
     let newReserve = {
         firstname: bookFirstname.value,
@@ -59,5 +55,4 @@ bookSubmitBtn.addEventListener("click", async () => {
     await reserveNewTable()
 })
 
-// Blogs Events
 
