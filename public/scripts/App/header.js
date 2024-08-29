@@ -276,7 +276,7 @@ window.addEventListener("load", async () => {
     if (userId) {
         let allUsersArray = await getAllUsers()
         let isAdminLogin = allUsersArray.some(user => user[0] === userId && user[1].isAdmin === true)
-        if(isAdminLogin) {
+        if(!isAdminLogin) {
             menuContainer.insertAdjacentHTML('beforeend', `<li onclick="panelHandler()" id="admin-panel-btn" class="menu__item">
                         <a id="admin-panel-link" href="#">پنل کاربری</a>
                     </li>`)
