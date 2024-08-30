@@ -201,7 +201,7 @@ window.addEventListener("load", async () => {
     await addReservesToDom()
 })
 reserveModalSubmitBtn.addEventListener("click", async () => {
-    // await editReserve()پ
+    // await editReserve()
     swal.fire({
         title: 'فقط قسمت کاربران بک اند دارد',
         icon: 'info',

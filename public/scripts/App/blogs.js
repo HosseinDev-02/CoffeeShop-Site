@@ -30,5 +30,5 @@ async function addBlogsToDom(){
 
 
 window.addEventListener('load', async () => {
-    // await addBlogsToDom()
+    await addBlogsToDom()
 })

@@ -115,3 +115,11 @@
     }
 
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    background-color: black !important;
+    color: white !important;
+}
